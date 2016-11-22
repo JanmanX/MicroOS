@@ -22,7 +22,7 @@ BIN=./bin
 SOURCE=src
 ISOFILES=isofiles
 KERNEL=$(BIN)/kernel.bin
-ISO=os.iso
+ISO=$(BIN)/os.iso
 DEBUG_DIR=./debug
 
 
@@ -43,17 +43,17 @@ $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
 	$(LD) $(LDFLAGS) -o $(KERNEL) -T $(LDSCRIPT) $(ASM_OBJECTS) $(OBJECTS)
 
 
-iso: $(KERNEL)
+$(ISO): $(KERNEL)
 	mv $(KERNEL) $(ISOFILES)/boot/
-	grub-mkrescue -o $(BIN)/$(ISO) $(ISOFILES)
+	grub-mkrescue -o $(ISO) $(ISOFILES)
 
-run: iso
+run: $(ISO)
 	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO)
 
-debug: iso
+debug: $(ISO)
 	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO) -s -S
 
-bochs: iso
+bochs: $(ISO)
 	$(BOCHS) -f $(DEBUG_DIR)/bochs/bochs.conf -q
 
 clean:

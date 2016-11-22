@@ -1,0 +1,305 @@
+global start
+
+%include "src/defines.inc"
+
+section .text
+[BITS 32]
+
+
+; On i386 machine, when loaded by multiboot-compliant bootloader, the state of
+; the registers are:
+; EAX -> Magic value
+; EBX -> Contains the 32bit physical address of the multiboot information struct
+;  --
+; A20 gate -> enabled
+; GDTR -> GDTR may be invalid
+; IDTR -> not setup
+start:
+	mov esp, stack_top
+
+	; Get multiboot info pointer
+	mov edi, ebx
+
+
+	call check_multiboot
+	call check_cpuid
+	call check_long_mode
+
+	call setup_page_tables
+	call enable_paging
+
+	lgdt [gdt64.pointer]
+
+	; Update segment selectors
+	mov ax, gdt64.km_data; Kernel Data entry starts at byte 16 after the GDT
+	mov ss, ax  ; stack selector
+	mov ds, ax  ; data selector
+	mov es, ax  ; extra selector
+
+	jmp gdt64.km_code:long_mode_start
+
+
+	; This code should not be reached
+	hlt
+
+
+; check_multiboot()
+;
+; Checks if kernel was loaded by multiboot compliant bootloader. Jumps to error
+; if multiboot is not detected.
+; IN: EAX with initial value after boot
+check_multiboot:
+	cmp eax, MULTIBOOT2_BOOTLOADER_MAGIC
+	jne .no_multiboot
+	ret
+.no_multiboot:
+	mov al, ERROR_NO_MULTIBOOT
+	jmp error
+
+
+; check_cpuid()
+;
+; Checks if CPUID is supported.
+; Jumps to error if CPUID is not supported
+check_cpuid:
+	; Store EFLAGS twice
+	pushfd
+	pushfd
+
+	; Flip the ID bit (bit 21)
+	xor dword [esp], 1 << 21
+
+	; Set EFLAGS and retrieve it again
+	popfd
+	pushfd
+
+	; Compare the popped EFLAGS with the previous EFLAGS
+	pop eax
+	xor eax,[esp]
+
+	; Restore the old EFLAGS
+	popfd
+
+	; Check if ID bit is flipped
+	; If eax == 0, ID bit cannot be changed
+	and eax, 1 << 21
+	jz .no_cpuid
+
+	ret
+
+.no_cpuid:
+	mov eax, ERROR_NO_CPUID
+	jmp error
+
+
+
+; check_long_mode()
+;
+; Checks if long-mode is available. Jumps to error if not
+check_long_mode:
+	; To test for long mode, we will use extended functions of CPUID.
+	; Before we do this, we have to make sure extended functions are
+	; actually available.
+
+	; EAX=80000000h: Get Highest Extended Function Supported
+	mov eax, 0x80000000
+	cpuid
+
+	; Compare with highest extended function supported.
+	; If below, there is no long mode
+	cmp eax, 0x80000001
+	jb .no_long_mode
+
+
+	; Detect long mode using CPUID
+	; EAX=80000001h: Extended Processor Info and Feature Bits
+	mov eax, 0x80000001
+	cpuid
+	test edx, 1 << 29 ; bit 29 = long mode bit
+	jz .no_long_mode
+
+	ret
+
+.no_long_mode:
+	mov eax, ERROR_NO_LONG_MODE
+	jmp error
+
+
+
+; set_up_page_tables()
+;
+; Identity maps the first 1GiB of memory into 2MiB page-tables
+setup_page_tables:
+	; Create an entry in PML4T
+	mov eax, PDPT
+	or eax, PAGE_PRESENT | PAGE_WRITE
+	mov [PML4T], eax
+
+	; Create an entry in PDPT
+	mov eax, PDT
+	or eax, PAGE_PRESENT | PAGE_WRITE
+	mov [PDPT], eax
+
+
+	xor ecx, ecx	; ecx = counter
+.setup_pdt:
+	mov eax, 0x200000	; 2MiB
+	mul ecx
+	or eax, PAGE_PRESENT | PAGE_WRITE | PAGE_SIZE_2MIB
+	mov [PDT + 8 * ecx], eax	; store it
+
+	inc ecx
+	cmp ecx, 512
+	jne .setup_pdt
+
+
+	ret
+
+
+; enable_paging()
+;
+; Enables paging. Page tables must be setup
+enable_paging:
+	; Load the address of PML4T into CR3 (used for page lookup)
+	mov eax, PML4T
+	mov cr3, eax
+
+	; Enable PAE-flag (Physical Address Extension (64 bit))
+	; http://wiki.osdev.org/CPU_Registers_x86#CR4
+	mov eax, cr4
+	or eax, 1 << 5
+	mov cr4, eax
+
+	; Setup longmode in the EFER MSR (Model Specific Register)
+	; http://wiki.osdev.org/CPU_Registers_x86-64#EFER
+	mov ecx, 0xC0000080
+	rdmsr
+	or eax, 1 << 8 ; bit 8 -> Long mode enable
+	wrmsr
+
+	; Enable paging
+	; http://wiki.osdev.org/CPU_Registers_x86#CR0
+	mov eax, cr0
+	or eax, 1 << 31 ; paging bit
+	mov cr0, eax
+
+
+	ret
+
+
+
+
+; error()
+;
+; Prints an error code to the screen and halts
+; IN: 	al: error code
+; OUT:	-
+error:
+    mov dword [0xb8000], 0x4f524f45
+    mov dword [0xb8004], 0x4f3a4f52
+    mov dword [0xb8008], 0x4f204f20
+    mov byte  [0xb800a], al
+    hlt
+
+
+;--------------------------------- 64 bit -------------------------------------
+[BITS 64]
+extern main
+section .text
+long_mode_start:
+	call main
+	hlt
+;------------------------------------------------------------------------------
+
+
+
+section .bss
+align 4096	; ensures the tables are page-aligned
+
+; Page tables
+; Each entry is 8 bytes, with 512 slots in each table
+; 512 * 8 bytes = 4096 bytes for each table
+PML4T:		resb 4096
+PDPT:		resb 4096
+PDT:		resb 4096
+
+stack_bottom:
+	resb 4096
+stack_top:
+
+
+
+
+section .ro_data
+
+; Global Descriptor Table used for long mode
+;
+; LAYOUT:
+; Limit			2 bytes
+; Base 0:15		2 bytes
+; Base 16:23		1 byte
+; Access		1 byte
+; Limit 16:19		4 bits
+; Flags			4 bits
+; Base 24:31		1 byte
+;
+; User Mode access byte
+; +-------+-------+
+; |  0xF  |  0xA  |
+; +---------------+
+; |1|1|1|1|1|0|1|0|
+; ++-+-+-+-+-+-+-++
+;  | | | | | | | |
+;  | | | | | | | +-----> Accessed bit. Set it to zero.
+;  | | | | | | +-------> Readable / Writeable bit. Readable bit for Code, Writeable for data sectors
+;  | | | | | +---------> Direction Bit.
+;  | | | | +-----------> Executable bit. 1 for Code, 0 for data
+;  | | | +-------------> Must be 1.
+;  | +-+---------------> Privilege, 2 bits. Containing ring level.
+;  |
+;  +-------------------> Preset bit. Must be 1 for all valid selectors.
+gdt64:                           ; Global Descriptor Table (64-bit).
+	.null: equ $ - gdt64         ; The null descriptor.
+	dw 0                         ; Limit (low).
+	dw 0                         ; Base (low).
+	db 0                         ; Base (middle)
+	db 0                         ; Access.
+	db 0                         ; Granularity.
+	db 0                         ; Base (high).
+
+; KERNEL
+	.km_code: equ $ - gdt64         ; The kernel mode code descriptor.
+	dw 0                         ; Limit (low).
+	dw 0                         ; Base (low).
+	db 0                         ; Base (middle)
+	db 10011010b                 ; Access (exec/read).
+	db 00100000b                 ; Granularity.
+	db 0                         ; Base (high).
+	.km_data: equ $ - gdt64         ; The data descriptor.
+	dw 0                         ; Limit (low).
+	dw 0                         ; Base (low).
+	db 0                         ; Base (middle)
+	db 10010010b                 ; Access (read/write).
+	db 00000000b                 ; Granularity.
+	db 0                         ; Base (high).
+
+;; USER
+;	.UM_Code: equ $ - GDT64
+;	dw 0
+;	dw 0
+;	db 0
+;	db 0xFA
+;	db 0xCF
+;	db 0
+;	.UM_Data: equ $ - GDT64
+;	dw 0
+;	dw 0
+;	db 0
+;	db 0xF2
+;	db 0xCF
+;	db 0
+
+	.pointer:                    ; The GDT-pointer.
+	dw $ - gdt64 - 1             ; Limit (length of GDT).
+	dq gdt64                     ; Address of GDT64
+
