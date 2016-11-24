@@ -44,7 +44,7 @@ $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
 
 
 $(ISO): $(KERNEL)
-	mv $(KERNEL) $(ISOFILES)/boot/
+	cp $(KERNEL) $(ISOFILES)/boot/
 	grub-mkrescue -o $(ISO) $(ISOFILES)
 
 run: $(ISO)
