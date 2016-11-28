@@ -14,8 +14,6 @@ SECTIONS {
 		*(.text)
 	}
 
-
-
 	/* Read-only data. */
 	.ro_data BLOCK(4K) : ALIGN(4K)
 	{

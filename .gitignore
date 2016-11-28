@@ -1,5 +1,12 @@
 report/
 bin/
-
+isofiles/
 
 *.o
+
+kernel.map
+kernel.dump
+
+
+# Antipatterns
+!isofiles/boot/grub/grub.cfg

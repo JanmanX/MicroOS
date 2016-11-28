@@ -11,13 +11,15 @@
 %define PAGE_WRITE      0x02
 %define PAGE_SIZE_2MIB   (1 << 7)
 
+%define PAGE_ENTRY_SIZE 8
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ERROR CODES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; up to 255
 %define ERROR_NO_MULTIBOOT '0'
 %define ERROR_NO_CPUID	   '1'
 %define ERROR_NO_LONG_MODE '2'
-
-
+%define ERROR_KERNEL_PANIC '3'
+%define ERROR_DEBUG	   '255'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; MULTIBOOT 2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; How many bytes from the start of the file we search for the header.

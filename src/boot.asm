@@ -5,6 +5,14 @@ global start
 section .text
 [BITS 32]
 
+%macro BOCHS_BREAK 0
+	xchg bx, bx
+%endmacro
+
+%define NUM_PML4E	1
+%define NUM_PDPE	64
+%define NUM_PDE		512 * NUM_PDPE
+
 
 ; On i386 machine, when loaded by multiboot-compliant bootloader, the state of
 ; the registers are:
@@ -15,12 +23,13 @@ section .text
 ; GDTR -> GDTR may be invalid
 ; IDTR -> not setup
 start:
+	; Setup stack
 	mov esp, stack_top
 
 	; Get multiboot info pointer
 	mov edi, ebx
 
-
+	; Check that the CPU is up for x86_64
 	call check_multiboot
 	call check_cpuid
 	call check_long_mode
@@ -35,9 +44,7 @@ start:
 	mov ss, ax  ; stack selector
 	mov ds, ax  ; data selector
 	mov es, ax  ; extra selector
-
 	jmp gdt64.km_code:long_mode_start
-
 
 	; This code should not be reached
 	hlt
@@ -140,18 +147,17 @@ setup_page_tables:
 	or eax, PAGE_PRESENT | PAGE_WRITE
 	mov [PDPT], eax
 
-
+	; Create 512 entries in PDT
 	xor ecx, ecx	; ecx = counter
 .setup_pdt:
 	mov eax, 0x200000	; 2MiB
 	mul ecx
 	or eax, PAGE_PRESENT | PAGE_WRITE | PAGE_SIZE_2MIB
-	mov [PDT + 8 * ecx], eax	; store it
+	mov [PDT + PAGE_ENTRY_SIZE * ecx], eax	; store it
 
 	inc ecx
 	cmp ecx, 512
 	jne .setup_pdt
-
 
 	ret
 
@@ -173,7 +179,7 @@ enable_paging:
 	; Setup longmode in the EFER MSR (Model Specific Register)
 	; http://wiki.osdev.org/CPU_Registers_x86-64#EFER
 	mov ecx, 0xC0000080
-	rdmsr
+	rdmsr	; reads model specific register into edx:eax
 	or eax, 1 << 8 ; bit 8 -> Long mode enable
 	wrmsr
 
@@ -183,10 +189,7 @@ enable_paging:
 	or eax, 1 << 31 ; paging bit
 	mov cr0, eax
 
-
 	ret
-
-
 
 
 ; error()
@@ -195,11 +198,12 @@ enable_paging:
 ; IN: 	al: error code
 ; OUT:	-
 error:
-    mov dword [0xb8000], 0x4f524f45
-    mov dword [0xb8004], 0x4f3a4f52
-    mov dword [0xb8008], 0x4f204f20
-    mov byte  [0xb800a], al
-    hlt
+	; Prints "ERR: <error_code>" and halts
+ 	mov dword [VGA_TEXT_BUFFER+0x0], 0x4f524f45
+ 	mov dword [VGA_TEXT_BUFFER+0x4], 0x4f3a4f52
+	mov dword [VGA_TEXT_BUFFER+0x8], 0x4f204f20
+	mov byte  [VGA_TEXT_BUFFER+0xa], al
+	hlt
 
 
 ;--------------------------------- 64 bit -------------------------------------
@@ -207,8 +211,80 @@ error:
 extern main
 section .text
 long_mode_start:
+	; Clear long-mode registers
+	; Setup data segments
+        mov ax, gdt64.km_data
+        mov ds, ax
+        mov es, ax
+        mov fs, ax
+        mov gs, ax
+        mov ss, ax
+
+        xor r8, r8
+        xor r9, r9
+        xor r10, r10
+        xor r11, r11
+        xor r12, r12
+        xor r13, r13
+        xor r14, r14
+        xor r15, r15
+        cld
+
+
+	; Expand paging to 64GiB
+	call extend_page_tables
+
+
+	; TODO: Set stack
+;	mov rsp, 0x40000000
 	call main
 	hlt
+
+.halt:
+ 	mov dword [VGA_TEXT_BUFFER+0x0], 0x4f524f45
+ 	hlt
+
+; extend_page_tables()
+;
+; Extends the mapping to 64GiB
+extend_page_tables:
+
+	; Extend the PDP Table
+	xor rcx, rcx
+	inc rcx		; One page is already loaded, thus inc by 1
+	mov rax, PDT
+.extend_pdpt:
+	add rax, 512 * PAGE_ENTRY_SIZE
+	lea rax, [PDT + PAGE_ENTRY_SIZE * rcx]
+	or rax, PAGE_PRESENT | PAGE_WRITE
+	mov [PDPT + rcx * PAGE_ENTRY_SIZE], rax
+
+	inc rcx
+	cmp rcx, NUM_PDPE
+	jne .extend_pdpt
+
+
+	; Extend the PD Table
+	xor rcx, rcx	; ecx = counter
+.extend_pdt:
+	mov rax, 0x200000	; 2MiB
+	mul rcx
+	or rax, PAGE_PRESENT | PAGE_WRITE | PAGE_SIZE_2MIB
+	mov [PDT + PAGE_ENTRY_SIZE * rcx], rax	; store it
+
+	inc rcx
+	cmp rcx, NUM_PDE
+	jne .extend_pdt
+
+
+	; Flush TLB
+	mov rax, cr3
+	mov cr3, rax
+
+	; return
+	ret
+
+
 ;------------------------------------------------------------------------------
 
 
@@ -216,17 +292,18 @@ long_mode_start:
 section .bss
 align 4096	; ensures the tables are page-aligned
 
-; Page tables
-; Each entry is 8 bytes, with 512 slots in each table
-; 512 * 8 bytes = 4096 bytes for each table
-PML4T:		resb 4096
-PDPT:		resb 4096
-PDT:		resb 4096
-
 stack_bottom:
 	resb 4096
 stack_top:
 
+
+; Page tables for 64GiB
+; Each entry is 8 bytes, with 512 slots in each table
+; 512 * 8 bytes = 4096 bytes for each table
+PML4T:		resb 4096	  		; 1 	PML4E
+PDPT:		resb 4096			; 64 	PDPE
+PDT:		resb (PAGE_ENTRY_SIZE*64*512)	; 32768 PDE
+; 1*64*512 * 2MiB = 64 gibibytes
 
 
 
@@ -258,7 +335,7 @@ section .ro_data
 ;  | +-+---------------> Privilege, 2 bits. Containing ring level.
 ;  |
 ;  +-------------------> Preset bit. Must be 1 for all valid selectors.
-gdt64:                           ; Global Descriptor Table (64-bit).
+gdt64:                               ; Global Descriptor Table (64-bit).
 	.null: equ $ - gdt64         ; The null descriptor.
 	dw 0                         ; Limit (low).
 	dw 0                         ; Base (low).
@@ -268,7 +345,7 @@ gdt64:                           ; Global Descriptor Table (64-bit).
 	db 0                         ; Base (high).
 
 ; KERNEL
-	.km_code: equ $ - gdt64         ; The kernel mode code descriptor.
+	.km_code: equ $ - gdt64      ; The kernel mode code descriptor.
 	dw 0                         ; Limit (low).
 	dw 0                         ; Base (low).
 	db 0                         ; Base (middle)
@@ -283,21 +360,21 @@ gdt64:                           ; Global Descriptor Table (64-bit).
 	db 00000000b                 ; Granularity.
 	db 0                         ; Base (high).
 
-;; USER
-;	.UM_Code: equ $ - GDT64
-;	dw 0
-;	dw 0
-;	db 0
-;	db 0xFA
-;	db 0xCF
-;	db 0
-;	.UM_Data: equ $ - GDT64
-;	dw 0
-;	dw 0
-;	db 0
-;	db 0xF2
-;	db 0xCF
-;	db 0
+; USER
+	.um_code: equ $ - gdt64
+	dw 0
+	dw 0
+	db 0
+	db 0xFA
+	db 0xCF
+	db 0
+	.um_data: equ $ - gdt64
+	dw 0
+	dw 0
+	db 0
+	db 0xF2
+	db 0xCF
+	db 0
 
 	.pointer:                    ; The GDT-pointer.
 	dw $ - gdt64 - 1             ; Limit (length of GDT).
