@@ -41,6 +41,7 @@ all: iso
 # Compiles the kernel, using LDSCRIPT
 $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
 	$(LD) $(LDFLAGS) -o $(KERNEL) -T $(LDSCRIPT) $(ASM_OBJECTS) $(OBJECTS)
+	objdump -D $(KERNEL) > kernel_dump.asm
 
 
 $(ISO): $(KERNEL)
