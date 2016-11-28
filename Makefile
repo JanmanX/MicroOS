@@ -8,7 +8,7 @@ AS=nasm
 AFLAGS=-f elf64
 
 LD=ld
-LDFLAGS=-n
+LDFLAGS=-n -Map=kernel.map
 LDSCRIPT=src/linker.ld
 
 ASM_SOURCES=$(wildcard src/*.asm)
