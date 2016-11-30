@@ -1,13 +1,20 @@
 #include <stdint.h>
 
-
+#include "klib.h"
 #include "multiboot2.h"
 #include "kprint.h"
+#include "idt.h"
 
-void main(unsigned long mb_info_struct_addr)
+void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
 	clear_screen();
 	kprint("Main()\n");
+
+	kprintf("PML4T: 0x%x\n", pml4t);
+
+	idt_init();
+	HALT;
+
 
 	struct multiboot_tag *tag;
 	uint32_t size;

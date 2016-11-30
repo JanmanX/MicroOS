@@ -1,6 +1,6 @@
 [BITS 32]
 
-%include "src/defines.inc"
+%include "defines.inc"
 
 %define MULTIBOOT_MAGIC 	0xE85250D6
 %define MULTIBOOT_ARCH 		0x00	; 32-bit i386, '4' is MIPS

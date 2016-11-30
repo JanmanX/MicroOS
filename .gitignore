@@ -1,7 +1,10 @@
+# Directories
 report/
 bin/
 isofiles/
 
+# Files
+*.swp
 *.o
 
 kernel.map

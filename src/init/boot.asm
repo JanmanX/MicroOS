@@ -27,8 +27,8 @@ start:
 	; Setup stack
 	mov esp, stack_top
 
-	; Get multiboot info pointer
-	mov edi, ebx
+	; Save multiboot info pointer
+	push ebx
 
 	; Check that the CPU is up for x86_64
 	call check_multiboot
@@ -39,6 +39,9 @@ start:
 	call enable_paging
 
 	lgdt [gdt64.pointer]
+
+	; Retrieve multiboot info pointer
+	pop edi
 	jmp gdt64.km_code:long_mode_start
 
 	; This code should not be reached
@@ -205,6 +208,10 @@ error:
 [BITS 64]
 extern main
 section .text
+
+; long_mode_start(*mb_info_ptr);
+;
+;
 long_mode_start:
 	; Clear long-mode registers
 	; Setup data segments
@@ -228,12 +235,8 @@ long_mode_start:
 	; Expand paging to 64GiB
 	call extend_page_tables
 
-	; Init interrupts
-
-
-
-	; TODO: Set stack
-;	mov rsp, 0x40000000
+	; mb_info_ptr is already in rdi
+	mov rsi, PML4T
 	call main
 	hlt
 
@@ -276,8 +279,6 @@ extend_page_tables:
 
 	; return
 	ret
-
-
 ;------------------------------------------------------------------------------
 section .bss
 align 4096	; ensures the tables are page-aligned
@@ -286,4 +287,4 @@ stack_bottom:
 	resb 4096
 stack_top:
 
-%include "src/vars.asm"
+%include "vars.asm"

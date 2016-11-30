@@ -11,17 +11,6 @@ PDT:		resb (PAGE_ENTRY_SIZE*64*512)	; 32768 PDE
 ; 1*64*512 * 2MiB = 64 gibibytes
 
 
-;; Interrupt Descriptor Table
-;IDT64:                                  ; Interrupt Descriptor Table Register
-;        dw 256*16-1                     ; limit of IDT (size minus one) (4096 bytes - 1)
-;        dq IDT64_DESC		        ; linear address of IDT
-;
-;IDT64_DESC:
-;	db 16 * 256			; 256 descriptors of size 16 bytes
-;
-
-
-
 section .ro_data
 ; Global Descriptor Table used for long mode
 ;
