@@ -6,9 +6,11 @@ QEMU_FLAGS=-m 16G
 BOCHS=bochs
 AS=nasm
 AFLAGS=-f elf64
+AS_INC=-I ./src/
+
 
 LD=ld
-LDFLAGS=-n -Map=kernel.map
+LDFLAGS=-n -Map=$(KERNEL_MAP_FILE)
 LDSCRIPT=src/linker.ld
 
 ASM_SOURCES=$(wildcard src/*.asm)
@@ -25,6 +27,10 @@ KERNEL=$(BIN)/kernel.bin
 ISO=$(BIN)/os.iso
 DEBUG_DIR=./debug
 
+# Miscellaneous
+KERNEL_MAP_FILE=./kernel.map
+KERNEL_DUMP_FILE=./kernel.dump
+
 
 .PHONY: clean run iso all
 
@@ -33,7 +39,7 @@ all: iso
 # $<  --- Input file
 # $@  --- Input filename
 %.o: %.asm
-	$(AS) $(AFLAGS) $< -o $@
+	$(AS) $(AS_INC) $(AFLAGS) $< -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -41,7 +47,7 @@ all: iso
 # Compiles the kernel, using LDSCRIPT
 $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
 	$(LD) $(LDFLAGS) -o $(KERNEL) -T $(LDSCRIPT) $(ASM_OBJECTS) $(OBJECTS)
-	objdump -D $(KERNEL) > kernel.dump
+	objdump -D $(KERNEL) > $(KERNEL_DUMP_FILE)
 
 
 $(ISO): $(KERNEL)
@@ -59,5 +65,8 @@ bochs: $(ISO)
 
 clean:
 	-rm -rfv bin/*
+	-rm -fv src/*.o
 	-rm -rfv $(ASM_OBJECTS)
 	-rm -rfv $(ISO)
+	-rm -fv $(KERNEL_MAP_FILE)
+	-rm -fv $(KERNEL_DUMP_FILE)

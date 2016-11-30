@@ -5,6 +5,14 @@
 ; VGA Video memory
 %define VGA_TEXT_BUFFER	0xB8000
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; IDT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+%define IDT_DESC_BIT16                  0x07    ; 16 Bit
+%define IDT_DESC_BIT32                  0x0F    ; 32 Bit Trap Gate
+%define IDT_DESC_RING1                  0x40    ; Priveligie Level 1
+%define IDT_DESC_RING2                  0x20    ; Priveligie Level 2
+%define IDT_DESC_RING3                  0x60    ; Priveligie Level 3
+%define IDT_DESC_PRESENT                0x80    ; Is it present?
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; PAGING ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 %define PAGE_PRESENT    0x01
@@ -76,6 +84,3 @@
 %define MULTIBOOT_CONSOLE_FLAGS_EGA_TEXT_SUPPORTED 2
 
 %endif
-
-
-
