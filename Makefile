@@ -17,7 +17,7 @@ LDSCRIPT=src/linker.ld
 ASM_SOURCES=$(wildcard src/*.asm src/init/*.asm)
 ASM_OBJECTS=$(ASM_SOURCES:.asm=.o)
 
-SOURCES=$(wildcard src/*.c)
+SOURCES=$(wildcard src/*.c src/lib/*.c)
 OBJECTS=$(SOURCES:.c=.o)
 
 # PATHS
@@ -35,7 +35,7 @@ KERNEL_DUMP_FILE=./kernel.dump
 
 .PHONY: clean run iso all
 
-all: iso
+all: $(ISO)
 
 # $<  --- Input file
 # $@  --- Input filename
@@ -43,7 +43,7 @@ all: iso
 	$(AS) $(AS_INC) $(AFLAGS) $< -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(C_INC) $(CFLAGS) -c $< -o $@
 
 # Compiles the kernel, using LDSCRIPT
 $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)

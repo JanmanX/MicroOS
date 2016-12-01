@@ -1,8 +1,14 @@
-#ifndef KPRINT_H
-#define KPRINT_H
+#ifndef KLIB_H
+#define KLIB_H
 
 #include <stdint.h>
 
+void itoa(char *buf, int base, int64_t n);
+
+extern void kpanic();
+
+
+/* Printing routines */
 enum color {
 	BLACK = 0x0,
 	BLUE = 0x1,
@@ -32,4 +38,15 @@ void kprint(char *str);
  * WARN: Can only parse 5 varargs!  */
 void kprintf(const char *fmt, ...);
 
-#endif /* KPRINT_H */
+
+
+/* DEBUG FUNCTIONS
+ * Should not be used in production */
+#define BOCHS_DEBUG do {\
+			asm volatile("xchg bx, bx");\
+		} while(0);
+
+
+#define HALT asm volatile("hlt")
+
+#endif /* KLIB_H */

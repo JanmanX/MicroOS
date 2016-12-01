@@ -1,7 +1,10 @@
-#ifndef X86_64_IDT_H
-#define X86_64_IDT_H
+#ifndef IDT_H
+#define IDT_H
+
+#include <stdint.h>
 
 #define MAX_INTERRUPTS 0xFF
+
 
 
 /* Interrupt Descriptor Table (IDT) */
@@ -47,6 +50,6 @@ void idt_init();
 /* Sets an exception gate in the IDT */
 typedef void (*exception_gate_t)();
 void idt_set_interrupt(uint32_t index, uint16_t selector, uint8_t type_attr,
-			 exception_gate_t exception_gate);
+		uint8_t ist, exception_gate_t exception_gate);
 
 #endif /* X86_64_IDT_H */

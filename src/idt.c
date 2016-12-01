@@ -21,8 +21,23 @@ void idt_init()
 
 /* Sets an exception gate */
 void idt_set_interrupt(uint32_t index, uint16_t selector, uint8_t type_attr,
-		       exception_gate_t exception_gate)
+			uint8_t ist, exception_gate_t exception_gate)
 {
-	index = index;
+	/* TODO: Kernel Code segment is the second entry in GDT, at offset 0x08.
+	 * This should not change, but it would be nice to avoid magic numbers
+	 */
+	idt_descriptors[index].selector = 0x08;
+
+	idt_descriptors[index].ist = ist;
+
+	idt_descriptors[index].type_attr = type_attr;
+
+
+	uint64_t addr = (uint64_t)exception_gate;
+	idt_descriptors[index].offset_1 = (uint16_t)addr & 0xFFFF;
+	idt_descriptors[index].offset_2 = (uint16_t)(addr >> 16) & 0xFFFF;
+	idt_descriptors[index].offset_3 = (uint16_t)(addr >> 32) & 0xFFFFFFFF;
+
+	idt_descriptors[index].zero = (uint32_t) 0;
 }
 
