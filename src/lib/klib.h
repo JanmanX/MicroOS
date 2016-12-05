@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "lib/cpuid.h"
+
 void itoa(char *buf, int base, int64_t n);
 
 extern void kpanic();
