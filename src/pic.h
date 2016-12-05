@@ -3,6 +3,4 @@
 
 #include <stdint.h>
 
-uint8_t pic_is_apic();
-
 #endif /* PIC_H */

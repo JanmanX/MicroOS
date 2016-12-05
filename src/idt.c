@@ -23,10 +23,7 @@ void idt_init()
 void idt_set_interrupt(uint32_t index, uint16_t selector, uint8_t type_attr,
 			uint8_t ist, exception_gate_t exception_gate)
 {
-	/* TODO: Kernel Code segment is the second entry in GDT, at offset 0x08.
-	 * This should not change, but it would be nice to avoid magic numbers
-	 */
-	idt_descriptors[index].selector = 0x08;
+	idt_descriptors[index].selector = selector;
 
 	idt_descriptors[index].ist = ist;
 
