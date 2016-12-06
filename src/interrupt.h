@@ -1,31 +1,77 @@
 #ifndef INTERRUPT_H
 #define INTERRUPT_H
+#include <stdint.h>
 
 
-void exception_gate_00(void);
-void exception_gate_01(void);
-void exception_gate_02(void);
-void exception_gate_03(void);
-void exception_gate_04(void);
-void exception_gate_05(void);
-void exception_gate_06(void);
-void exception_gate_07(void);
-void exception_gate_08(void);
-void exception_gate_09(void);
-void exception_gate_10(void);
-void exception_gate_11(void);
-void exception_gate_12(void);
-void exception_gate_13(void);
-void exception_gate_14(void);
-void exception_gate_15(void);
-void exception_gate_16(void);
-void exception_gate_17(void);
-void exception_gate_18(void);
-void exception_gate_19(void);
+struct pt_regs {
+/*
+ * C ABI says these regs are callee-preserved. They aren't saved on kernel entry
+ * unless syscall needs a complete, fully filled "struct pt_regs".
+ */
+	uint64_t r15;
+	uint64_t r14;
+	uint64_t r13;
+	uint64_t r12;
+	uint64_t bp;
+	uint64_t bx;
+/* These regs are callee-clobbered. Always saved on kernel entry. */
+	uint64_t r11;
+	uint64_t r10;
+	uint64_t r9;
+	uint64_t r8;
+	uint64_t ax;
+	uint64_t cx;
+	uint64_t dx;
+	uint64_t si;
+	uint64_t di;
+/*
+ * On syscall entry, this is syscall#. On CPU exception, this is error code.
+ * On hw interrupt, it's IRQ number:
+ */
+	uint64_t orig_ax;
+/* Return frame for iretq */
+	uint64_t ip;
+	uint64_t cs;
+	uint64_t flags;
+	uint64_t sp;
+	uint64_t ss;
+/* top of stack page */
+};
+
+
+
+/* 00 - 20: Predefined
+ * 21 - 31: Intel reserved. Do not use
+ * 32 - 255: User defined
+ */
+
+
+extern void exception_gate_0(void);
+extern void exception_gate_1(void);
+extern void exception_gate_2(void);
+extern void exception_gate_3(void);
+extern void exception_gate_4(void);
+extern void exception_gate_5(void);
+extern void exception_gate_6(void);
+extern void exception_gate_7(void);
+extern void exception_gate_8(void);
+extern void exception_gate_9(void);
+extern void exception_gate_10(void);
+extern void exception_gate_11(void);
+extern void exception_gate_12(void);
+extern void exception_gate_13(void);
+extern void exception_gate_14(void);
+extern void exception_gate_15(void);
+extern void exception_gate_16(void);
+extern void exception_gate_17(void);
+extern void exception_gate_18(void);
+extern void exception_gate_19(void);
+extern void exception_gate_20(void);
+
 
 
 void disable_interrupts(void);
 void enable_interrupts(void);
 void interrupt_init();
-
+void interrupt_handle(uint8_t irq);
 #endif

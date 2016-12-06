@@ -1,29 +1,8 @@
 [bits 64]
 
+extern interrupt_handle
 global disable_interrupts
 global enable_interrupts
-
-global exception_gate_00
-global exception_gate_01
-global exception_gate_02
-global exception_gate_03
-global exception_gate_04
-global exception_gate_05
-global exception_gate_06
-global exception_gate_07
-global exception_gate_08
-global exception_gate_09
-global exception_gate_10
-global exception_gate_11
-global exception_gate_12
-global exception_gate_13
-global exception_gate_14
-global exception_gate_15
-global exception_gate_16
-global exception_gate_17
-global exception_gate_18
-global exception_gate_19
-
 
 %macro PUSHAQ 0
 	push r15
@@ -75,91 +54,39 @@ exception_gate_main:
 	cli		; Disable interrupts
 	PUSHAQ		; Save registers
 	cld 		; C code following the sysV ABI requires DF to be clear on function entry
+	call interrupt_handle
 
-	mov dword [0xB8000], 0x4f524f45
-	hlt
 	POPAQ		; Restore registers
 	sti		; Reenable interrupts
 	iretq		; return from interrupt
 
 
-exception_gate_00:
-        mov al, 0x00
-        jmp exception_gate_main
+%macro exception_gate 1
+global exception_gate_%1
+exception_gate_%1:
+	mov rdi, %1
+	jmp exception_gate_main
+%endmacro
 
-exception_gate_01:
-        mov al, 0x01
-        jmp exception_gate_main
 
-exception_gate_02:
-        mov al, 0x02
-        jmp exception_gate_main
-
-exception_gate_03:
-        mov al, 0x03
-        jmp exception_gate_main
-
-exception_gate_04:
-        mov al, 0x04
-        jmp exception_gate_main
-
-exception_gate_05:
-        mov al, 0x05
-        jmp exception_gate_main
-
-exception_gate_06:
-        mov al, 0x06
-        jmp exception_gate_main
-
-exception_gate_07:
-        mov al, 0x07
-        jmp exception_gate_main
-
-exception_gate_08:
-        mov al, 0x08
-        jmp exception_gate_main
-
-exception_gate_09:
-        mov al, 0x09
-        jmp exception_gate_main
-
-exception_gate_10:
-        mov al, 0x0A
-        jmp exception_gate_main
-
-exception_gate_11:
-        mov al, 0x0B
-        jmp exception_gate_main
-
-exception_gate_12:
-        mov al, 0x0C
-        jmp exception_gate_main
-
-exception_gate_13:
-        mov al, 0x0D
-        jmp exception_gate_main
-
-exception_gate_14:
-        mov al, 0x0E
-        jmp exception_gate_main
-
-exception_gate_15:
-        mov al, 0x0F
-        jmp exception_gate_main
-
-exception_gate_16:
-        mov al, 0x10
-        jmp exception_gate_main
-
-exception_gate_17:
-        mov al, 0x11
-        jmp exception_gate_main
-
-exception_gate_18:
-        mov al, 0x12
-        jmp exception_gate_main
-
-exception_gate_19:
-        mov al, 0x13
-        jmp exception_gate_main
-
+exception_gate 0
+exception_gate 1
+exception_gate 2
+exception_gate 3
+exception_gate 4
+exception_gate 5
+exception_gate 6
+exception_gate 7
+exception_gate 8
+exception_gate 9
+exception_gate 10
+exception_gate 11
+exception_gate 12
+exception_gate 13
+exception_gate 14
+exception_gate 15
+exception_gate 16
+exception_gate 17
+exception_gate 18
+exception_gate 19
+exception_gate 20
