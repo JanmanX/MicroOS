@@ -29,6 +29,7 @@ typedef struct pt_regs {
  * On hw interrupt, it's IRQ number:
  */
 	uint64_t orig_ax;
+
 /* Return frame for iretq */
 	uint64_t ip;
 	uint64_t cs;
@@ -38,6 +39,9 @@ typedef struct pt_regs {
 /* top of stack page */
 }__attribute__((packed)) pt_regs_t;
 
+
+
+extern void interrupt_dummy_handler(void);
 
 
 /* 00 - 20: Predefined

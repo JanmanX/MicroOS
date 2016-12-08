@@ -49,82 +49,79 @@ void interrupt_init()
 	pic_init();
 
 	/* Enable interrupts */
-//	interrupts_enable();
+	enable_interrupts();
 }
 
 
 void interrupt_handle(pt_regs_t *regs)
 {
-	clear_screen();
 	switch((uint8_t)regs->orig_ax) {
-	case 0: kprintf("Interrupt handler, IRQ: %d: Divide-by-Zero-Error\n",
+	case 0: kprintf("Interrupt handler, IRQ: 0x%x: Divide-by-Zero-Error\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 1: kprintf("Interrupt handler, IRQ: %d: Debug\n",
+	case 1: kprintf("Interrupt handler, IRQ: 0x%x: Debug\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 2: kprintf("Interrupt handler, IRQ: %d: Non-Maskable-Interrupt\n",
+	case 2: kprintf("Interrupt handler, IRQ: 0x%x: Non-Maskable-Interrupt\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 3: kprintf("Interrupt handler, IRQ: %d: Breakpoint \n",
+	case 3: kprintf("Interrupt handler, IRQ: 0x%x: Breakpoint \n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 4: kprintf("Interrupt handler, IRQ: %d: Overflow\n",
+	case 4: kprintf("Interrupt handler, IRQ: 0x%x: Overflow\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 5: kprintf("Interrupt handler, IRQ: %d: Bound-Range\n",
+	case 5: kprintf("Interrupt handler, IRQ: 0x%x: Bound-Range\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 6: kprintf("Interrupt handler, IRQ: %d: Invalid-Opcode \n",
+	case 6: kprintf("Interrupt handler, IRQ: 0x%x: Invalid-Opcode \n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 7: kprintf("Interrupt handler, IRQ: %d: Device-Not-Available \n",
+	case 7: kprintf("Interrupt handler, IRQ: 0x%x: Device-Not-Available \n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 8: kprintf("Interrupt handler, IRQ: %d: Double-Fault\n",
+	case 8: kprintf("Interrupt handler, IRQ: 0x%x: Double-Fault\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 9: kprintf("Interrupt handler, IRQ: %d: Coprocessor-Segment-Ovnvalid-TSS\n",
+	case 9: kprintf("Interrupt handler, IRQ: 0x%x: Coprocessor-Segment-Ovnvalid-TSS\n",
 			(uint8_t)regs->orig_ax);
 		break;
-	case 11: kprintf("Interrupt handler, IRQ: %d: Segment-Not-Present\n",
+	case 11: kprintf("Interrupt handler, IRQ: 0x%x: Segment-Not-Present\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 12: kprintf("Interrupt handler, IRQ: %d: Stack\n",
+	case 12: kprintf("Interrupt handler, IRQ: 0x%x: Stack\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 13: kprintf("Interrupt handler, IRQ: %d: General-Protection #Gccesses and protection checks\n",
+	case 13: kprintf("Interrupt handler, IRQ: 0x%x: General-Protection #Gccesses and protection checks\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 14: kprintf("Interrupt handler, IRQ: %d: Page-Fault\n",
+	case 14: kprintf("Interrupt handler, IRQ: 0x%x: Page-Fault\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 15: kprintf("Interrupt handler, IRQ: %d: Reserved 16 x87 FloatException-Pending \n",
+	case 15: kprintf("Interrupt handler, IRQ: 0x%x: Reserved 16 x87 FloatException-Pending \n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 17: kprintf("Interrupt handler, IRQ: %d: Alignment-Check \n",
+	case 17: kprintf("Interrupt handler, IRQ: 0x%x: Alignment-Check \n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 18: kprintf("Interrupt handler, IRQ: %d: Machine-Check \n",
+	case 18: kprintf("Interrupt handler, IRQ: 0x%x: Machine-Check \n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 19: kprintf("Interrupt handler, IRQ: %d: SIMD Floating-Point \n",
+	case 19: kprintf("Interrupt handler, IRQ: 0x%x: SIMD Floating-Point \n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 20: kprintf("Interrupt handler, IRQ: %d: Unsupported \n",
+	case 20: kprintf("Interrupt handler, IRQ: 0x%x: Unsupported \n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 30: kprintf("Interrupt handler, IRQ: %d: Security Exception\n",
+	case 30: kprintf("Interrupt handler, IRQ: 0x%x: Security Exception\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
-	case 31: kprintf("Interrupt handler, IRQ: %d: Reserved\n",
+	case 31: kprintf("Interrupt handler, IRQ: 0x%x: Reserved\n",
 			 (uint8_t)regs->orig_ax);
 		 break;
 
 	default:
-		kprintf("Interrupt handler, IRQ: %d\n", (uint8_t)regs->orig_ax);
+		kprintf("Interrupt handler, IRQ: 0x%x\n", (uint8_t)regs->orig_ax);
 	}
 }
-
-
 

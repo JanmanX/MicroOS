@@ -42,13 +42,19 @@ void kprintf(const char *fmt, ...);
 
 
 
+uint8_t inb(uint16_t port);
+void outb(uint16_t, uint8_t val);
+
 /* DEBUG FUNCTIONS
  * Should not be used in production */
 #define BOCHS_DEBUG do {\
-			asm volatile("xchg bx, bx");\
+			asm volatile("xchg %bx, %bx");\
 		} while(0);
 
 
 #define HALT asm volatile("hlt")
+
+
+
 
 #endif /* KLIB_H */

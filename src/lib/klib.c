@@ -89,6 +89,7 @@ void write_char(uint8_t c)
 	}
 
 	if(vga_buffer_y >= 25) {
+		clear_screen();
 		vga_buffer_x = 0;
 		vga_buffer_y = 0;
 	}
@@ -177,4 +178,32 @@ void kprintf(const char *fmt, ...)
 
 		++args_consumed;
 	}
+}
+
+
+
+uint8_t inb(uint16_t port)
+{
+	uint8_t ret;
+	asm volatile ( "inb %1, %0"
+		       : "=a"(ret)
+		       :
+		       "Nd"(port)
+		     );
+	return ret;
+}
+
+
+void outb(uint16_t port, uint8_t val)
+{
+	asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
+}
+
+/* XXX: Do not use. Intended for *old* machines (25+ years) */
+inline void io_wait(void)
+{
+	/* TODO: This is probably fragile. */
+	asm volatile ( "jmp 1f\n\t"
+		       "1:jmp 2f\n\t"
+		       "2:" );
 }

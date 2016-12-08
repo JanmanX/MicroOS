@@ -13,6 +13,7 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 
 	interrupt_init();
 
+	for(;;) {}
 
 	struct multiboot_tag *tag;
 	uint32_t size;
@@ -192,6 +193,7 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 					+ ((tag->size + 7) & ~7));
 	kprintf ("Total mbi size 0x%x\n", (uint64_t)(uint32_t)tag - mb_info_struct_addr);
 
-
 	return;
+
+
 }

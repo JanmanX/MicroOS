@@ -41,6 +41,16 @@ global enable_interrupts
 	pop rdi
 %endmacro
 
+global interrupt_dummy_handler
+
+_debug_str db 'INTR', 0x0A, 0x00
+extern kprintf
+interrupt_dummy_handler:
+	mov rdi, _debug_str
+	call kprintf
+
+	xchg bx, bx
+	iretq
 
 disable_interrupts:
 	cli
@@ -60,17 +70,21 @@ interrupt_handler_main:
 	mov rdi, rsp 	; Arguments are on stack
 
 	call interrupt_handle
+	xchg bx, bx
 
-	hlt
+
 	POPAQ		; Restore registers
+	add rsp, 0x8	; pop the orig_ax
+
 	sti		; Reenable interrupts
+
 	iretq		; return from interrupt
 
 
 %macro interrupt_handler 1
 global interrupt_handler_%1
 interrupt_handler_%1:
-	mov rdi, %1
+	push qword %1
 	jmp interrupt_handler_main
 %endmacro
 
