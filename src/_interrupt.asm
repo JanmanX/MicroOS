@@ -4,43 +4,43 @@ extern interrupt_handle
 global disable_interrupts
 global enable_interrupts
 
+; Push and pop in the order as defined in struct pt_regs (interrupt.h)
 %macro PUSHAQ 0
-	push r15
-	push r14
-	push r13
-	push r12
-	push r11
-	push r10
-	push r9
-	push r8
 	push rdi
 	push rsi
-	push rbp
-	push rsp
-	push rbx
 	push rdx
 	push rcx
 	push rax
+	push r8
+	push r9
+	push r10
+	push r11
+	push rbx
+	push rbp
+	push r12
+	push r13
+	push r14
+	push r15
 %endmacro
 
 %macro POPAQ 0
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	pop rbp
+	pop rbx
+	pop r11
+	pop r10
+	pop r9
+	pop r8
 	pop rax
 	pop rcx
 	pop rdx
-	pop rbx
-	pop rsp
-	pop rbp
 	pop rsi
 	pop rdi
-	pop r8
-	pop r9
-	pop r10
-	pop r11
-	pop r12
-	pop r13
-	pop r14
-	pop r15
 %endmacro
+
 
 disable_interrupts:
 	cli
@@ -50,43 +50,49 @@ enable_interrupts:
 	sti
 	ret
 
-exception_gate_main:
+interrupt_handler_main:
 	cli		; Disable interrupts
+
 	PUSHAQ		; Save registers
+
 	cld 		; C code following the sysV ABI requires DF to be clear on function entry
+
+	mov rdi, rsp 	; Arguments are on stack
+
 	call interrupt_handle
 
+	hlt
 	POPAQ		; Restore registers
 	sti		; Reenable interrupts
 	iretq		; return from interrupt
 
 
-%macro exception_gate 1
-global exception_gate_%1
-exception_gate_%1:
+%macro interrupt_handler 1
+global interrupt_handler_%1
+interrupt_handler_%1:
 	mov rdi, %1
-	jmp exception_gate_main
+	jmp interrupt_handler_main
 %endmacro
 
 
-exception_gate 0
-exception_gate 1
-exception_gate 2
-exception_gate 3
-exception_gate 4
-exception_gate 5
-exception_gate 6
-exception_gate 7
-exception_gate 8
-exception_gate 9
-exception_gate 10
-exception_gate 11
-exception_gate 12
-exception_gate 13
-exception_gate 14
-exception_gate 15
-exception_gate 16
-exception_gate 17
-exception_gate 18
-exception_gate 19
-exception_gate 20
+interrupt_handler 0
+interrupt_handler 1
+interrupt_handler 2
+interrupt_handler 3
+interrupt_handler 4
+interrupt_handler 5
+interrupt_handler 6
+interrupt_handler 7
+interrupt_handler 8
+interrupt_handler 9
+interrupt_handler 10
+interrupt_handler 11
+interrupt_handler 12
+interrupt_handler 13
+interrupt_handler 14
+interrupt_handler 15
+interrupt_handler 16
+interrupt_handler 17
+interrupt_handler 18
+interrupt_handler 19
+interrupt_handler 20
