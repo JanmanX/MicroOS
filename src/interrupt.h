@@ -3,6 +3,9 @@
 #include <stdint.h>
 
 
+typedef void (*interrupt_handler_t)(void);
+
+
 typedef struct pt_regs {
 /*
  * C ABI says these regs are callee-preserved. They aren't saved on kernel entry
@@ -76,4 +79,6 @@ void disable_interrupts(void);
 void enable_interrupts(void);
 void interrupt_init();
 void interrupt_handle(pt_regs_t *regs);
+void request_irq(uint8_t irq, interrupt_handler_t irq_handler, char *name);
+
 #endif

@@ -6,9 +6,6 @@
 #include "gdt.h"
 
 
-
-typedef void (*interrupt_handler_t)(void);
-
 void interrupt_setup_gates()
 {
 	uint8_t ist = 0;
@@ -124,4 +121,20 @@ void interrupt_handle(pt_regs_t *regs)
 		kprintf("Interrupt handler, IRQ: 0x%x\n", (uint8_t)regs->orig_ax);
 	}
 }
+
+void request_irq(uint8_t irq, interrupt_handler_t irq_handler, char *name)
+{
+	if(irq < 32) {
+		kprintf("Could not register interrupt routine: %d for %s\n",irq,
+			name);
+		HALT;
+	}
+
+	idt_set_interrupt(irq,
+			  GDT_KERNEL_CODE_SEGMENT,
+			(IDTE_DPL_RING0 | IDTE_PRESENT | IDTE_TYPE_TRAP_32),
+			0x00,
+			irq_handler);
+}
+
 
