@@ -79,6 +79,12 @@ void pic_clear_mask(uint8_t irq_line)
 	outb(port, value);
 }
 
+
+uint16_t pic_get_mask(void)
+{
+	return (inb(PIC2_DATA) << 8 | inb(PIC1_DATA));
+}
+
 /* ISR - Interrupt Service Register
  * IRR - Interrupt Request Register */
 /* Helper function */
