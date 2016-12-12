@@ -41,7 +41,7 @@ void kprint(char *str);
 void kprintf(const char *fmt, ...);
 
 
-
+void _pause(void);
 uint8_t inb(uint16_t port);
 void outb(uint16_t, uint8_t val);
 
@@ -54,6 +54,11 @@ void outb(uint16_t, uint8_t val);
 
 #define HALT asm volatile("hlt")
 
+#define DEBUG(m) kprintf("[DEBUG %s():%d]: %s\n", __func__, __LINE__, m)
+#define ERROR(m) do {\
+		kprintf("[ERROR %s():%d]: %s\n", __func__, __LINE__, m);\
+		HALT;\
+		} while(0);
 
 
 
