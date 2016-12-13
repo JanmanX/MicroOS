@@ -180,6 +180,16 @@ void kprintf(const char *fmt, ...)
 	}
 }
 
+void *memcpy(void *dst, void *src, uint64_t count)
+{
+	char* _dst = (char*)dst;
+	char* _src = (char*)src;
+
+	while (count--) {
+		*_dst++ = *_src++;
+	}
+	return dst;
+}
 
 
 uint8_t inb(uint16_t port)

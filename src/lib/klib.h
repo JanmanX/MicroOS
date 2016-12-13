@@ -5,6 +5,9 @@
 
 #include "lib/cpuid.h"
 
+
+#define NULL ((void*)0x00)
+
 void itoa(char *buf, int base, int64_t n);
 
 extern void kpanic();
@@ -39,6 +42,8 @@ void kprint(char *str);
 /* Formatted kernel print
  * WARN: Can only parse 5 varargs!  */
 void kprintf(const char *fmt, ...);
+
+void *memcpy(void *dst, void *src, uint64_t count);
 
 
 void _pause(void);
