@@ -8,9 +8,6 @@ void pic_init()
 
 	/* Send End-Of-Interrupt to both PICs so as to 'reset' interrupts */
 	pic_eoi(0x08);
-
-	kprintf("PIC1 MASK: 0x%x\n", inb(PIC1_DATA));
-	kprintf("PIC2 MASK: 0x%x\n", inb(PIC2_DATA));
 }
 
 void pic_remap(uint8_t offset_master, uint8_t offset_slave)
@@ -42,9 +39,8 @@ void pic_remap(uint8_t offset_master, uint8_t offset_slave)
 	outb(PIC1_DATA, ICW4_8086);
 	outb(PIC2_DATA, ICW4_8086);
 
-	/* Restore masks */
-	outb(PIC1_DATA, 0x00);
-	outb(PIC2_DATA, 0x00);
+	outb(PIC1_DATA, 0xFF);
+	outb(PIC2_DATA, 0xFF);
 }
 
 void pic_set_mask(uint8_t irq_line)

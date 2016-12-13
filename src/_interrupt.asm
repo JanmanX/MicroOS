@@ -1,55 +1,21 @@
 [bits 64]
 
+%include "_asm.asm"
+
 extern interrupt_handle
 global disable_interrupts
 global enable_interrupts
 
-; Push and pop in the order as defined in struct pt_regs (interrupt.h)
-%macro PUSHAQ 0
-	push rdi
-	push rsi
-	push rdx
-	push rcx
-	push rax
-	push r8
-	push r9
-	push r10
-	push r11
-	push rbx
-	push rbp
-	push r12
-	push r13
-	push r14
-	push r15
-%endmacro
-
-%macro POPAQ 0
-	pop r15
-	pop r14
-	pop r13
-	pop r12
-	pop rbp
-	pop rbx
-	pop r11
-	pop r10
-	pop r9
-	pop r8
-	pop rax
-	pop rcx
-	pop rdx
-	pop rsi
-	pop rdi
-%endmacro
-
 global interrupt_dummy_handler
 
-_debug_str db 'INTR', 0x0A, 0x00
+_debug_str db 'DUMMY INTR', 0x0A, 0x00
 extern kprintf
+extern pic_eoi
 interrupt_dummy_handler:
+	cli
 	mov rdi, _debug_str
 	call kprintf
-
-	xchg bx, bx
+	sti
 	iretq
 
 disable_interrupts:

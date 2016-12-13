@@ -3,18 +3,10 @@
 #include "lib/klib.h"
 #include "multiboot2.h"
 #include "interrupt.h"
+#include "keyboard.h"
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
-	clear_screen();
-	kprint("Main()\n");
-
-	kprintf("PML4T: 0x%x\n", pml4t);
-
-	interrupt_init();
-
-	for(;;) {}
-
 	struct multiboot_tag *tag;
 	uint32_t size;
 
@@ -94,8 +86,22 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 
 		}
 			break;
+
+		case MULTIBOOT_TAG_TYPE_VBE: {
+			struct multiboot_tag_vbe *tag_vbe
+				= (struct multiboot_tag_vbe *) tag;
+
+			break;
+			}
+
+		case MULTIBOOT_TAG_TYPE_FRAMEBUFFER: {
+			struct multiboot_tag_framebuffer *tag_fb
+				= (struct multiboot_tag_framebuffer *) tag;
+
+			break;
+			}
+
 #if 0
-		case MULTIBOOT_TAG_TYPE_FRAMEBUFFER:
 			{
 				multiboot_uint32_t color;
 				unsigned i;
@@ -183,17 +189,28 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 				}
 				break;
 			}
-
 #endif
 		}
 	}
-
 
 	tag = (struct multiboot_tag *) ((multiboot_uint8_t *) tag
 					+ ((tag->size + 7) & ~7));
 	kprintf ("Total mbi size 0x%x\n", (uint64_t)(uint32_t)tag - mb_info_struct_addr);
 
+
+	kprint("Main()\n");
+
+	kprintf("PML4T: 0x%x\n", pml4t);
+
+	interrupt_init();
+	keyboard_init();
+	kprintf("PIC MASK: 0x%x\n", pic_get_mask());
+
+	asm volatile("int $02");
+
+
+	for(;;) {}
+
+
 	return;
-
-
 }

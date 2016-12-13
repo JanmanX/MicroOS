@@ -61,5 +61,4 @@ void outb(uint16_t, uint8_t val);
 		} while(0);
 
 
-
 #endif /* KLIB_H */
