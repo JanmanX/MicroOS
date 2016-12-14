@@ -72,12 +72,18 @@ void set_color(uint8_t foreground, uint8_t background)
 
 void write_char(uint8_t c)
 {
+	if(vga_buffer_y >= 25) {
+		clear_screen();
+		vga_buffer_x = 0;
+		vga_buffer_y = 0;
+	}
+
 	if(c == '\n') {
 		vga_buffer_y++;
 		vga_buffer_x = 0;
 	} else {
 		uint16_t *addr = (uint16_t*)0xB8000
-					+ (vga_buffer_y * 80 + vga_buffer_x);
+			+ (vga_buffer_y * 80 + vga_buffer_x);
 		*addr = c | (uint16_t)(vga_attrib << 8);
 
 		vga_buffer_x++;
@@ -86,12 +92,6 @@ void write_char(uint8_t c)
 			vga_buffer_x = 0;
 			vga_buffer_y++;
 		}
-	}
-
-	if(vga_buffer_y >= 25) {
-		clear_screen();
-		vga_buffer_x = 0;
-		vga_buffer_y = 0;
 	}
 }
 
@@ -167,7 +167,7 @@ void kprintf(const char *fmt, ...)
 			}
 			/* Fall through */
 			/* goto string; */
-		string:
+string:
 			kprint(s);
 			break;
 		default:

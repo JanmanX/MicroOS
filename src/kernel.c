@@ -197,19 +197,28 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 					+ ((tag->size + 7) & ~7));
 	kprintf ("Total mbi size 0x%x\n", (uint64_t)(uint32_t)tag - mb_info_struct_addr);
 
-
 	kprint("Main()\n");
 
 	kprintf("PML4T: 0x%x\n", pml4t);
 
+	DEBUG("INTERRUPT INIT");
 	interrupt_init();
+	DEBUG("KEYBOARD INIT");
 	keyboard_init();
+
+	DEBUG("LOOP");
 	kprintf("PIC MASK: 0x%x\n", pic_get_mask());
 
 	asm volatile("int $02");
 
+	char c[2] = {0};
+	for(;;) {
+		while(keyboard_keys_available()) {
+			c[0] = keyboard_get_key();
+			kprintf("%s\n", c);
+		}
 
-	for(;;) {}
+	}
 
 
 	return;

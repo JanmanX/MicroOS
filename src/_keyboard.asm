@@ -17,9 +17,6 @@ _keyboard_interrupt_handler:
 
 	cld 		; C code following the sysV ABI requires DF to be clear on function entry
 
-	xor rax, rax
-	in al, 0x60	; Read scancode
-
 	call keyboard_interrupt_handler
 
 	POPAQ		; Restore registers
