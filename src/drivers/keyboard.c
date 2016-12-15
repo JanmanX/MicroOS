@@ -245,12 +245,10 @@ void keyboard_init()
 		return;
 	}
 
-	/* TODO: IDENTIFY KEYBOARD HERE*/
 	if(keyboard_send(PS2_KB_IDENTIFY) != PS2_KB_ACK) {
 		DEBUG("Could not identify PS2 keyboard.");
 		return;
 	}
-
 
 	if(keyboard_read() == PS2_KB_INTERFACETEST) {
 		keyboard_read();
@@ -258,6 +256,7 @@ void keyboard_init()
 		DEBUG("Could not perform iterfacetest on PS2 keyboard");
 		return;
 	}
+
 
 	/* Reset & enable scan */
 	if(keyboard_send(PS2_KB_ENABLE_SCANNING) != PS2_KB_ACK) {
@@ -272,6 +271,7 @@ void keyboard_init()
 
 	/* Enable PIC interrupt line */
 	pic_clear_mask(KB_PIC_LINE);
+
 }
 
 

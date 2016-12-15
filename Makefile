@@ -14,10 +14,10 @@ LD=ld
 LDFLAGS=-n -Map=$(KERNEL_MAP_FILE)
 LDSCRIPT=src/linker.ld
 
-ASM_SOURCES=$(wildcard src/*.asm src/init/*.asm)
+ASM_SOURCES=$(wildcard src/*.asm src/init/*.asm src/drivers/*.asm)
 ASM_OBJECTS=$(ASM_SOURCES:.asm=.o)
 
-SOURCES=$(wildcard src/*.c src/lib/*.c)
+SOURCES=$(wildcard src/*.c src/lib/*.c src/drivers/*.c)
 OBJECTS=$(SOURCES:.c=.o)
 
 # PATHS

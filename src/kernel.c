@@ -3,10 +3,11 @@
 #include "lib/klib.h"
 #include "multiboot2.h"
 #include "interrupt.h"
-#include "keyboard.h"
+#include "drivers/keyboard.h"
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
+
 	struct multiboot_tag *tag;
 	uint32_t size;
 
@@ -92,14 +93,14 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 				= (struct multiboot_tag_vbe *) tag;
 
 			break;
-			}
+		}
 
 		case MULTIBOOT_TAG_TYPE_FRAMEBUFFER: {
 			struct multiboot_tag_framebuffer *tag_fb
 				= (struct multiboot_tag_framebuffer *) tag;
 
 			break;
-			}
+		}
 
 #if 0
 			{
