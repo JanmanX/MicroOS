@@ -1,6 +1,6 @@
 # Directories
 report/
-bin/
+bin/*
 isofiles/
 
 # Files

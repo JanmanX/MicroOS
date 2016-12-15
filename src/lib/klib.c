@@ -57,8 +57,8 @@ void itoa(char *buf, int base, int64_t n)
 	}
 }
 
-
-static uint8_t *vga_buffer = (uint8_t*)0xB8000;
+#define VGA_ADDRESS	0xB8000
+static uint8_t *vga_buffer = (uint8_t*)VGA_ADDRESS;
 static uint8_t vga_buffer_x = 0x00;
 static uint8_t vga_buffer_y = 0x00;
 
@@ -96,7 +96,7 @@ void write_char(uint8_t c)
 		vga_buffer_y++;
 		vga_buffer_x = 0;
 	} else {
-		uint16_t *addr = (uint16_t*)0xB8000
+		uint16_t *addr = (uint16_t*)VGA_ADDRESS
 			+ (vga_buffer_y * 80 + vga_buffer_x);
 		*addr = c | (uint16_t)(vga_attrib << 8);
 
