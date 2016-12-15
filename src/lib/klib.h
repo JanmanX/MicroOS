@@ -36,6 +36,8 @@ enum color {
 /* Clears the screen */
 void clear_screen();
 
+void update_cursor(int, int);
+
 /* Non-formatted kernel print */
 void kprint(char *str);
 

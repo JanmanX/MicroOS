@@ -3,6 +3,20 @@
 #include "lib/klib.h"
 
 
+
+void update_cursor(int row, int col)
+{
+	unsigned short position=(row*80) + col;
+
+	// cursor LOW port to vga INDEX register
+	outb(0x3D4, 0x0F);
+	outb(0x3D5, (unsigned char)(position&0xFF));
+	// cursor HIGH port to vga INDEX register
+	outb(0x3D4, 0x0E);
+	outb(0x3D5, (unsigned char)((position>>8)&0xFF));
+}
+
+
 void itoa(char *buf, int base, int64_t n)
 {
 	char *p = buf;
@@ -50,7 +64,7 @@ static uint8_t vga_buffer_y = 0x00;
 
 /* Upper nibble = back colour
  * Lower nibble = fore colour */
-static uint8_t vga_attrib = (YELLOW)|(DARK_GRAY << 4);
+static uint8_t vga_attrib = (LIGHT_CYAN)|(BLACK << 4);
 
 void clear_screen()
 {
@@ -93,6 +107,8 @@ void write_char(uint8_t c)
 			vga_buffer_y++;
 		}
 	}
+
+	update_cursor(vga_buffer_x, vga_buffer_y);
 }
 
 void kprint(char *str)
