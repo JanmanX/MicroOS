@@ -7,7 +7,6 @@
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
-
 	struct multiboot_tag *tag;
 	uint32_t size;
 

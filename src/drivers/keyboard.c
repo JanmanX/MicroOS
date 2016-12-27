@@ -219,7 +219,7 @@ static uint8_t keyboard_send(uint8_t data)
 	KB_WAIT_INPUT_BUSY;
 
 	/* Send message */
-	outb(PS2_KB_DATA, data);
+	OUTB(PS2_KB_DATA, data);
 
 	/* Wait for output */
 	KB_WAIT_OUTPUT_BUSY;

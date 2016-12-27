@@ -50,7 +50,22 @@ void *memcpy(void *dst, void *src, uint64_t count);
 
 void _pause(void);
 uint8_t inb(uint16_t port);
+uint32_t inbd(uint16_t port);
 void outb(uint16_t, uint8_t val);
+void outd(uint16_t, uint32_t val);
+
+#define OUTB(PORT, VALUE) do {\
+		asm volatile ( "outb %0, %1" : : "a"((uint8_t)(VALUE)), "Nd"((uint16_t)(PORT)));\
+		} while(0)
+
+#define OUTD(PORT, VALUE) do {\
+		asm volatile ( "out %0, %1" : : "a"((uint32_t)(VALUE)), "Nd"((uint16_t)(PORT)));\
+		} while(0)
+
+/* Macros, for convenience and avoid confusion...  */
+#define INB(PORT) inb(port)
+#define IND(PORT) ind(port)
+
 
 /* DEBUG FUNCTIONS
  * Should not be used in production */

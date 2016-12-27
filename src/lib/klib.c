@@ -108,7 +108,7 @@ void write_char(uint8_t c)
 		}
 	}
 
-	update_cursor(vga_buffer_x, vga_buffer_y);
+//	update_cursor(vga_buffer_x, vga_buffer_y);
 }
 
 void kprint(char *str)
@@ -183,7 +183,7 @@ void kprintf(const char *fmt, ...)
 			}
 			/* Fall through */
 			/* goto string; */
-string:
+		string:
 			kprint(s);
 			break;
 		default:
@@ -208,7 +208,7 @@ void *memcpy(void *dst, void *src, uint64_t count)
 }
 
 
-uint8_t inb(uint16_t port)
+inline uint8_t inb(uint16_t port)
 {
 	uint8_t ret;
 	asm volatile ( "inb %1, %0"
@@ -219,11 +219,29 @@ uint8_t inb(uint16_t port)
 	return ret;
 }
 
+inline uint32_t ind(uint16_t port)
+{
+	uint32_t ret;
+	asm volatile ( "in %1, %0"
+		       : "=a"(ret)
+		       :
+		       "Nd"(port)
+		     );
+	return ret;
+}
 
-void outb(uint16_t port, uint8_t val)
+
+
+inline void outb(uint16_t port, uint8_t val)
 {
 	asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
 }
+
+inline void outd(uint16_t port, uint32_t val)
+{
+	asm volatile ( "out %0, %1" : : "a"(val), "Nd"(port) );
+}
+
 
 /* XXX: Do not use. Intended for *old* machines (25+ years) */
 inline void io_wait(void)
