@@ -204,7 +204,9 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 	DEBUG("INTERRUPT INIT");
 	interrupt_init();
 	DEBUG("KEYBOARD INIT");
-	keyboard_init();
+//	keyboard_init();
+
+	pci_init();
 
 	DEBUG("LOOP");
 	kprintf("PIC MASK: 0x%x\n", pic_get_mask());

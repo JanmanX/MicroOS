@@ -1,9 +1,9 @@
 CC=x86_64-elf-gcc
-CFLAGS=-std=gnu99 -ffreestanding -O2 -Wall -Wextra
+CFLAGS=-std=gnu99 -ffreestanding -O3 -Wall -Wextra
 C_INC=-I ./src/
 
 QEMU=qemu-system-x86_64
-QEMU_FLAGS=-m 16G
+QEMU_FLAGS=-m 1G
 BOCHS=bochs
 AS=nasm
 AFLAGS=-f elf64

@@ -50,7 +50,7 @@ void *memcpy(void *dst, void *src, uint64_t count);
 
 void _pause(void);
 uint8_t inb(uint16_t port);
-uint32_t inbd(uint16_t port);
+uint32_t ind(uint16_t port);
 void outb(uint16_t, uint8_t val);
 void outd(uint16_t, uint32_t val);
 
