@@ -3,7 +3,7 @@ CFLAGS=-std=gnu99 -ffreestanding -O3 -Wall -Wextra
 C_INC=-I ./src/
 
 QEMU=qemu-system-x86_64
-QEMU_FLAGS=-m 1G
+QEMU_FLAGS=-m 1G -s
 BOCHS=bochs
 AS=nasm
 AFLAGS=-f elf64
