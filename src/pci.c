@@ -2,7 +2,6 @@
 #include "lib/klib.h"
 
 
-
 typedef struct pci_classcode_entry
 {
 	uint8_t		class ;
@@ -133,20 +132,29 @@ char *pci_get_subclass_string(uint8_t class, uint8_t subclass)
 void pci_init()
 {
 	uint8_t slot = 0;
-	while(slot < 0xff) {
-		if(pci_read_config(0, slot, 0, 0) != 0xFFFF) {
-			uint16_t classes = pci_read_config(0, slot, 0, 0xa);
-			uint8_t class = classes >> 8;
-			uint8_t subclass = (uint8_t)classes && 0xFF;
+	uint8_t bus = 0;
+	const uint8_t func = 0;
+	uint8_t class = 0;
+	uint8_t subclass = 0;
 
-			kprintf("PCI device ID found: 0x%x\nclass: %s\nsubclass:%s\n",
-				pci_read_config(0, slot, 0, 2),
-				pci_get_class_string(class),
-				pci_get_subclass_string(class, subclass));
+	for(bus = 0; bus < PCI_BUS_MAX; bus++) {
+		for(slot = 0;  slot < PCI_SLOT_MAX; slot++) {
+			uint16_t classes = pci_read_config(bus,
+							   slot,
+							   func,
+							   PCI_REGISTER_SUBCLASS);
+
+
+			/* TODO: Something smart about detecting and initializing
+			 * devices here */
+			switch((uint8_t)classes >> 8) {
+			case PCI_CLASS_MASS_STORAGE_CONTROLLER: {
+
+			}
+			}
 		}
-
-		slot++;
 	}
+
 }
 
 uint32_t pci_read_config(uint8_t bus,
