@@ -2,6 +2,7 @@
 report/
 bin/*
 isofiles/
+isofiles/boot/kernel.bin
 
 # Files
 *.swp

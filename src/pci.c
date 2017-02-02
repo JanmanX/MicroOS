@@ -144,12 +144,24 @@ void pci_init()
 							   func,
 							   PCI_REGISTER_SUBCLASS);
 
+			/* Check vendorID is device exists. */
+			if(pci_read_config(bus, slot, 0x00, 0x00) == 0xffff ) {
+				continue;
+			}
 
+
+			kprintf("PCI device found: %s, %s\n",
+				pci_get_class_string((uint8_t)classes >> 8),
+				pci_get_subclass_string((uint8_t)classes >> 8,
+							(uint8_t)classes & 0xFF));
 			/* TODO: Something smart about detecting and initializing
 			 * devices here */
 			switch((uint8_t)classes >> 8) {
 			case PCI_CLASS_MASS_STORAGE_CONTROLLER: {
-
+				/* TODO: INIT IDE DRIVER HERE */
+				kprintf("PCI Mass Storage Controller found on\
+					bus: 0x%x, slot: 0x%x\n", bus, slot);
+				break;
 			}
 			}
 		}
@@ -180,5 +192,6 @@ uint32_t pci_read_config(uint8_t bus,
 				  & 0xffff);
 	return ret;
 }
+
 
 

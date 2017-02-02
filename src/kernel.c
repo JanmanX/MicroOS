@@ -4,6 +4,8 @@
 #include "multiboot2.h"
 #include "interrupt.h"
 #include "drivers/keyboard.h"
+#include "pci.h"
+
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
