@@ -64,6 +64,10 @@ debug: $(ISO)
 bochs: $(ISO)
 	$(BOCHS) -f $(DEBUG_DIR)/bochs/bochs.conf -q
 
+tags:
+	find src/ | xargs ctags
+
+
 clean:
 	-rm -rfv bin/*
 	-rm -fv src/*.o
