@@ -1,6 +1,5 @@
 #include <stdint.h>
-
-#include "lib/cpuid.h"
+#include "cpu.h"
 
 /* issue a single request to CPUID. Fits 'intel features', for instance
  *  note that even if only "eax" and "edx" are of interest, other registers
@@ -19,3 +18,23 @@ inline int cpuid_string(int code, uint32_t where[4])
 		     "=c"(*(where+2)),"=d"(*(where+3)):"a"(code));
 	return (int)where[0];
 }
+
+
+uint8_t cpu_has_msr()
+{
+	uint32_t a, d; // eax, edx
+	cpuid(1, &a, &d);
+	return d & CPUID_FLAG_MSR;
+}
+
+void cpu_get_msr(uint32_t msr, uint32_t *lo, uint32_t *hi)
+{
+	asm volatile("rdmsr" : "=a"(*lo), "=d"(*hi) : "c"(msr));
+}
+
+void cpu_set_msr(uint32_t msr, uint32_t lo, uint32_t hi)
+{
+	asm volatile("wrmsr" : : "a"(lo), "d"(hi), "c"(msr));
+}
+
+

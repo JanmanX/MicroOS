@@ -1,5 +1,11 @@
-#ifndef CPUID_H
-#define CPUID_H
+/*
+ * Specific functions and routines for CPUs
+ */
+#ifndef _CPU_H
+#define _CPU_H
+
+#include <stdint.h>
+
 enum {
 	CPUID_FEAT_ECX_SSE3         = 1 << 0,
 	CPUID_FEAT_ECX_PCLMUL       = 1 << 1,
@@ -76,4 +82,13 @@ void cpuid(int code, uint32_t *a, uint32_t *d);
 
 int cpuid_string(int code, uint32_t where[4]);
 
-#endif /* CPUID_H */
+
+const uint32_t CPUID_FLAG_MSR = 1 << 5;
+uint8_t cpu_has_msr();
+
+void cpu_get_msr(uint32_t msr, uint32_t *lo, uint32_t *hi);
+
+void cpu_set_msr(uint32_t msr, uint32_t lo, uint32_t hi);
+
+
+#endif /* _CPU_H */
