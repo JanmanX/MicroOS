@@ -1,0 +1,15 @@
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c drivers/disk.c -o drivers/disk.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c drivers/pci.c -o drivers/pci.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c drivers/keyboard.c -o drivers/keyboard.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c init/kernel.c -o init/kernel.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c kernel/pic.c -o kernel/pic.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c kernel/idt.c -o kernel/idt.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c kernel/interrupt.c -o kernel/interrupt.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c lib/circ_buf.c -o lib/circ_buf.o
+x86_64-elf-gcc -I. -I./include -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64 -c lib/klib.c -o lib/klib.o
+echo   drivers/disk.o drivers/pci.o drivers/keyboard.o init/kernel.o kernel/pic.o kernel/idt.o kernel/interrupt.o lib/circ_buf.o lib/klib.o
+drivers/disk.o drivers/pci.o drivers/keyboard.o init/kernel.o kernel/pic.o kernel/idt.o kernel/interrupt.o lib/circ_buf.o lib/klib.o
+echo -I. -I./include
+-I. -I./include
+ld -o all --script=./linker.ld -Map kernel.map drivers/disk.o drivers/pci.o drivers/keyboard.o init/kernel.o kernel/pic.o kernel/idt.o kernel/interrupt.o lib/circ_buf.o lib/klib.o
+Makefile:44: recipe for target 'all' failed
