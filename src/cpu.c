@@ -24,7 +24,7 @@ uint8_t cpu_has_msr()
 {
 	uint32_t a, d; // eax, edx
 	cpuid(1, &a, &d);
-	return d & CPUID_FLAG_MSR;
+	return d & CPUID_FEAT_EDX_MSR;
 }
 
 void cpu_get_msr(uint32_t msr, uint32_t *lo, uint32_t *hi)

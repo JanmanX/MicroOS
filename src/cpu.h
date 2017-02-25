@@ -83,7 +83,6 @@ void cpuid(int code, uint32_t *a, uint32_t *d);
 int cpuid_string(int code, uint32_t where[4]);
 
 
-const uint32_t CPUID_FLAG_MSR = 1 << 5;
 uint8_t cpu_has_msr();
 
 void cpu_get_msr(uint32_t msr, uint32_t *lo, uint32_t *hi);

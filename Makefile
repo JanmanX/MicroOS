@@ -17,7 +17,7 @@ LDSCRIPT=src/linker.ld
 ASM_SOURCES=$(wildcard src/*.asm src/init/*.asm src/drivers/*.asm)
 ASM_OBJECTS=$(ASM_SOURCES:.asm=.o)
 
-SOURCES=$(wildcard src/*.c src/lib/*.c src/drivers/*.c)
+SOURCES=$(wildcard src/*.c src/init/*.c src/lib/*.c src/drivers/*.c)
 OBJECTS=$(SOURCES:.c=.o)
 
 # PATHS
@@ -53,7 +53,7 @@ $(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
 
 $(ISO): $(KERNEL)
 	cp $(KERNEL) $(ISOFILES)/boot/
-	grub-mkrescue -o $(ISO) $(ISOFILES)
+	grub2-mkrescue -o $(ISO) $(ISOFILES)
 
 run: $(ISO)
 	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO)

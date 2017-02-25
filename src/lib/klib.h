@@ -3,9 +3,6 @@
 
 #include <stdint.h>
 
-#include "lib/cpuid.h"
-
-
 #define NULL ((void*)0x00)
 
 void itoa(char *buf, int base, int64_t n);

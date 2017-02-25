@@ -22,19 +22,19 @@ make install
 
 # GCC
 cd $HOME/src
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-5.3.0/gcc-5.3.0.tar.bz2
-tar xf gcc-5.3.0.tar.bz2
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-6.3.0/gcc-6.3.0.tar.gz
+tar xf gcc-6.3.0.tar.gz
 
 # The $PREFIX/bin dir _must_ be in the PATH. We did that above.
 which -- $TARGET-as || echo $TARGET-as is not in the PATH
 
-cd gcc-5.3.0
+cd gcc-6.3.0
 contrib/download_prerequisites
 cd ..
 
 mkdir build-gcc
 cd build-gcc
-../gcc-5.3.0/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c,c++ --without-headers
+../gcc-6.3.0/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c,c++ --without-headers
 make all-gcc -j8
 make all-target-libgcc -j8
 make install-gcc

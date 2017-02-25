@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#include "init/xsdt.h"
+
 #include "lib/klib.h"
 #include "multiboot2.h"
 #include "interrupt.h"
@@ -9,6 +11,10 @@
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
+	xsdt_init();
+	HALT;
+
+
 	struct multiboot_tag *tag;
 	uint32_t size;
 
@@ -194,6 +200,8 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 #endif
 		}
 	}
+
+	HALT;
 
 	tag = (struct multiboot_tag *) ((multiboot_uint8_t *) tag
 					+ ((tag->size + 7) & ~7));
