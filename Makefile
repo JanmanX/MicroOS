@@ -1,77 +1,26 @@
-CC=x86_64-elf-gcc
-CFLAGS=-std=gnu99 -ffreestanding -O3 -Wall -Wextra
-C_INC=-I ./src/
-
 QEMU=qemu-system-x86_64
 QEMU_FLAGS=-m 20 -s -cpu Broadwell
 BOCHS=bochs
-AS=nasm
-AFLAGS=-f elf64
-AS_INC=-I ./src/init/ -I ./src/
+GRUB=grub2
 
 
-LD=ld
-LDFLAGS=-n -Map=$(KERNEL_MAP_FILE)
-LDSCRIPT=src/linker.ld
-
-ASM_SOURCES=$(wildcard src/*.asm src/init/*.asm src/drivers/*.asm)
-ASM_OBJECTS=$(ASM_SOURCES:.asm=.o)
-
-SOURCES=$(wildcard src/*.c src/lib/*.c src/drivers/*.c)
-OBJECTS=$(SOURCES:.c=.o)
-
-# PATHS
-BIN=./bin
-SOURCE=src
-ISOFILES=isofiles
-KERNEL=$(BIN)/kernel.bin
-ISO=$(BIN)/os.iso
-DEBUG_DIR=./debug
-
-# Miscellaneous
-KERNEL_MAP_FILE=./kernel.map
-KERNEL_DUMP_FILE=./kernel.dump
 
 
-.PHONY: clean run iso all
-
-all: $(ISO)
-
-# $<  --- Input file
-# $@  --- Input filename
-%.o: %.asm
-	$(AS) $(AS_INC) $(AFLAGS) $< -o $@
-
-%.o: %.c
-	$(CC) $(C_INC) $(CFLAGS) -c $< -o $@
-
-# Compiles the kernel, using LDSCRIPT
-$(KERNEL): $(ASM_OBJECTS) $(OBJECTS)
-	$(LD) $(LDFLAGS) -o $(KERNEL) -T $(LDSCRIPT) $(ASM_OBJECTS) $(OBJECTS)
-	objdump -D $(KERNEL) > $(KERNEL_DUMP_FILE)
+all:
+	make -C os
 
 
-$(ISO): $(KERNEL)
-	cp $(KERNEL) $(ISOFILES)/boot/
-	grub-mkrescue -o $(ISO) $(ISOFILES)
+iso: all
+	cp os/kernel.bin isofiles/boot/
+	$(GRUB)-mkrescue -o os.iso isofiles/
 
-run: $(ISO)
-	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO)
+run: iso
+	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO) os.iso
 
-debug: $(ISO)
-	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO) -s -S
-
-bochs: $(ISO)
+bochs: all
 	$(BOCHS) -f $(DEBUG_DIR)/bochs/bochs.conf -q
 
 tags:
 	find src/ | xargs ctags
 
 
-clean:
-	-rm -rfv bin/*
-	-rm -fv src/*.o
-	-rm -rfv $(ASM_OBJECTS)
-	-rm -rfv $(ISO)
-	-rm -fv $(KERNEL_MAP_FILE)
-	-rm -fv $(KERNEL_DUMP_FILE)

@@ -6,84 +6,88 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 BLACK	src/lib/klib.h	/^	BLACK = 0x0,$/;"	e	enum:color
 BLUE	src/lib/klib.h	/^	BLUE = 0x1,$/;"	e	enum:color
-BOCHS_DEBUG	src/lib/klib.h	72;"	d
+BOCHS_DEBUG	src/lib/klib.h	69;"	d
 BROWN	src/lib/klib.h	/^	BROWN = 0x6,$/;"	e	enum:color
 CIRC_BUF_H	src/lib/circ_buf.h	2;"	d
-CPUID_FEAT_ECX_AES	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_AES          = 1 << 25,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_AVX	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_AVX          = 1 << 28,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_CID	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_CID          = 1 << 10,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_CX16	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_CX16         = 1 << 13,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_DCA	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_DCA          = 1 << 18,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_DS_CPL	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_DS_CPL       = 1 << 4,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_DTES64	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_DTES64       = 1 << 2,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_EST	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_EST          = 1 << 7,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_ETPRD	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_ETPRD        = 1 << 14,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_FMA	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_FMA          = 1 << 12,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_MONITOR	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_MONITOR      = 1 << 3,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_MOVBE	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_MOVBE        = 1 << 22,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_OSXSAVE	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_OSXSAVE      = 1 << 27,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_PCLMUL	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_PCLMUL       = 1 << 1,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_PDCM	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_PDCM         = 1 << 15,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_POPCNT	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_POPCNT       = 1 << 23,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_SMX	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_SMX          = 1 << 6,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_SSE3	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_SSE3         = 1 << 0,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_SSE4_1	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_SSE4_1       = 1 << 19,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_SSE4_2	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_SSE4_2       = 1 << 20,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_SSSE3	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_SSSE3        = 1 << 9,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_TM2	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_TM2          = 1 << 8,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_VMX	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_VMX          = 1 << 5,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_XSAVE	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_XSAVE        = 1 << 26,$/;"	e	enum:__anon4
-CPUID_FEAT_ECX_x2APIC	src/lib/cpuid.h	/^	CPUID_FEAT_ECX_x2APIC       = 1 << 21,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_ACPI	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_ACPI         = 1 << 22,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_APIC	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_APIC         = 1 << 9,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_CLF	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_CLF          = 1 << 19,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_CMOV	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_CMOV         = 1 << 15,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_CX8	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_CX8          = 1 << 8,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_DE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_DE           = 1 << 2,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_DTES	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_DTES         = 1 << 21,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_FPU	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_FPU          = 1 << 0,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_FXSR	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_FXSR         = 1 << 24,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_HTT	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_HTT          = 1 << 28,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_IA64	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_IA64         = 1 << 30,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_MCA	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_MCA          = 1 << 14,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_MCE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_MCE          = 1 << 7,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_MMX	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_MMX          = 1 << 23,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_MSR	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_MSR          = 1 << 5,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_MTRR	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_MTRR         = 1 << 12,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PAE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PAE          = 1 << 6,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PAT	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PAT          = 1 << 16,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PBE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PBE          = 1 << 31$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PGE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PGE          = 1 << 13,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PSE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PSE          = 1 << 3,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PSE36	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PSE36        = 1 << 17,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_PSN	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_PSN          = 1 << 18,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_SEP	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_SEP          = 1 << 11,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_SS	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_SS           = 1 << 27,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_SSE	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_SSE          = 1 << 25,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_SSE2	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_SSE2         = 1 << 26,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_TM1	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_TM1          = 1 << 29,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_TSC	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_TSC          = 1 << 4,$/;"	e	enum:__anon4
-CPUID_FEAT_EDX_VME	src/lib/cpuid.h	/^	CPUID_FEAT_EDX_VME          = 1 << 1,$/;"	e	enum:__anon4
-CPUID_GETFEATURES	src/lib/cpuid.h	/^	CPUID_GETFEATURES,$/;"	e	enum:cpuid_requests
-CPUID_GETSERIAL	src/lib/cpuid.h	/^	CPUID_GETSERIAL,$/;"	e	enum:cpuid_requests
-CPUID_GETTLB	src/lib/cpuid.h	/^	CPUID_GETTLB,$/;"	e	enum:cpuid_requests
-CPUID_GETVENDORSTRING	src/lib/cpuid.h	/^	CPUID_GETVENDORSTRING,$/;"	e	enum:cpuid_requests
-CPUID_H	src/lib/cpuid.h	2;"	d
-CPUID_INTELBRANDSTRING	src/lib/cpuid.h	/^	CPUID_INTELBRANDSTRING,$/;"	e	enum:cpuid_requests
-CPUID_INTELBRANDSTRINGEND	src/lib/cpuid.h	/^	CPUID_INTELBRANDSTRINGEND,$/;"	e	enum:cpuid_requests
-CPUID_INTELBRANDSTRINGMORE	src/lib/cpuid.h	/^	CPUID_INTELBRANDSTRINGMORE,$/;"	e	enum:cpuid_requests
-CPUID_INTELEXTENDED	src/lib/cpuid.h	/^	CPUID_INTELEXTENDED=0x80000000,$/;"	e	enum:cpuid_requests
-CPUID_INTELFEATURES	src/lib/cpuid.h	/^	CPUID_INTELFEATURES,$/;"	e	enum:cpuid_requests
+CPUID_FEAT_ECX_AES	src/cpu.h	/^	CPUID_FEAT_ECX_AES          = 1 << 25,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_AVX	src/cpu.h	/^	CPUID_FEAT_ECX_AVX          = 1 << 28,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_CID	src/cpu.h	/^	CPUID_FEAT_ECX_CID          = 1 << 10,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_CX16	src/cpu.h	/^	CPUID_FEAT_ECX_CX16         = 1 << 13,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_DCA	src/cpu.h	/^	CPUID_FEAT_ECX_DCA          = 1 << 18,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_DS_CPL	src/cpu.h	/^	CPUID_FEAT_ECX_DS_CPL       = 1 << 4,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_DTES64	src/cpu.h	/^	CPUID_FEAT_ECX_DTES64       = 1 << 2,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_EST	src/cpu.h	/^	CPUID_FEAT_ECX_EST          = 1 << 7,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_ETPRD	src/cpu.h	/^	CPUID_FEAT_ECX_ETPRD        = 1 << 14,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_FMA	src/cpu.h	/^	CPUID_FEAT_ECX_FMA          = 1 << 12,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_MONITOR	src/cpu.h	/^	CPUID_FEAT_ECX_MONITOR      = 1 << 3,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_MOVBE	src/cpu.h	/^	CPUID_FEAT_ECX_MOVBE        = 1 << 22,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_OSXSAVE	src/cpu.h	/^	CPUID_FEAT_ECX_OSXSAVE      = 1 << 27,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_PCLMUL	src/cpu.h	/^	CPUID_FEAT_ECX_PCLMUL       = 1 << 1,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_PDCM	src/cpu.h	/^	CPUID_FEAT_ECX_PDCM         = 1 << 15,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_POPCNT	src/cpu.h	/^	CPUID_FEAT_ECX_POPCNT       = 1 << 23,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_SMX	src/cpu.h	/^	CPUID_FEAT_ECX_SMX          = 1 << 6,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_SSE3	src/cpu.h	/^	CPUID_FEAT_ECX_SSE3         = 1 << 0,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_SSE4_1	src/cpu.h	/^	CPUID_FEAT_ECX_SSE4_1       = 1 << 19,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_SSE4_2	src/cpu.h	/^	CPUID_FEAT_ECX_SSE4_2       = 1 << 20,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_SSSE3	src/cpu.h	/^	CPUID_FEAT_ECX_SSSE3        = 1 << 9,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_TM2	src/cpu.h	/^	CPUID_FEAT_ECX_TM2          = 1 << 8,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_VMX	src/cpu.h	/^	CPUID_FEAT_ECX_VMX          = 1 << 5,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_XSAVE	src/cpu.h	/^	CPUID_FEAT_ECX_XSAVE        = 1 << 26,$/;"	e	enum:__anon8
+CPUID_FEAT_ECX_x2APIC	src/cpu.h	/^	CPUID_FEAT_ECX_x2APIC       = 1 << 21,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_ACPI	src/cpu.h	/^	CPUID_FEAT_EDX_ACPI         = 1 << 22,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_APIC	src/cpu.h	/^	CPUID_FEAT_EDX_APIC         = 1 << 9,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_CLF	src/cpu.h	/^	CPUID_FEAT_EDX_CLF          = 1 << 19,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_CMOV	src/cpu.h	/^	CPUID_FEAT_EDX_CMOV         = 1 << 15,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_CX8	src/cpu.h	/^	CPUID_FEAT_EDX_CX8          = 1 << 8,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_DE	src/cpu.h	/^	CPUID_FEAT_EDX_DE           = 1 << 2,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_DTES	src/cpu.h	/^	CPUID_FEAT_EDX_DTES         = 1 << 21,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_FPU	src/cpu.h	/^	CPUID_FEAT_EDX_FPU          = 1 << 0,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_FXSR	src/cpu.h	/^	CPUID_FEAT_EDX_FXSR         = 1 << 24,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_HTT	src/cpu.h	/^	CPUID_FEAT_EDX_HTT          = 1 << 28,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_IA64	src/cpu.h	/^	CPUID_FEAT_EDX_IA64         = 1 << 30,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_MCA	src/cpu.h	/^	CPUID_FEAT_EDX_MCA          = 1 << 14,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_MCE	src/cpu.h	/^	CPUID_FEAT_EDX_MCE          = 1 << 7,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_MMX	src/cpu.h	/^	CPUID_FEAT_EDX_MMX          = 1 << 23,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_MSR	src/cpu.h	/^	CPUID_FEAT_EDX_MSR          = 1 << 5,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_MTRR	src/cpu.h	/^	CPUID_FEAT_EDX_MTRR         = 1 << 12,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PAE	src/cpu.h	/^	CPUID_FEAT_EDX_PAE          = 1 << 6,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PAT	src/cpu.h	/^	CPUID_FEAT_EDX_PAT          = 1 << 16,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PBE	src/cpu.h	/^	CPUID_FEAT_EDX_PBE          = 1 << 31$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PGE	src/cpu.h	/^	CPUID_FEAT_EDX_PGE          = 1 << 13,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PSE	src/cpu.h	/^	CPUID_FEAT_EDX_PSE          = 1 << 3,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PSE36	src/cpu.h	/^	CPUID_FEAT_EDX_PSE36        = 1 << 17,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_PSN	src/cpu.h	/^	CPUID_FEAT_EDX_PSN          = 1 << 18,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_SEP	src/cpu.h	/^	CPUID_FEAT_EDX_SEP          = 1 << 11,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_SS	src/cpu.h	/^	CPUID_FEAT_EDX_SS           = 1 << 27,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_SSE	src/cpu.h	/^	CPUID_FEAT_EDX_SSE          = 1 << 25,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_SSE2	src/cpu.h	/^	CPUID_FEAT_EDX_SSE2         = 1 << 26,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_TM1	src/cpu.h	/^	CPUID_FEAT_EDX_TM1          = 1 << 29,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_TSC	src/cpu.h	/^	CPUID_FEAT_EDX_TSC          = 1 << 4,$/;"	e	enum:__anon8
+CPUID_FEAT_EDX_VME	src/cpu.h	/^	CPUID_FEAT_EDX_VME          = 1 << 1,$/;"	e	enum:__anon8
+CPUID_GETFEATURES	src/cpu.h	/^	CPUID_GETFEATURES,$/;"	e	enum:cpuid_requests
+CPUID_GETSERIAL	src/cpu.h	/^	CPUID_GETSERIAL,$/;"	e	enum:cpuid_requests
+CPUID_GETTLB	src/cpu.h	/^	CPUID_GETTLB,$/;"	e	enum:cpuid_requests
+CPUID_GETVENDORSTRING	src/cpu.h	/^	CPUID_GETVENDORSTRING,$/;"	e	enum:cpuid_requests
+CPUID_INTELBRANDSTRING	src/cpu.h	/^	CPUID_INTELBRANDSTRING,$/;"	e	enum:cpuid_requests
+CPUID_INTELBRANDSTRINGEND	src/cpu.h	/^	CPUID_INTELBRANDSTRINGEND,$/;"	e	enum:cpuid_requests
+CPUID_INTELBRANDSTRINGMORE	src/cpu.h	/^	CPUID_INTELBRANDSTRINGMORE,$/;"	e	enum:cpuid_requests
+CPUID_INTELEXTENDED	src/cpu.h	/^	CPUID_INTELEXTENDED=0x80000000,$/;"	e	enum:cpuid_requests
+CPUID_INTELFEATURES	src/cpu.h	/^	CPUID_INTELFEATURES,$/;"	e	enum:cpuid_requests
 CYAN	src/lib/klib.h	/^	CYAN = 0x3,$/;"	e	enum:color
+Checksum	src/kernel.c	/^ uint8_t Checksum;$/;"	m	struct:RSDPDescriptor	file:
 DARK_GRAY	src/lib/klib.h	/^	DARK_GRAY = 0x8,$/;"	e	enum:color
-DEBUG	src/lib/klib.h	79;"	d
+DEBUG	src/lib/klib.h	76;"	d
 DISKS_H	src/drivers/disk.h	2;"	d
 DISKS_MAX	src/drivers/disk.h	6;"	d
-ERROR	src/lib/klib.h	80;"	d
+ERROR	src/lib/klib.h	77;"	d
+ExtendedChecksum	src/kernel.c	/^	uint8_t ExtendedChecksum;$/;"	m	struct:RSDPDescriptor20	file:
 GDT_H	src/gdt.h	2;"	d
 GDT_KERNEL_CODE_SEGMENT	src/gdt.h	5;"	d
 GREEN	src/lib/klib.h	/^	GREEN = 0x2,$/;"	e	enum:color
-HALT	src/lib/klib.h	77;"	d
+HALT	src/lib/klib.h	74;"	d
+IA32_APIC_BASE_MSR	src/apic.h	4;"	d
+IA32_APIC_BASE_MSR_BSP	src/apic.h	5;"	d
+IA32_APIC_BASE_MSR_ENABLE	src/apic.h	6;"	d
 ICW1_ICW4	src/pic.h	12;"	d
 ICW1_INIT	src/pic.h	16;"	d
 ICW1_INTERVAL4	src/pic.h	14;"	d
@@ -106,246 +110,246 @@ IDTE_TYPE_TRAP_16	src/idt.h	11;"	d
 IDTE_TYPE_TRAP_32	src/idt.h	9;"	d
 IDT_DESCRIPTOR_SIZE	src/idt.h	45;"	d
 IDT_H	src/idt.h	2;"	d
-INB	src/lib/klib.h	66;"	d
-IND	src/lib/klib.h	67;"	d
-INPUT_BUTTON_1	src/drivers/keyboard.h	/^	INPUT_BUTTON_1 = 0x0001,$/;"	e	enum:__anon7
-INPUT_CONS_AC_BACK	src/drivers/keyboard.h	/^	INPUT_CONS_AC_BACK,$/;"	e	enum:__anon8
-INPUT_CONS_AC_BOOKMARKS	src/drivers/keyboard.h	/^	INPUT_CONS_AC_BOOKMARKS = 0x022A$/;"	e	enum:__anon8
-INPUT_CONS_AC_FORWARD	src/drivers/keyboard.h	/^	INPUT_CONS_AC_FORWARD,$/;"	e	enum:__anon8
-INPUT_CONS_AC_GO_TO	src/drivers/keyboard.h	/^	INPUT_CONS_AC_GO_TO,$/;"	e	enum:__anon8
-INPUT_CONS_AC_HOME	src/drivers/keyboard.h	/^	INPUT_CONS_AC_HOME,$/;"	e	enum:__anon8
-INPUT_CONS_AC_REFRESH	src/drivers/keyboard.h	/^	INPUT_CONS_AC_REFRESH,$/;"	e	enum:__anon8
-INPUT_CONS_AC_SEARCH	src/drivers/keyboard.h	/^	INPUT_CONS_AC_SEARCH = 0x0221,$/;"	e	enum:__anon8
-INPUT_CONS_AC_STOP	src/drivers/keyboard.h	/^	INPUT_CONS_AC_STOP,$/;"	e	enum:__anon8
-INPUT_CONS_AL_CALCULATOR	src/drivers/keyboard.h	/^	INPUT_CONS_AL_CALCULATOR = 0x0192,$/;"	e	enum:__anon8
-INPUT_CONS_AL_EMAIL_READER	src/drivers/keyboard.h	/^	INPUT_CONS_AL_EMAIL_READER = 0x018A,$/;"	e	enum:__anon8
-INPUT_CONS_AL_LOCAL_BROWSER	src/drivers/keyboard.h	/^	INPUT_CONS_AL_LOCAL_BROWSER = 0x0194,$/;"	e	enum:__anon8
-INPUT_CONS_AL_MEDIA_SELECT	src/drivers/keyboard.h	/^	INPUT_CONS_AL_MEDIA_SELECT = 0x0183,$/;"	e	enum:__anon8
-INPUT_CONS_MUTE	src/drivers/keyboard.h	/^	INPUT_CONS_MUTE = 0x00E2,$/;"	e	enum:__anon8
-INPUT_CONS_PLAY_PAUSE	src/drivers/keyboard.h	/^	INPUT_CONS_PLAY_PAUSE = 0x00CD,$/;"	e	enum:__anon8
-INPUT_CONS_SCAN_NEXT_TRACK	src/drivers/keyboard.h	/^	INPUT_CONS_SCAN_NEXT_TRACK = 0x00B5,$/;"	e	enum:__anon8
-INPUT_CONS_SCAN_PREVIOUS_TRACK	src/drivers/keyboard.h	/^	INPUT_CONS_SCAN_PREVIOUS_TRACK,$/;"	e	enum:__anon8
-INPUT_CONS_STOP	src/drivers/keyboard.h	/^	INPUT_CONS_STOP,$/;"	e	enum:__anon8
-INPUT_CONS_VOLUME_DOWN	src/drivers/keyboard.h	/^	INPUT_CONS_VOLUME_DOWN,$/;"	e	enum:__anon8
-INPUT_CONS_VOLUME_UP	src/drivers/keyboard.h	/^	INPUT_CONS_VOLUME_UP = 0x00E9,$/;"	e	enum:__anon8
-INPUT_KEY_0	src/drivers/keyboard.h	/^	INPUT_KEY_0,$/;"	e	enum:__anon5
-INPUT_KEY_1	src/drivers/keyboard.h	/^	INPUT_KEY_1,$/;"	e	enum:__anon5
-INPUT_KEY_2	src/drivers/keyboard.h	/^	INPUT_KEY_2,$/;"	e	enum:__anon5
-INPUT_KEY_3	src/drivers/keyboard.h	/^	INPUT_KEY_3,$/;"	e	enum:__anon5
-INPUT_KEY_4	src/drivers/keyboard.h	/^	INPUT_KEY_4,$/;"	e	enum:__anon5
-INPUT_KEY_5	src/drivers/keyboard.h	/^	INPUT_KEY_5,$/;"	e	enum:__anon5
-INPUT_KEY_6	src/drivers/keyboard.h	/^	INPUT_KEY_6,$/;"	e	enum:__anon5
-INPUT_KEY_7	src/drivers/keyboard.h	/^	INPUT_KEY_7,$/;"	e	enum:__anon5
-INPUT_KEY_8	src/drivers/keyboard.h	/^	INPUT_KEY_8,$/;"	e	enum:__anon5
-INPUT_KEY_9	src/drivers/keyboard.h	/^	INPUT_KEY_9,$/;"	e	enum:__anon5
-INPUT_KEY_A	src/drivers/keyboard.h	/^	INPUT_KEY_A = 0x0004,$/;"	e	enum:__anon5
-INPUT_KEY_AGAIN	src/drivers/keyboard.h	/^	INPUT_KEY_AGAIN,$/;"	e	enum:__anon5
-INPUT_KEY_ALT_ERASE	src/drivers/keyboard.h	/^	INPUT_KEY_ALT_ERASE,$/;"	e	enum:__anon5
-INPUT_KEY_APOSTROPH	src/drivers/keyboard.h	/^	INPUT_KEY_APOSTROPH,$/;"	e	enum:__anon5
-INPUT_KEY_APPLICATION	src/drivers/keyboard.h	/^	INPUT_KEY_APPLICATION,$/;"	e	enum:__anon5
-INPUT_KEY_B	src/drivers/keyboard.h	/^	INPUT_KEY_B,$/;"	e	enum:__anon5
-INPUT_KEY_BACKSLASH	src/drivers/keyboard.h	/^	INPUT_KEY_BACKSLASH,$/;"	e	enum:__anon5
-INPUT_KEY_BACKSPACE	src/drivers/keyboard.h	/^	INPUT_KEY_BACKSPACE,$/;"	e	enum:__anon5
-INPUT_KEY_C	src/drivers/keyboard.h	/^	INPUT_KEY_C,$/;"	e	enum:__anon5
-INPUT_KEY_CANCEL	src/drivers/keyboard.h	/^	INPUT_KEY_CANCEL,$/;"	e	enum:__anon5
-INPUT_KEY_CAPS_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_CAPS_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_CLEAR,$/;"	e	enum:__anon5
-INPUT_KEY_CLEAR_AGAIN	src/drivers/keyboard.h	/^	INPUT_KEY_CLEAR_AGAIN,$/;"	e	enum:__anon5
-INPUT_KEY_CLOSE_BRACKET	src/drivers/keyboard.h	/^	INPUT_KEY_CLOSE_BRACKET,$/;"	e	enum:__anon5
-INPUT_KEY_COMMA	src/drivers/keyboard.h	/^	INPUT_KEY_COMMA,$/;"	e	enum:__anon5
-INPUT_KEY_COPY	src/drivers/keyboard.h	/^	INPUT_KEY_COPY,$/;"	e	enum:__anon5
-INPUT_KEY_CR_SEL	src/drivers/keyboard.h	/^	INPUT_KEY_CR_SEL,$/;"	e	enum:__anon5
-INPUT_KEY_CURRENCY_SUBUNIT	src/drivers/keyboard.h	/^	INPUT_KEY_CURRENCY_SUBUNIT,$/;"	e	enum:__anon5
-INPUT_KEY_CURRENCY_UNIT	src/drivers/keyboard.h	/^	INPUT_KEY_CURRENCY_UNIT,$/;"	e	enum:__anon5
-INPUT_KEY_CUT	src/drivers/keyboard.h	/^	INPUT_KEY_CUT,$/;"	e	enum:__anon5
-INPUT_KEY_D	src/drivers/keyboard.h	/^	INPUT_KEY_D,$/;"	e	enum:__anon5
-INPUT_KEY_DASH	src/drivers/keyboard.h	/^	INPUT_KEY_DASH,$/;"	e	enum:__anon5
-INPUT_KEY_DECIMAL_SEP	src/drivers/keyboard.h	/^	INPUT_KEY_DECIMAL_SEP,$/;"	e	enum:__anon5
-INPUT_KEY_DELETE	src/drivers/keyboard.h	/^	INPUT_KEY_DELETE,$/;"	e	enum:__anon5
-INPUT_KEY_DOWN_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_DOWN_ARROW,$/;"	e	enum:__anon5
-INPUT_KEY_E	src/drivers/keyboard.h	/^	INPUT_KEY_E,$/;"	e	enum:__anon5
-INPUT_KEY_END	src/drivers/keyboard.h	/^	INPUT_KEY_END,$/;"	e	enum:__anon5
-INPUT_KEY_ENTER	src/drivers/keyboard.h	/^	INPUT_KEY_ENTER,$/;"	e	enum:__anon5
-INPUT_KEY_EQUAL	src/drivers/keyboard.h	/^	INPUT_KEY_EQUAL,$/;"	e	enum:__anon5
-INPUT_KEY_EQUAL_SIGN	src/drivers/keyboard.h	/^	INPUT_KEY_EQUAL_SIGN,$/;"	e	enum:__anon5
-INPUT_KEY_ESCAPE	src/drivers/keyboard.h	/^	INPUT_KEY_ESCAPE,$/;"	e	enum:__anon5
-INPUT_KEY_EUROPE_1	src/drivers/keyboard.h	/^	INPUT_KEY_EUROPE_1,$/;"	e	enum:__anon5
-INPUT_KEY_EUROPE_2	src/drivers/keyboard.h	/^	INPUT_KEY_EUROPE_2,$/;"	e	enum:__anon5
-INPUT_KEY_EXECUTE	src/drivers/keyboard.h	/^	INPUT_KEY_EXECUTE,$/;"	e	enum:__anon5
-INPUT_KEY_EX_SEL	src/drivers/keyboard.h	/^	INPUT_KEY_EX_SEL,$/;"	e	enum:__anon5
-INPUT_KEY_F	src/drivers/keyboard.h	/^	INPUT_KEY_F,$/;"	e	enum:__anon5
-INPUT_KEY_F1	src/drivers/keyboard.h	/^	INPUT_KEY_F1,$/;"	e	enum:__anon5
-INPUT_KEY_F10	src/drivers/keyboard.h	/^	INPUT_KEY_F10,$/;"	e	enum:__anon5
-INPUT_KEY_F11	src/drivers/keyboard.h	/^	INPUT_KEY_F11,$/;"	e	enum:__anon5
-INPUT_KEY_F12	src/drivers/keyboard.h	/^	INPUT_KEY_F12,$/;"	e	enum:__anon5
-INPUT_KEY_F13	src/drivers/keyboard.h	/^	INPUT_KEY_F13,$/;"	e	enum:__anon5
-INPUT_KEY_F14	src/drivers/keyboard.h	/^	INPUT_KEY_F14,$/;"	e	enum:__anon5
-INPUT_KEY_F15	src/drivers/keyboard.h	/^	INPUT_KEY_F15,$/;"	e	enum:__anon5
-INPUT_KEY_F16	src/drivers/keyboard.h	/^	INPUT_KEY_F16,$/;"	e	enum:__anon5
-INPUT_KEY_F17	src/drivers/keyboard.h	/^	INPUT_KEY_F17,$/;"	e	enum:__anon5
-INPUT_KEY_F18	src/drivers/keyboard.h	/^	INPUT_KEY_F18,$/;"	e	enum:__anon5
-INPUT_KEY_F19	src/drivers/keyboard.h	/^	INPUT_KEY_F19,$/;"	e	enum:__anon5
-INPUT_KEY_F2	src/drivers/keyboard.h	/^	INPUT_KEY_F2,$/;"	e	enum:__anon5
-INPUT_KEY_F20	src/drivers/keyboard.h	/^	INPUT_KEY_F20,$/;"	e	enum:__anon5
-INPUT_KEY_F21	src/drivers/keyboard.h	/^	INPUT_KEY_F21,$/;"	e	enum:__anon5
-INPUT_KEY_F22	src/drivers/keyboard.h	/^	INPUT_KEY_F22,$/;"	e	enum:__anon5
-INPUT_KEY_F23	src/drivers/keyboard.h	/^	INPUT_KEY_F23,$/;"	e	enum:__anon5
-INPUT_KEY_F24	src/drivers/keyboard.h	/^	INPUT_KEY_F24,$/;"	e	enum:__anon5
-INPUT_KEY_F3	src/drivers/keyboard.h	/^	INPUT_KEY_F3,$/;"	e	enum:__anon5
-INPUT_KEY_F4	src/drivers/keyboard.h	/^	INPUT_KEY_F4,$/;"	e	enum:__anon5
-INPUT_KEY_F5	src/drivers/keyboard.h	/^	INPUT_KEY_F5,$/;"	e	enum:__anon5
-INPUT_KEY_F6	src/drivers/keyboard.h	/^	INPUT_KEY_F6,$/;"	e	enum:__anon5
-INPUT_KEY_F7	src/drivers/keyboard.h	/^	INPUT_KEY_F7,$/;"	e	enum:__anon5
-INPUT_KEY_F8	src/drivers/keyboard.h	/^	INPUT_KEY_F8,$/;"	e	enum:__anon5
-INPUT_KEY_F9	src/drivers/keyboard.h	/^	INPUT_KEY_F9,$/;"	e	enum:__anon5
-INPUT_KEY_FIND	src/drivers/keyboard.h	/^	INPUT_KEY_FIND,$/;"	e	enum:__anon5
-INPUT_KEY_G	src/drivers/keyboard.h	/^	INPUT_KEY_G,$/;"	e	enum:__anon5
-INPUT_KEY_GRAVE_ACCENT	src/drivers/keyboard.h	/^	INPUT_KEY_GRAVE_ACCENT,$/;"	e	enum:__anon5
-INPUT_KEY_H	src/drivers/keyboard.h	/^	INPUT_KEY_H,$/;"	e	enum:__anon5
-INPUT_KEY_HELP	src/drivers/keyboard.h	/^	INPUT_KEY_HELP,$/;"	e	enum:__anon5
-INPUT_KEY_HOME	src/drivers/keyboard.h	/^	INPUT_KEY_HOME,$/;"	e	enum:__anon5
-INPUT_KEY_I	src/drivers/keyboard.h	/^	INPUT_KEY_I,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_1	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_1,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_2	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_2,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_3	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_3,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_4	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_4,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_5	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_5,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_6	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_6,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_7	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_7,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_8	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_8,$/;"	e	enum:__anon5
-INPUT_KEY_I10L_9	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_9,$/;"	e	enum:__anon5
-INPUT_KEY_INSERT	src/drivers/keyboard.h	/^	INPUT_KEY_INSERT,$/;"	e	enum:__anon5
-INPUT_KEY_J	src/drivers/keyboard.h	/^	INPUT_KEY_J,$/;"	e	enum:__anon5
-INPUT_KEY_K	src/drivers/keyboard.h	/^	INPUT_KEY_K,$/;"	e	enum:__anon5
-INPUT_KEY_KP_0	src/drivers/keyboard.h	/^	INPUT_KEY_KP_0,$/;"	e	enum:__anon5
-INPUT_KEY_KP_00	src/drivers/keyboard.h	/^	INPUT_KEY_KP_00 = 0x00B0,$/;"	e	enum:__anon5
-INPUT_KEY_KP_000	src/drivers/keyboard.h	/^	INPUT_KEY_KP_000,$/;"	e	enum:__anon5
-INPUT_KEY_KP_1	src/drivers/keyboard.h	/^	INPUT_KEY_KP_1,$/;"	e	enum:__anon5
-INPUT_KEY_KP_2	src/drivers/keyboard.h	/^	INPUT_KEY_KP_2,$/;"	e	enum:__anon5
-INPUT_KEY_KP_3	src/drivers/keyboard.h	/^	INPUT_KEY_KP_3,$/;"	e	enum:__anon5
-INPUT_KEY_KP_4	src/drivers/keyboard.h	/^	INPUT_KEY_KP_4,$/;"	e	enum:__anon5
-INPUT_KEY_KP_5	src/drivers/keyboard.h	/^	INPUT_KEY_KP_5,$/;"	e	enum:__anon5
-INPUT_KEY_KP_6	src/drivers/keyboard.h	/^	INPUT_KEY_KP_6,$/;"	e	enum:__anon5
-INPUT_KEY_KP_7	src/drivers/keyboard.h	/^	INPUT_KEY_KP_7,$/;"	e	enum:__anon5
-INPUT_KEY_KP_8	src/drivers/keyboard.h	/^	INPUT_KEY_KP_8,$/;"	e	enum:__anon5
-INPUT_KEY_KP_9	src/drivers/keyboard.h	/^	INPUT_KEY_KP_9,$/;"	e	enum:__anon5
-INPUT_KEY_KP_A	src/drivers/keyboard.h	/^	INPUT_KEY_KP_A,$/;"	e	enum:__anon5
-INPUT_KEY_KP_AMP	src/drivers/keyboard.h	/^	INPUT_KEY_KP_AMP,$/;"	e	enum:__anon5
-INPUT_KEY_KP_AT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_AT,$/;"	e	enum:__anon5
-INPUT_KEY_KP_B	src/drivers/keyboard.h	/^	INPUT_KEY_KP_B,$/;"	e	enum:__anon5
-INPUT_KEY_KP_BACKSPACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_BACKSPACE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_BIN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_BIN,$/;"	e	enum:__anon5
-INPUT_KEY_KP_C	src/drivers/keyboard.h	/^	INPUT_KEY_KP_C,$/;"	e	enum:__anon5
-INPUT_KEY_KP_CARET	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CARET,$/;"	e	enum:__anon5
-INPUT_KEY_KP_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLEAR,$/;"	e	enum:__anon5
-INPUT_KEY_KP_CLEAR_ENTRY	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLEAR_ENTRY,$/;"	e	enum:__anon5
-INPUT_KEY_KP_CLOSE_BRACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLOSE_BRACE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_CLOSE_PARENTHESIS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLOSE_PARENTHESIS,$/;"	e	enum:__anon5
-INPUT_KEY_KP_COLON	src/drivers/keyboard.h	/^	INPUT_KEY_KP_COLON,$/;"	e	enum:__anon5
-INPUT_KEY_KP_COMMA	src/drivers/keyboard.h	/^	INPUT_KEY_KP_COMMA,$/;"	e	enum:__anon5
-INPUT_KEY_KP_D	src/drivers/keyboard.h	/^	INPUT_KEY_KP_D,$/;"	e	enum:__anon5
-INPUT_KEY_KP_DASH	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DASH,$/;"	e	enum:__anon5
-INPUT_KEY_KP_DEC	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DEC,$/;"	e	enum:__anon5
-INPUT_KEY_KP_DOUBLE_AMP	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DOUBLE_AMP,$/;"	e	enum:__anon5
-INPUT_KEY_KP_DOUBLE_PIPE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DOUBLE_PIPE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_E	src/drivers/keyboard.h	/^	INPUT_KEY_KP_E,$/;"	e	enum:__anon5
-INPUT_KEY_KP_ENTER	src/drivers/keyboard.h	/^	INPUT_KEY_KP_ENTER,$/;"	e	enum:__anon5
-INPUT_KEY_KP_EQUAL	src/drivers/keyboard.h	/^	INPUT_KEY_KP_EQUAL,$/;"	e	enum:__anon5
-INPUT_KEY_KP_EXCLAMATION_MARK	src/drivers/keyboard.h	/^	INPUT_KEY_KP_EXCLAMATION_MARK,$/;"	e	enum:__anon5
-INPUT_KEY_KP_F	src/drivers/keyboard.h	/^	INPUT_KEY_KP_F,$/;"	e	enum:__anon5
-INPUT_KEY_KP_GREATER_THEN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_GREATER_THEN,$/;"	e	enum:__anon5
-INPUT_KEY_KP_HEX	src/drivers/keyboard.h	/^	INPUT_KEY_KP_HEX,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_ADD	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_ADD,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_CLEAR,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_DIVIDE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_DIVIDE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_MULTIPLY	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_MULTIPLY,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_RECALL	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_RECALL,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_STORE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_STORE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_MEM_SUBTRACT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_SUBTRACT,$/;"	e	enum:__anon5
-INPUT_KEY_KP_NUMBER	src/drivers/keyboard.h	/^	INPUT_KEY_KP_NUMBER,$/;"	e	enum:__anon5
-INPUT_KEY_KP_OCT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OCT,$/;"	e	enum:__anon5
-INPUT_KEY_KP_OPEN_BRACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OPEN_BRACE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_OPEN_PARENTHESIS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OPEN_PARENTHESIS,$/;"	e	enum:__anon5
-INPUT_KEY_KP_PERCENT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PERCENT,$/;"	e	enum:__anon5
-INPUT_KEY_KP_PERIOD	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PERIOD,$/;"	e	enum:__anon5
-INPUT_KEY_KP_PIPE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PIPE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_PLUS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PLUS,$/;"	e	enum:__anon5
-INPUT_KEY_KP_PLUS_MINUS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PLUS_MINUS,$/;"	e	enum:__anon5
-INPUT_KEY_KP_SLASH	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SLASH,$/;"	e	enum:__anon5
-INPUT_KEY_KP_SMALLER_THEN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SMALLER_THEN,$/;"	e	enum:__anon5
-INPUT_KEY_KP_SPACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SPACE,$/;"	e	enum:__anon5
-INPUT_KEY_KP_STAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_STAR,$/;"	e	enum:__anon5
-INPUT_KEY_KP_TAB	src/drivers/keyboard.h	/^	INPUT_KEY_KP_TAB,$/;"	e	enum:__anon5
-INPUT_KEY_KP_XOR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_XOR,$/;"	e	enum:__anon5
-INPUT_KEY_L	src/drivers/keyboard.h	/^	INPUT_KEY_L,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_1	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_1,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_2	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_2,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_3	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_3,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_4	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_4,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_5	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_5,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_6	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_6,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_7	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_7,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_8	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_8,$/;"	e	enum:__anon5
-INPUT_KEY_LANG_9	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_9,$/;"	e	enum:__anon5
-INPUT_KEY_LEFT_ALT	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_ALT,$/;"	e	enum:__anon5
-INPUT_KEY_LEFT_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_ARROW,$/;"	e	enum:__anon5
-INPUT_KEY_LEFT_CTRL	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_CTRL = 0x00E0,$/;"	e	enum:__anon5
-INPUT_KEY_LEFT_GUI	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_GUI,$/;"	e	enum:__anon5
-INPUT_KEY_LEFT_SHIFT	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_SHIFT,$/;"	e	enum:__anon5
-INPUT_KEY_LOCKING_CAPS_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_CAPS_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_LOCKING_NUM_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_NUM_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_LOCKING_SCROLL_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_SCROLL_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_M	src/drivers/keyboard.h	/^	INPUT_KEY_M,$/;"	e	enum:__anon5
-INPUT_KEY_MENU	src/drivers/keyboard.h	/^	INPUT_KEY_MENU,$/;"	e	enum:__anon5
-INPUT_KEY_MUTE	src/drivers/keyboard.h	/^	INPUT_KEY_MUTE,$/;"	e	enum:__anon5
-INPUT_KEY_N	src/drivers/keyboard.h	/^	INPUT_KEY_N,$/;"	e	enum:__anon5
-INPUT_KEY_NUM_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_NUM_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_O	src/drivers/keyboard.h	/^	INPUT_KEY_O,$/;"	e	enum:__anon5
-INPUT_KEY_OPEN_BRACKET	src/drivers/keyboard.h	/^	INPUT_KEY_OPEN_BRACKET,$/;"	e	enum:__anon5
-INPUT_KEY_OPER	src/drivers/keyboard.h	/^	INPUT_KEY_OPER,$/;"	e	enum:__anon5
-INPUT_KEY_OUT	src/drivers/keyboard.h	/^	INPUT_KEY_OUT,$/;"	e	enum:__anon5
-INPUT_KEY_P	src/drivers/keyboard.h	/^	INPUT_KEY_P,$/;"	e	enum:__anon5
-INPUT_KEY_PAGE_DOWN	src/drivers/keyboard.h	/^	INPUT_KEY_PAGE_DOWN,$/;"	e	enum:__anon5
-INPUT_KEY_PAGE_UP	src/drivers/keyboard.h	/^	INPUT_KEY_PAGE_UP,$/;"	e	enum:__anon5
-INPUT_KEY_PASTE	src/drivers/keyboard.h	/^	INPUT_KEY_PASTE,$/;"	e	enum:__anon5
-INPUT_KEY_PAUSE	src/drivers/keyboard.h	/^	INPUT_KEY_PAUSE,$/;"	e	enum:__anon5
-INPUT_KEY_PERIOD	src/drivers/keyboard.h	/^	INPUT_KEY_PERIOD,$/;"	e	enum:__anon5
-INPUT_KEY_POWER	src/drivers/keyboard.h	/^	INPUT_KEY_POWER,$/;"	e	enum:__anon5
-INPUT_KEY_PRINT_SCREEN	src/drivers/keyboard.h	/^	INPUT_KEY_PRINT_SCREEN,$/;"	e	enum:__anon5
-INPUT_KEY_PRIOR	src/drivers/keyboard.h	/^	INPUT_KEY_PRIOR,$/;"	e	enum:__anon5
-INPUT_KEY_Q	src/drivers/keyboard.h	/^	INPUT_KEY_Q,$/;"	e	enum:__anon5
-INPUT_KEY_R	src/drivers/keyboard.h	/^	INPUT_KEY_R,$/;"	e	enum:__anon5
-INPUT_KEY_RETURN	src/drivers/keyboard.h	/^	INPUT_KEY_RETURN,$/;"	e	enum:__anon5
-INPUT_KEY_RIGHT_ALT	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_ALT,$/;"	e	enum:__anon5
-INPUT_KEY_RIGHT_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_ARROW,$/;"	e	enum:__anon5
-INPUT_KEY_RIGHT_CTRL	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_CTRL,$/;"	e	enum:__anon5
-INPUT_KEY_RIGHT_GUI	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_GUI$/;"	e	enum:__anon5
-INPUT_KEY_RIGHT_SHIFT	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_SHIFT,$/;"	e	enum:__anon5
-INPUT_KEY_S	src/drivers/keyboard.h	/^	INPUT_KEY_S,$/;"	e	enum:__anon5
-INPUT_KEY_SCROLL_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_SCROLL_LOCK,$/;"	e	enum:__anon5
-INPUT_KEY_SELECT	src/drivers/keyboard.h	/^	INPUT_KEY_SELECT,$/;"	e	enum:__anon5
-INPUT_KEY_SEMICOLON	src/drivers/keyboard.h	/^	INPUT_KEY_SEMICOLON,$/;"	e	enum:__anon5
-INPUT_KEY_SEPARATOR	src/drivers/keyboard.h	/^	INPUT_KEY_SEPARATOR,$/;"	e	enum:__anon5
-INPUT_KEY_SLASH	src/drivers/keyboard.h	/^	INPUT_KEY_SLASH,$/;"	e	enum:__anon5
-INPUT_KEY_SPACEBAR	src/drivers/keyboard.h	/^	INPUT_KEY_SPACEBAR,$/;"	e	enum:__anon5
-INPUT_KEY_STOP	src/drivers/keyboard.h	/^	INPUT_KEY_STOP,$/;"	e	enum:__anon5
-INPUT_KEY_SYSREQ	src/drivers/keyboard.h	/^	INPUT_KEY_SYSREQ,$/;"	e	enum:__anon5
-INPUT_KEY_T	src/drivers/keyboard.h	/^	INPUT_KEY_T,$/;"	e	enum:__anon5
-INPUT_KEY_TAB	src/drivers/keyboard.h	/^	INPUT_KEY_TAB,$/;"	e	enum:__anon5
-INPUT_KEY_THOUSANDS_SEP	src/drivers/keyboard.h	/^	INPUT_KEY_THOUSANDS_SEP,$/;"	e	enum:__anon5
-INPUT_KEY_U	src/drivers/keyboard.h	/^	INPUT_KEY_U,$/;"	e	enum:__anon5
-INPUT_KEY_UNDO	src/drivers/keyboard.h	/^	INPUT_KEY_UNDO,$/;"	e	enum:__anon5
-INPUT_KEY_UP_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_UP_ARROW,$/;"	e	enum:__anon5
-INPUT_KEY_V	src/drivers/keyboard.h	/^	INPUT_KEY_V,$/;"	e	enum:__anon5
-INPUT_KEY_VOLUME_DOWN	src/drivers/keyboard.h	/^	INPUT_KEY_VOLUME_DOWN,$/;"	e	enum:__anon5
-INPUT_KEY_VOLUME_UP	src/drivers/keyboard.h	/^	INPUT_KEY_VOLUME_UP,$/;"	e	enum:__anon5
-INPUT_KEY_W	src/drivers/keyboard.h	/^	INPUT_KEY_W,$/;"	e	enum:__anon5
-INPUT_KEY_X	src/drivers/keyboard.h	/^	INPUT_KEY_X,$/;"	e	enum:__anon5
-INPUT_KEY_Y	src/drivers/keyboard.h	/^	INPUT_KEY_Y,$/;"	e	enum:__anon5
-INPUT_KEY_Z	src/drivers/keyboard.h	/^	INPUT_KEY_Z,$/;"	e	enum:__anon5
-INPUT_LED_CAPSLOCK	src/drivers/keyboard.h	/^	INPUT_LED_CAPSLOCK,$/;"	e	enum:__anon6
-INPUT_LED_NUMLOCK	src/drivers/keyboard.h	/^	INPUT_LED_NUMLOCK = 0x0001,$/;"	e	enum:__anon6
-INPUT_LED_SCROLLLOCK	src/drivers/keyboard.h	/^	INPUT_LED_SCROLLLOCK$/;"	e	enum:__anon6
+INB	src/lib/klib.h	63;"	d
+IND	src/lib/klib.h	64;"	d
+INPUT_BUTTON_1	src/drivers/keyboard.h	/^	INPUT_BUTTON_1 = 0x0001,$/;"	e	enum:__anon3
+INPUT_CONS_AC_BACK	src/drivers/keyboard.h	/^	INPUT_CONS_AC_BACK,$/;"	e	enum:__anon4
+INPUT_CONS_AC_BOOKMARKS	src/drivers/keyboard.h	/^	INPUT_CONS_AC_BOOKMARKS = 0x022A$/;"	e	enum:__anon4
+INPUT_CONS_AC_FORWARD	src/drivers/keyboard.h	/^	INPUT_CONS_AC_FORWARD,$/;"	e	enum:__anon4
+INPUT_CONS_AC_GO_TO	src/drivers/keyboard.h	/^	INPUT_CONS_AC_GO_TO,$/;"	e	enum:__anon4
+INPUT_CONS_AC_HOME	src/drivers/keyboard.h	/^	INPUT_CONS_AC_HOME,$/;"	e	enum:__anon4
+INPUT_CONS_AC_REFRESH	src/drivers/keyboard.h	/^	INPUT_CONS_AC_REFRESH,$/;"	e	enum:__anon4
+INPUT_CONS_AC_SEARCH	src/drivers/keyboard.h	/^	INPUT_CONS_AC_SEARCH = 0x0221,$/;"	e	enum:__anon4
+INPUT_CONS_AC_STOP	src/drivers/keyboard.h	/^	INPUT_CONS_AC_STOP,$/;"	e	enum:__anon4
+INPUT_CONS_AL_CALCULATOR	src/drivers/keyboard.h	/^	INPUT_CONS_AL_CALCULATOR = 0x0192,$/;"	e	enum:__anon4
+INPUT_CONS_AL_EMAIL_READER	src/drivers/keyboard.h	/^	INPUT_CONS_AL_EMAIL_READER = 0x018A,$/;"	e	enum:__anon4
+INPUT_CONS_AL_LOCAL_BROWSER	src/drivers/keyboard.h	/^	INPUT_CONS_AL_LOCAL_BROWSER = 0x0194,$/;"	e	enum:__anon4
+INPUT_CONS_AL_MEDIA_SELECT	src/drivers/keyboard.h	/^	INPUT_CONS_AL_MEDIA_SELECT = 0x0183,$/;"	e	enum:__anon4
+INPUT_CONS_MUTE	src/drivers/keyboard.h	/^	INPUT_CONS_MUTE = 0x00E2,$/;"	e	enum:__anon4
+INPUT_CONS_PLAY_PAUSE	src/drivers/keyboard.h	/^	INPUT_CONS_PLAY_PAUSE = 0x00CD,$/;"	e	enum:__anon4
+INPUT_CONS_SCAN_NEXT_TRACK	src/drivers/keyboard.h	/^	INPUT_CONS_SCAN_NEXT_TRACK = 0x00B5,$/;"	e	enum:__anon4
+INPUT_CONS_SCAN_PREVIOUS_TRACK	src/drivers/keyboard.h	/^	INPUT_CONS_SCAN_PREVIOUS_TRACK,$/;"	e	enum:__anon4
+INPUT_CONS_STOP	src/drivers/keyboard.h	/^	INPUT_CONS_STOP,$/;"	e	enum:__anon4
+INPUT_CONS_VOLUME_DOWN	src/drivers/keyboard.h	/^	INPUT_CONS_VOLUME_DOWN,$/;"	e	enum:__anon4
+INPUT_CONS_VOLUME_UP	src/drivers/keyboard.h	/^	INPUT_CONS_VOLUME_UP = 0x00E9,$/;"	e	enum:__anon4
+INPUT_KEY_0	src/drivers/keyboard.h	/^	INPUT_KEY_0,$/;"	e	enum:__anon1
+INPUT_KEY_1	src/drivers/keyboard.h	/^	INPUT_KEY_1,$/;"	e	enum:__anon1
+INPUT_KEY_2	src/drivers/keyboard.h	/^	INPUT_KEY_2,$/;"	e	enum:__anon1
+INPUT_KEY_3	src/drivers/keyboard.h	/^	INPUT_KEY_3,$/;"	e	enum:__anon1
+INPUT_KEY_4	src/drivers/keyboard.h	/^	INPUT_KEY_4,$/;"	e	enum:__anon1
+INPUT_KEY_5	src/drivers/keyboard.h	/^	INPUT_KEY_5,$/;"	e	enum:__anon1
+INPUT_KEY_6	src/drivers/keyboard.h	/^	INPUT_KEY_6,$/;"	e	enum:__anon1
+INPUT_KEY_7	src/drivers/keyboard.h	/^	INPUT_KEY_7,$/;"	e	enum:__anon1
+INPUT_KEY_8	src/drivers/keyboard.h	/^	INPUT_KEY_8,$/;"	e	enum:__anon1
+INPUT_KEY_9	src/drivers/keyboard.h	/^	INPUT_KEY_9,$/;"	e	enum:__anon1
+INPUT_KEY_A	src/drivers/keyboard.h	/^	INPUT_KEY_A = 0x0004,$/;"	e	enum:__anon1
+INPUT_KEY_AGAIN	src/drivers/keyboard.h	/^	INPUT_KEY_AGAIN,$/;"	e	enum:__anon1
+INPUT_KEY_ALT_ERASE	src/drivers/keyboard.h	/^	INPUT_KEY_ALT_ERASE,$/;"	e	enum:__anon1
+INPUT_KEY_APOSTROPH	src/drivers/keyboard.h	/^	INPUT_KEY_APOSTROPH,$/;"	e	enum:__anon1
+INPUT_KEY_APPLICATION	src/drivers/keyboard.h	/^	INPUT_KEY_APPLICATION,$/;"	e	enum:__anon1
+INPUT_KEY_B	src/drivers/keyboard.h	/^	INPUT_KEY_B,$/;"	e	enum:__anon1
+INPUT_KEY_BACKSLASH	src/drivers/keyboard.h	/^	INPUT_KEY_BACKSLASH,$/;"	e	enum:__anon1
+INPUT_KEY_BACKSPACE	src/drivers/keyboard.h	/^	INPUT_KEY_BACKSPACE,$/;"	e	enum:__anon1
+INPUT_KEY_C	src/drivers/keyboard.h	/^	INPUT_KEY_C,$/;"	e	enum:__anon1
+INPUT_KEY_CANCEL	src/drivers/keyboard.h	/^	INPUT_KEY_CANCEL,$/;"	e	enum:__anon1
+INPUT_KEY_CAPS_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_CAPS_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_CLEAR,$/;"	e	enum:__anon1
+INPUT_KEY_CLEAR_AGAIN	src/drivers/keyboard.h	/^	INPUT_KEY_CLEAR_AGAIN,$/;"	e	enum:__anon1
+INPUT_KEY_CLOSE_BRACKET	src/drivers/keyboard.h	/^	INPUT_KEY_CLOSE_BRACKET,$/;"	e	enum:__anon1
+INPUT_KEY_COMMA	src/drivers/keyboard.h	/^	INPUT_KEY_COMMA,$/;"	e	enum:__anon1
+INPUT_KEY_COPY	src/drivers/keyboard.h	/^	INPUT_KEY_COPY,$/;"	e	enum:__anon1
+INPUT_KEY_CR_SEL	src/drivers/keyboard.h	/^	INPUT_KEY_CR_SEL,$/;"	e	enum:__anon1
+INPUT_KEY_CURRENCY_SUBUNIT	src/drivers/keyboard.h	/^	INPUT_KEY_CURRENCY_SUBUNIT,$/;"	e	enum:__anon1
+INPUT_KEY_CURRENCY_UNIT	src/drivers/keyboard.h	/^	INPUT_KEY_CURRENCY_UNIT,$/;"	e	enum:__anon1
+INPUT_KEY_CUT	src/drivers/keyboard.h	/^	INPUT_KEY_CUT,$/;"	e	enum:__anon1
+INPUT_KEY_D	src/drivers/keyboard.h	/^	INPUT_KEY_D,$/;"	e	enum:__anon1
+INPUT_KEY_DASH	src/drivers/keyboard.h	/^	INPUT_KEY_DASH,$/;"	e	enum:__anon1
+INPUT_KEY_DECIMAL_SEP	src/drivers/keyboard.h	/^	INPUT_KEY_DECIMAL_SEP,$/;"	e	enum:__anon1
+INPUT_KEY_DELETE	src/drivers/keyboard.h	/^	INPUT_KEY_DELETE,$/;"	e	enum:__anon1
+INPUT_KEY_DOWN_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_DOWN_ARROW,$/;"	e	enum:__anon1
+INPUT_KEY_E	src/drivers/keyboard.h	/^	INPUT_KEY_E,$/;"	e	enum:__anon1
+INPUT_KEY_END	src/drivers/keyboard.h	/^	INPUT_KEY_END,$/;"	e	enum:__anon1
+INPUT_KEY_ENTER	src/drivers/keyboard.h	/^	INPUT_KEY_ENTER,$/;"	e	enum:__anon1
+INPUT_KEY_EQUAL	src/drivers/keyboard.h	/^	INPUT_KEY_EQUAL,$/;"	e	enum:__anon1
+INPUT_KEY_EQUAL_SIGN	src/drivers/keyboard.h	/^	INPUT_KEY_EQUAL_SIGN,$/;"	e	enum:__anon1
+INPUT_KEY_ESCAPE	src/drivers/keyboard.h	/^	INPUT_KEY_ESCAPE,$/;"	e	enum:__anon1
+INPUT_KEY_EUROPE_1	src/drivers/keyboard.h	/^	INPUT_KEY_EUROPE_1,$/;"	e	enum:__anon1
+INPUT_KEY_EUROPE_2	src/drivers/keyboard.h	/^	INPUT_KEY_EUROPE_2,$/;"	e	enum:__anon1
+INPUT_KEY_EXECUTE	src/drivers/keyboard.h	/^	INPUT_KEY_EXECUTE,$/;"	e	enum:__anon1
+INPUT_KEY_EX_SEL	src/drivers/keyboard.h	/^	INPUT_KEY_EX_SEL,$/;"	e	enum:__anon1
+INPUT_KEY_F	src/drivers/keyboard.h	/^	INPUT_KEY_F,$/;"	e	enum:__anon1
+INPUT_KEY_F1	src/drivers/keyboard.h	/^	INPUT_KEY_F1,$/;"	e	enum:__anon1
+INPUT_KEY_F10	src/drivers/keyboard.h	/^	INPUT_KEY_F10,$/;"	e	enum:__anon1
+INPUT_KEY_F11	src/drivers/keyboard.h	/^	INPUT_KEY_F11,$/;"	e	enum:__anon1
+INPUT_KEY_F12	src/drivers/keyboard.h	/^	INPUT_KEY_F12,$/;"	e	enum:__anon1
+INPUT_KEY_F13	src/drivers/keyboard.h	/^	INPUT_KEY_F13,$/;"	e	enum:__anon1
+INPUT_KEY_F14	src/drivers/keyboard.h	/^	INPUT_KEY_F14,$/;"	e	enum:__anon1
+INPUT_KEY_F15	src/drivers/keyboard.h	/^	INPUT_KEY_F15,$/;"	e	enum:__anon1
+INPUT_KEY_F16	src/drivers/keyboard.h	/^	INPUT_KEY_F16,$/;"	e	enum:__anon1
+INPUT_KEY_F17	src/drivers/keyboard.h	/^	INPUT_KEY_F17,$/;"	e	enum:__anon1
+INPUT_KEY_F18	src/drivers/keyboard.h	/^	INPUT_KEY_F18,$/;"	e	enum:__anon1
+INPUT_KEY_F19	src/drivers/keyboard.h	/^	INPUT_KEY_F19,$/;"	e	enum:__anon1
+INPUT_KEY_F2	src/drivers/keyboard.h	/^	INPUT_KEY_F2,$/;"	e	enum:__anon1
+INPUT_KEY_F20	src/drivers/keyboard.h	/^	INPUT_KEY_F20,$/;"	e	enum:__anon1
+INPUT_KEY_F21	src/drivers/keyboard.h	/^	INPUT_KEY_F21,$/;"	e	enum:__anon1
+INPUT_KEY_F22	src/drivers/keyboard.h	/^	INPUT_KEY_F22,$/;"	e	enum:__anon1
+INPUT_KEY_F23	src/drivers/keyboard.h	/^	INPUT_KEY_F23,$/;"	e	enum:__anon1
+INPUT_KEY_F24	src/drivers/keyboard.h	/^	INPUT_KEY_F24,$/;"	e	enum:__anon1
+INPUT_KEY_F3	src/drivers/keyboard.h	/^	INPUT_KEY_F3,$/;"	e	enum:__anon1
+INPUT_KEY_F4	src/drivers/keyboard.h	/^	INPUT_KEY_F4,$/;"	e	enum:__anon1
+INPUT_KEY_F5	src/drivers/keyboard.h	/^	INPUT_KEY_F5,$/;"	e	enum:__anon1
+INPUT_KEY_F6	src/drivers/keyboard.h	/^	INPUT_KEY_F6,$/;"	e	enum:__anon1
+INPUT_KEY_F7	src/drivers/keyboard.h	/^	INPUT_KEY_F7,$/;"	e	enum:__anon1
+INPUT_KEY_F8	src/drivers/keyboard.h	/^	INPUT_KEY_F8,$/;"	e	enum:__anon1
+INPUT_KEY_F9	src/drivers/keyboard.h	/^	INPUT_KEY_F9,$/;"	e	enum:__anon1
+INPUT_KEY_FIND	src/drivers/keyboard.h	/^	INPUT_KEY_FIND,$/;"	e	enum:__anon1
+INPUT_KEY_G	src/drivers/keyboard.h	/^	INPUT_KEY_G,$/;"	e	enum:__anon1
+INPUT_KEY_GRAVE_ACCENT	src/drivers/keyboard.h	/^	INPUT_KEY_GRAVE_ACCENT,$/;"	e	enum:__anon1
+INPUT_KEY_H	src/drivers/keyboard.h	/^	INPUT_KEY_H,$/;"	e	enum:__anon1
+INPUT_KEY_HELP	src/drivers/keyboard.h	/^	INPUT_KEY_HELP,$/;"	e	enum:__anon1
+INPUT_KEY_HOME	src/drivers/keyboard.h	/^	INPUT_KEY_HOME,$/;"	e	enum:__anon1
+INPUT_KEY_I	src/drivers/keyboard.h	/^	INPUT_KEY_I,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_1	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_1,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_2	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_2,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_3	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_3,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_4	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_4,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_5	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_5,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_6	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_6,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_7	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_7,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_8	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_8,$/;"	e	enum:__anon1
+INPUT_KEY_I10L_9	src/drivers/keyboard.h	/^	INPUT_KEY_I10L_9,$/;"	e	enum:__anon1
+INPUT_KEY_INSERT	src/drivers/keyboard.h	/^	INPUT_KEY_INSERT,$/;"	e	enum:__anon1
+INPUT_KEY_J	src/drivers/keyboard.h	/^	INPUT_KEY_J,$/;"	e	enum:__anon1
+INPUT_KEY_K	src/drivers/keyboard.h	/^	INPUT_KEY_K,$/;"	e	enum:__anon1
+INPUT_KEY_KP_0	src/drivers/keyboard.h	/^	INPUT_KEY_KP_0,$/;"	e	enum:__anon1
+INPUT_KEY_KP_00	src/drivers/keyboard.h	/^	INPUT_KEY_KP_00 = 0x00B0,$/;"	e	enum:__anon1
+INPUT_KEY_KP_000	src/drivers/keyboard.h	/^	INPUT_KEY_KP_000,$/;"	e	enum:__anon1
+INPUT_KEY_KP_1	src/drivers/keyboard.h	/^	INPUT_KEY_KP_1,$/;"	e	enum:__anon1
+INPUT_KEY_KP_2	src/drivers/keyboard.h	/^	INPUT_KEY_KP_2,$/;"	e	enum:__anon1
+INPUT_KEY_KP_3	src/drivers/keyboard.h	/^	INPUT_KEY_KP_3,$/;"	e	enum:__anon1
+INPUT_KEY_KP_4	src/drivers/keyboard.h	/^	INPUT_KEY_KP_4,$/;"	e	enum:__anon1
+INPUT_KEY_KP_5	src/drivers/keyboard.h	/^	INPUT_KEY_KP_5,$/;"	e	enum:__anon1
+INPUT_KEY_KP_6	src/drivers/keyboard.h	/^	INPUT_KEY_KP_6,$/;"	e	enum:__anon1
+INPUT_KEY_KP_7	src/drivers/keyboard.h	/^	INPUT_KEY_KP_7,$/;"	e	enum:__anon1
+INPUT_KEY_KP_8	src/drivers/keyboard.h	/^	INPUT_KEY_KP_8,$/;"	e	enum:__anon1
+INPUT_KEY_KP_9	src/drivers/keyboard.h	/^	INPUT_KEY_KP_9,$/;"	e	enum:__anon1
+INPUT_KEY_KP_A	src/drivers/keyboard.h	/^	INPUT_KEY_KP_A,$/;"	e	enum:__anon1
+INPUT_KEY_KP_AMP	src/drivers/keyboard.h	/^	INPUT_KEY_KP_AMP,$/;"	e	enum:__anon1
+INPUT_KEY_KP_AT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_AT,$/;"	e	enum:__anon1
+INPUT_KEY_KP_B	src/drivers/keyboard.h	/^	INPUT_KEY_KP_B,$/;"	e	enum:__anon1
+INPUT_KEY_KP_BACKSPACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_BACKSPACE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_BIN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_BIN,$/;"	e	enum:__anon1
+INPUT_KEY_KP_C	src/drivers/keyboard.h	/^	INPUT_KEY_KP_C,$/;"	e	enum:__anon1
+INPUT_KEY_KP_CARET	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CARET,$/;"	e	enum:__anon1
+INPUT_KEY_KP_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLEAR,$/;"	e	enum:__anon1
+INPUT_KEY_KP_CLEAR_ENTRY	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLEAR_ENTRY,$/;"	e	enum:__anon1
+INPUT_KEY_KP_CLOSE_BRACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLOSE_BRACE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_CLOSE_PARENTHESIS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_CLOSE_PARENTHESIS,$/;"	e	enum:__anon1
+INPUT_KEY_KP_COLON	src/drivers/keyboard.h	/^	INPUT_KEY_KP_COLON,$/;"	e	enum:__anon1
+INPUT_KEY_KP_COMMA	src/drivers/keyboard.h	/^	INPUT_KEY_KP_COMMA,$/;"	e	enum:__anon1
+INPUT_KEY_KP_D	src/drivers/keyboard.h	/^	INPUT_KEY_KP_D,$/;"	e	enum:__anon1
+INPUT_KEY_KP_DASH	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DASH,$/;"	e	enum:__anon1
+INPUT_KEY_KP_DEC	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DEC,$/;"	e	enum:__anon1
+INPUT_KEY_KP_DOUBLE_AMP	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DOUBLE_AMP,$/;"	e	enum:__anon1
+INPUT_KEY_KP_DOUBLE_PIPE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_DOUBLE_PIPE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_E	src/drivers/keyboard.h	/^	INPUT_KEY_KP_E,$/;"	e	enum:__anon1
+INPUT_KEY_KP_ENTER	src/drivers/keyboard.h	/^	INPUT_KEY_KP_ENTER,$/;"	e	enum:__anon1
+INPUT_KEY_KP_EQUAL	src/drivers/keyboard.h	/^	INPUT_KEY_KP_EQUAL,$/;"	e	enum:__anon1
+INPUT_KEY_KP_EXCLAMATION_MARK	src/drivers/keyboard.h	/^	INPUT_KEY_KP_EXCLAMATION_MARK,$/;"	e	enum:__anon1
+INPUT_KEY_KP_F	src/drivers/keyboard.h	/^	INPUT_KEY_KP_F,$/;"	e	enum:__anon1
+INPUT_KEY_KP_GREATER_THEN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_GREATER_THEN,$/;"	e	enum:__anon1
+INPUT_KEY_KP_HEX	src/drivers/keyboard.h	/^	INPUT_KEY_KP_HEX,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_ADD	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_ADD,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_CLEAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_CLEAR,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_DIVIDE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_DIVIDE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_MULTIPLY	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_MULTIPLY,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_RECALL	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_RECALL,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_STORE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_STORE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_MEM_SUBTRACT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_MEM_SUBTRACT,$/;"	e	enum:__anon1
+INPUT_KEY_KP_NUMBER	src/drivers/keyboard.h	/^	INPUT_KEY_KP_NUMBER,$/;"	e	enum:__anon1
+INPUT_KEY_KP_OCT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OCT,$/;"	e	enum:__anon1
+INPUT_KEY_KP_OPEN_BRACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OPEN_BRACE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_OPEN_PARENTHESIS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_OPEN_PARENTHESIS,$/;"	e	enum:__anon1
+INPUT_KEY_KP_PERCENT	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PERCENT,$/;"	e	enum:__anon1
+INPUT_KEY_KP_PERIOD	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PERIOD,$/;"	e	enum:__anon1
+INPUT_KEY_KP_PIPE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PIPE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_PLUS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PLUS,$/;"	e	enum:__anon1
+INPUT_KEY_KP_PLUS_MINUS	src/drivers/keyboard.h	/^	INPUT_KEY_KP_PLUS_MINUS,$/;"	e	enum:__anon1
+INPUT_KEY_KP_SLASH	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SLASH,$/;"	e	enum:__anon1
+INPUT_KEY_KP_SMALLER_THEN	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SMALLER_THEN,$/;"	e	enum:__anon1
+INPUT_KEY_KP_SPACE	src/drivers/keyboard.h	/^	INPUT_KEY_KP_SPACE,$/;"	e	enum:__anon1
+INPUT_KEY_KP_STAR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_STAR,$/;"	e	enum:__anon1
+INPUT_KEY_KP_TAB	src/drivers/keyboard.h	/^	INPUT_KEY_KP_TAB,$/;"	e	enum:__anon1
+INPUT_KEY_KP_XOR	src/drivers/keyboard.h	/^	INPUT_KEY_KP_XOR,$/;"	e	enum:__anon1
+INPUT_KEY_L	src/drivers/keyboard.h	/^	INPUT_KEY_L,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_1	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_1,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_2	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_2,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_3	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_3,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_4	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_4,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_5	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_5,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_6	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_6,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_7	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_7,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_8	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_8,$/;"	e	enum:__anon1
+INPUT_KEY_LANG_9	src/drivers/keyboard.h	/^	INPUT_KEY_LANG_9,$/;"	e	enum:__anon1
+INPUT_KEY_LEFT_ALT	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_ALT,$/;"	e	enum:__anon1
+INPUT_KEY_LEFT_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_ARROW,$/;"	e	enum:__anon1
+INPUT_KEY_LEFT_CTRL	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_CTRL = 0x00E0,$/;"	e	enum:__anon1
+INPUT_KEY_LEFT_GUI	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_GUI,$/;"	e	enum:__anon1
+INPUT_KEY_LEFT_SHIFT	src/drivers/keyboard.h	/^	INPUT_KEY_LEFT_SHIFT,$/;"	e	enum:__anon1
+INPUT_KEY_LOCKING_CAPS_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_CAPS_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_LOCKING_NUM_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_NUM_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_LOCKING_SCROLL_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_LOCKING_SCROLL_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_M	src/drivers/keyboard.h	/^	INPUT_KEY_M,$/;"	e	enum:__anon1
+INPUT_KEY_MENU	src/drivers/keyboard.h	/^	INPUT_KEY_MENU,$/;"	e	enum:__anon1
+INPUT_KEY_MUTE	src/drivers/keyboard.h	/^	INPUT_KEY_MUTE,$/;"	e	enum:__anon1
+INPUT_KEY_N	src/drivers/keyboard.h	/^	INPUT_KEY_N,$/;"	e	enum:__anon1
+INPUT_KEY_NUM_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_NUM_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_O	src/drivers/keyboard.h	/^	INPUT_KEY_O,$/;"	e	enum:__anon1
+INPUT_KEY_OPEN_BRACKET	src/drivers/keyboard.h	/^	INPUT_KEY_OPEN_BRACKET,$/;"	e	enum:__anon1
+INPUT_KEY_OPER	src/drivers/keyboard.h	/^	INPUT_KEY_OPER,$/;"	e	enum:__anon1
+INPUT_KEY_OUT	src/drivers/keyboard.h	/^	INPUT_KEY_OUT,$/;"	e	enum:__anon1
+INPUT_KEY_P	src/drivers/keyboard.h	/^	INPUT_KEY_P,$/;"	e	enum:__anon1
+INPUT_KEY_PAGE_DOWN	src/drivers/keyboard.h	/^	INPUT_KEY_PAGE_DOWN,$/;"	e	enum:__anon1
+INPUT_KEY_PAGE_UP	src/drivers/keyboard.h	/^	INPUT_KEY_PAGE_UP,$/;"	e	enum:__anon1
+INPUT_KEY_PASTE	src/drivers/keyboard.h	/^	INPUT_KEY_PASTE,$/;"	e	enum:__anon1
+INPUT_KEY_PAUSE	src/drivers/keyboard.h	/^	INPUT_KEY_PAUSE,$/;"	e	enum:__anon1
+INPUT_KEY_PERIOD	src/drivers/keyboard.h	/^	INPUT_KEY_PERIOD,$/;"	e	enum:__anon1
+INPUT_KEY_POWER	src/drivers/keyboard.h	/^	INPUT_KEY_POWER,$/;"	e	enum:__anon1
+INPUT_KEY_PRINT_SCREEN	src/drivers/keyboard.h	/^	INPUT_KEY_PRINT_SCREEN,$/;"	e	enum:__anon1
+INPUT_KEY_PRIOR	src/drivers/keyboard.h	/^	INPUT_KEY_PRIOR,$/;"	e	enum:__anon1
+INPUT_KEY_Q	src/drivers/keyboard.h	/^	INPUT_KEY_Q,$/;"	e	enum:__anon1
+INPUT_KEY_R	src/drivers/keyboard.h	/^	INPUT_KEY_R,$/;"	e	enum:__anon1
+INPUT_KEY_RETURN	src/drivers/keyboard.h	/^	INPUT_KEY_RETURN,$/;"	e	enum:__anon1
+INPUT_KEY_RIGHT_ALT	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_ALT,$/;"	e	enum:__anon1
+INPUT_KEY_RIGHT_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_ARROW,$/;"	e	enum:__anon1
+INPUT_KEY_RIGHT_CTRL	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_CTRL,$/;"	e	enum:__anon1
+INPUT_KEY_RIGHT_GUI	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_GUI$/;"	e	enum:__anon1
+INPUT_KEY_RIGHT_SHIFT	src/drivers/keyboard.h	/^	INPUT_KEY_RIGHT_SHIFT,$/;"	e	enum:__anon1
+INPUT_KEY_S	src/drivers/keyboard.h	/^	INPUT_KEY_S,$/;"	e	enum:__anon1
+INPUT_KEY_SCROLL_LOCK	src/drivers/keyboard.h	/^	INPUT_KEY_SCROLL_LOCK,$/;"	e	enum:__anon1
+INPUT_KEY_SELECT	src/drivers/keyboard.h	/^	INPUT_KEY_SELECT,$/;"	e	enum:__anon1
+INPUT_KEY_SEMICOLON	src/drivers/keyboard.h	/^	INPUT_KEY_SEMICOLON,$/;"	e	enum:__anon1
+INPUT_KEY_SEPARATOR	src/drivers/keyboard.h	/^	INPUT_KEY_SEPARATOR,$/;"	e	enum:__anon1
+INPUT_KEY_SLASH	src/drivers/keyboard.h	/^	INPUT_KEY_SLASH,$/;"	e	enum:__anon1
+INPUT_KEY_SPACEBAR	src/drivers/keyboard.h	/^	INPUT_KEY_SPACEBAR,$/;"	e	enum:__anon1
+INPUT_KEY_STOP	src/drivers/keyboard.h	/^	INPUT_KEY_STOP,$/;"	e	enum:__anon1
+INPUT_KEY_SYSREQ	src/drivers/keyboard.h	/^	INPUT_KEY_SYSREQ,$/;"	e	enum:__anon1
+INPUT_KEY_T	src/drivers/keyboard.h	/^	INPUT_KEY_T,$/;"	e	enum:__anon1
+INPUT_KEY_TAB	src/drivers/keyboard.h	/^	INPUT_KEY_TAB,$/;"	e	enum:__anon1
+INPUT_KEY_THOUSANDS_SEP	src/drivers/keyboard.h	/^	INPUT_KEY_THOUSANDS_SEP,$/;"	e	enum:__anon1
+INPUT_KEY_U	src/drivers/keyboard.h	/^	INPUT_KEY_U,$/;"	e	enum:__anon1
+INPUT_KEY_UNDO	src/drivers/keyboard.h	/^	INPUT_KEY_UNDO,$/;"	e	enum:__anon1
+INPUT_KEY_UP_ARROW	src/drivers/keyboard.h	/^	INPUT_KEY_UP_ARROW,$/;"	e	enum:__anon1
+INPUT_KEY_V	src/drivers/keyboard.h	/^	INPUT_KEY_V,$/;"	e	enum:__anon1
+INPUT_KEY_VOLUME_DOWN	src/drivers/keyboard.h	/^	INPUT_KEY_VOLUME_DOWN,$/;"	e	enum:__anon1
+INPUT_KEY_VOLUME_UP	src/drivers/keyboard.h	/^	INPUT_KEY_VOLUME_UP,$/;"	e	enum:__anon1
+INPUT_KEY_W	src/drivers/keyboard.h	/^	INPUT_KEY_W,$/;"	e	enum:__anon1
+INPUT_KEY_X	src/drivers/keyboard.h	/^	INPUT_KEY_X,$/;"	e	enum:__anon1
+INPUT_KEY_Y	src/drivers/keyboard.h	/^	INPUT_KEY_Y,$/;"	e	enum:__anon1
+INPUT_KEY_Z	src/drivers/keyboard.h	/^	INPUT_KEY_Z,$/;"	e	enum:__anon1
+INPUT_LED_CAPSLOCK	src/drivers/keyboard.h	/^	INPUT_LED_CAPSLOCK,$/;"	e	enum:__anon2
+INPUT_LED_NUMLOCK	src/drivers/keyboard.h	/^	INPUT_LED_NUMLOCK = 0x0001,$/;"	e	enum:__anon2
+INPUT_LED_SCROLLLOCK	src/drivers/keyboard.h	/^	INPUT_LED_SCROLLLOCK$/;"	e	enum:__anon2
 INTERRUPT_H	src/interrupt.h	2;"	d
 INVALID_SCANCODE	src/drivers/keyboard.h	35;"	d
 KB_DEV_NAME	src/drivers/keyboard.h	30;"	d
@@ -366,6 +370,7 @@ LIGHT_GRAY	src/lib/klib.h	/^	LIGHT_GRAY = 0x7,$/;"	e	enum:color
 LIGHT_GREEN	src/lib/klib.h	/^	LIGHT_GREEN = 0xA,$/;"	e	enum:color
 LIGHT_MAGENTA	src/lib/klib.h	/^	LIGHT_MAGENTA = 0xD,$/;"	e	enum:color
 LIGHT_RED	src/lib/klib.h	/^	LIGHT_RED = 0xC,$/;"	e	enum:color
+Length	src/kernel.c	/^	uint32_t Length;$/;"	m	struct:RSDPDescriptor20	file:
 MAGENTA	src/lib/klib.h	/^	MAGENTA = 0x5,$/;"	e	enum:color
 MAX_ARGS	src/lib/klib.c	129;"	d	file:
 MAX_INTERRUPTS	src/idt.h	6;"	d
@@ -417,9 +422,10 @@ MULTIBOOT_TAG_TYPE_MODULE	src/multiboot2.h	47;"	d
 MULTIBOOT_TAG_TYPE_NETWORK	src/multiboot2.h	60;"	d
 MULTIBOOT_TAG_TYPE_SMBIOS	src/multiboot2.h	57;"	d
 MULTIBOOT_TAG_TYPE_VBE	src/multiboot2.h	51;"	d
-NULL	src/lib/klib.h	9;"	d
-OUTB	src/lib/klib.h	57;"	d
-OUTD	src/lib/klib.h	61;"	d
+NULL	src/lib/klib.h	6;"	d
+OEMID	src/kernel.c	/^ char OEMID[6];$/;"	m	struct:RSDPDescriptor	file:
+OUTB	src/lib/klib.h	54;"	d
+OUTD	src/lib/klib.h	58;"	d
 PCI_BUS_MAX	src/pci.h	6;"	d
 PCI_CLASS_CODE_TABLE_LEN	src/pci.c	105;"	d	file:
 PCI_CLASS_MASS_STORAGE_CONTROLLER	src/pci.h	31;"	d
@@ -468,14 +474,22 @@ PS2_KB_OUTPUT_READY	src/drivers/keyboard.h	24;"	d
 PS2_KB_RESEND_LAST	src/drivers/keyboard.h	19;"	d
 PS2_KB_STATUS	src/drivers/keyboard.h	10;"	d
 RED	src/lib/klib.h	/^	RED = 0x4,$/;"	e	enum:color
+RSDPDescriptor	src/kernel.c	/^struct RSDPDescriptor {$/;"	s	file:
+RSDPDescriptor20	src/kernel.c	/^struct RSDPDescriptor20 {$/;"	s	file:
+Revision	src/kernel.c	/^ uint8_t Revision;$/;"	m	struct:RSDPDescriptor	file:
+RsdtAddress	src/kernel.c	/^ uint32_t RsdtAddress;$/;"	m	struct:RSDPDescriptor	file:
 SCAN_CTRL	src/drivers/keyboard.h	38;"	d
 SCAN_EXT0	src/drivers/keyboard.h	40;"	d
 SCAN_EXT1	src/drivers/keyboard.h	41;"	d
 SCAN_NUMLOCK	src/drivers/keyboard.h	39;"	d
 SCAN_RELEASE	src/drivers/keyboard.h	37;"	d
+Signature	src/kernel.c	/^ char Signature[8];$/;"	m	struct:RSDPDescriptor	file:
 VGA_ADDRESS	src/lib/klib.c	60;"	d	file:
 WHITE	src/lib/klib.h	/^	WHITE = 0XF,$/;"	e	enum:color
+XsdtAddress	src/kernel.c	/^	uint64_t XsdtAddress;$/;"	m	struct:RSDPDescriptor20	file:
 YELLOW	src/lib/klib.h	/^	YELLOW = 0XE,$/;"	e	enum:color
+_APIC_H	src/apic.h	2;"	d
+_CPU_H	src/cpu.h	5;"	d
 _PAGETABLE_H	src/pagetable.h	2;"	d
 __pic_get_irq_reg	src/pic.c	/^static uint16_t __pic_get_irq_reg(int ocw3)$/;"	f	file:
 _available	src/pagetable.h	/^	uint16_t _available:11;$/;"	m	struct:pml4t
@@ -491,6 +505,7 @@ a	src/pagetable.h	/^	uint8_t a:1;$/;"	m	struct:pml4t
 a	src/pagetable.h	/^	uint8_t a:1;$/;"	m	struct:pml4t::pdpt
 a	src/pagetable.h	/^	uint8_t a:1;$/;"	m	struct:pml4t::pdpt::pdt
 addr	src/multiboot2.h	/^  multiboot_uint64_t addr;$/;"	m	struct:multiboot_mmap_entry
+apic	src/apic.h	/^	uint32_t	apic;$/;"	m	struct:multiple_apic_descriptor_table
 architecture	src/multiboot2.h	/^  multiboot_uint32_t architecture;$/;"	m	struct:multiboot_header
 avl	src/pagetable.h	/^	uint8_t avl:3;$/;"	m	struct:pml4t
 avl	src/pagetable.h	/^	uint8_t avl:3;$/;"	m	struct:pml4t::pdpt
@@ -509,6 +524,7 @@ bx	src/interrupt.h	/^	uint64_t bx;$/;"	m	struct:pt_regs
 check_cpuid	src/init/boot.asm	/^check_cpuid:$/;"	l
 check_long_mode	src/init/boot.asm	/^check_long_mode:$/;"	l
 check_multiboot	src/init/boot.asm	/^check_multiboot:$/;"	l
+checksum	src/apic.h	/^	uint8_t		checksum;$/;"	m	struct:multiple_apic_descriptor_table
 checksum	src/multiboot2.h	/^  multiboot_uint32_t checksum;$/;"	m	struct:multiboot_header
 circ_buf	src/lib/circ_buf.h	/^typedef struct circ_buf {$/;"	s
 circ_buf_init	src/lib/circ_buf.c	/^void circ_buf_init(circ_buf_t *buf, uint8_t *buf_start, uint32_t elem_size,$/;"	f
@@ -522,9 +538,14 @@ color	src/lib/klib.h	/^enum color {$/;"	g
 common	src/multiboot2.h	/^  struct multiboot_tag_framebuffer_common common;$/;"	m	struct:multiboot_tag_framebuffer	typeref:struct:multiboot_tag_framebuffer::multiboot_tag_framebuffer_common
 console_flags	src/multiboot2.h	/^  multiboot_uint32_t console_flags;$/;"	m	struct:multiboot_header_tag_console_flags
 count	src/lib/circ_buf.h	/^	uint64_t	count;		\/* Current number of elements in buf *\/$/;"	m	struct:circ_buf
-cpuid	src/lib/cpuid.c	/^inline void cpuid(int code, uint32_t *a, uint32_t *d)$/;"	f
-cpuid_requests	src/lib/cpuid.h	/^enum cpuid_requests {$/;"	g
-cpuid_string	src/lib/cpuid.c	/^inline int cpuid_string(int code, uint32_t where[4])$/;"	f
+cpu_get_msr	src/cpu.c	/^void cpu_get_msr(uint32_t msr, uint32_t *lo, uint32_t *hi)$/;"	f
+cpu_has_msr	src/cpu.c	/^uint8_t cpu_has_msr()$/;"	f
+cpu_set_msr	src/cpu.c	/^void cpu_set_msr(uint32_t msr, uint32_t lo, uint32_t hi)$/;"	f
+cpuid	src/cpu.c	/^inline void cpuid(int code, uint32_t *a, uint32_t *d)$/;"	f
+cpuid_requests	src/cpu.h	/^enum cpuid_requests {$/;"	g
+cpuid_string	src/cpu.c	/^inline int cpuid_string(int code, uint32_t where[4])$/;"	f
+creator_id	src/apic.h	/^	uint32_t	creator_id;$/;"	m	struct:multiple_apic_descriptor_table
+creator_revision	src/apic.h	/^	uint32_t	creator_revision;$/;"	m	struct:multiple_apic_descriptor_table
 cs	src/interrupt.h	/^	uint64_t cs;$/;"	m	struct:pt_regs
 cseg	src/multiboot2.h	/^  multiboot_uint16_t cseg;$/;"	m	struct:multiboot_tag_apm
 cseg_16	src/multiboot2.h	/^  multiboot_uint16_t cseg_16;$/;"	m	struct:multiboot_tag_apm
@@ -568,6 +589,7 @@ extern	src/drivers/_keyboard.asm	/^extern pic_eoi$/;"	l
 extern	src/init/boot.asm	/^extern main$/;"	l
 external_specification	src/multiboot2.h	/^  multiboot_uint8_t external_specification[256];$/;"	m	struct:multiboot_vbe_mode_info_block
 external_specification	src/multiboot2.h	/^  multiboot_uint8_t external_specification[512];$/;"	m	struct:multiboot_vbe_info_block
+firstPart	src/kernel.c	/^	struct RSDPDescriptor firstPart;$/;"	m	struct:RSDPDescriptor20	typeref:struct:RSDPDescriptor20::RSDPDescriptor	file:
 flags	src/interrupt.h	/^	uint64_t flags;$/;"	m	struct:pt_regs
 flags	src/multiboot2.h	/^  multiboot_uint16_t flags;$/;"	m	struct:multiboot_header_tag
 flags	src/multiboot2.h	/^  multiboot_uint16_t flags;$/;"	m	struct:multiboot_header_tag_address
@@ -578,21 +600,22 @@ flags	src/multiboot2.h	/^  multiboot_uint16_t flags;$/;"	m	struct:multiboot_head
 flags	src/multiboot2.h	/^  multiboot_uint16_t flags;$/;"	m	struct:multiboot_header_tag_module_align
 flags	src/multiboot2.h	/^  multiboot_uint16_t flags;$/;"	m	struct:multiboot_tag_apm
 framebuffer_addr	src/multiboot2.h	/^  multiboot_uint64_t framebuffer_addr;$/;"	m	struct:multiboot_tag_framebuffer_common
-framebuffer_blue_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_blue_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
-framebuffer_blue_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_blue_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
+framebuffer_blue_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_blue_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
+framebuffer_blue_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_blue_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
 framebuffer_bpp	src/multiboot2.h	/^  multiboot_uint8_t framebuffer_bpp;$/;"	m	struct:multiboot_tag_framebuffer_common
-framebuffer_green_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_green_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
-framebuffer_green_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_green_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
+framebuffer_green_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_green_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
+framebuffer_green_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_green_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
 framebuffer_height	src/multiboot2.h	/^  multiboot_uint32_t framebuffer_height;$/;"	m	struct:multiboot_tag_framebuffer_common
-framebuffer_palette	src/multiboot2.h	/^      struct multiboot_color framebuffer_palette[0];$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon2	typeref:struct:multiboot_tag_framebuffer::__anon1::__anon2::multiboot_color
-framebuffer_palette_num_colors	src/multiboot2.h	/^      multiboot_uint16_t framebuffer_palette_num_colors;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon2
+framebuffer_palette	src/multiboot2.h	/^      struct multiboot_color framebuffer_palette[0];$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon6	typeref:struct:multiboot_tag_framebuffer::__anon5::__anon6::multiboot_color
+framebuffer_palette_num_colors	src/multiboot2.h	/^      multiboot_uint16_t framebuffer_palette_num_colors;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon6
 framebuffer_pitch	src/multiboot2.h	/^  multiboot_uint32_t framebuffer_pitch;$/;"	m	struct:multiboot_tag_framebuffer_common
-framebuffer_red_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_red_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
-framebuffer_red_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_red_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon1::__anon3
+framebuffer_red_field_position	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_red_field_position;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
+framebuffer_red_mask_size	src/multiboot2.h	/^      multiboot_uint8_t framebuffer_red_mask_size;$/;"	m	struct:multiboot_tag_framebuffer::__anon5::__anon7
 framebuffer_type	src/multiboot2.h	/^  multiboot_uint8_t framebuffer_type;$/;"	m	struct:multiboot_tag_framebuffer_common
 framebuffer_width	src/multiboot2.h	/^  multiboot_uint32_t framebuffer_width;$/;"	m	struct:multiboot_tag_framebuffer_common
 g	src/pagetable.h	/^	uint8_t g:1;$/;"	m	struct:pml4t::pdpt::pdt
 gdt64	src/init/vars.asm	/^gdt64:                               ; Global Descriptor Table (64-bit).$/;"	l
+get_rsdp	src/init/root_system_description_pointer.asm	/^get_rsdp:$/;"	l
 global	src/_interrupt.asm	/^global disable_interrupts$/;"	l
 global	src/_interrupt.asm	/^global enable_interrupts$/;"	l
 global	src/_interrupt.asm	/^global interrupt_dummy_handler$/;"	l
@@ -600,6 +623,7 @@ global	src/_interrupt.asm	/^global interrupt_handler_%1$/;"	l
 global	src/_pic.asm	/^global pic_is_apic$/;"	l
 global	src/drivers/_keyboard.asm	/^global _keyboard_interrupt_handler$/;"	l
 global	src/init/boot.asm	/^global start$/;"	l
+global	src/init/root_system_description_pointer.asm	/^global get_rsdp$/;"	l
 global	src/lib/klib_asm.asm	/^global kpanic$/;"	l
 green	src/multiboot2.h	/^  multiboot_uint8_t green;$/;"	m	struct:multiboot_color
 head	src/lib/circ_buf.h	/^	uint8_t		*head;		\/* Head of the buffer *\/$/;"	m	struct:circ_buf
@@ -666,10 +690,12 @@ kpanic	src/lib/klib_asm.asm	/^kpanic:$/;"	l
 kprint	src/lib/klib.c	/^void kprint(char *str)$/;"	f
 kprintf	src/lib/klib.c	/^void kprintf(const char *fmt, ...)$/;"	f
 len	src/multiboot2.h	/^  multiboot_uint64_t len;$/;"	m	struct:multiboot_mmap_entry
+length	src/apic.h	/^	uint32_t	length;$/;"	m	struct:multiple_apic_descriptor_table
 limit	src/idt.h	/^	uint16_t limit;$/;"	m	struct:idt
 load_addr	src/multiboot2.h	/^  multiboot_uint32_t load_addr;$/;"	m	struct:multiboot_header_tag_address
 load_end_addr	src/multiboot2.h	/^  multiboot_uint32_t load_end_addr;$/;"	m	struct:multiboot_header_tag_address
 long_mode_start	src/init/boot.asm	/^long_mode_start:$/;"	l
+madt_t	src/apic.h	/^}__attribute__((packed)) madt_t;$/;"	t	typeref:struct:multiple_apic_descriptor_table
 magic	src/multiboot2.h	/^  multiboot_uint32_t magic;$/;"	m	struct:multiboot_header
 main	src/kernel.c	/^void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)$/;"	f
 major	src/multiboot2.h	/^  multiboot_uint8_t major;$/;"	m	struct:multiboot_tag_smbios
@@ -721,10 +747,14 @@ multiboot_uint64_t	src/multiboot2.h	/^typedef unsigned long long	multiboot_uint6
 multiboot_uint8_t	src/multiboot2.h	/^typedef unsigned char		multiboot_uint8_t;$/;"	t
 multiboot_vbe_info_block	src/multiboot2.h	/^struct multiboot_vbe_info_block$/;"	s
 multiboot_vbe_mode_info_block	src/multiboot2.h	/^struct multiboot_vbe_mode_info_block$/;"	s
+multiple_apic_descriptor_table	src/apic.h	/^typedef struct multiple_apic_descriptor_table {$/;"	s
 num	src/multiboot2.h	/^  multiboot_uint32_t num;$/;"	m	struct:multiboot_tag_elf_sections
 nx	src/pagetable.h	/^	uint8_t nx:1$/;"	m	struct:pml4t::pdpt
 nx	src/pagetable.h	/^	uint8_t nx:1;$/;"	m	struct:pml4t
 nx	src/pagetable.h	/^	uint8_t nx:1;$/;"	m	struct:pml4t::pdpt::pdt
+oem_id	src/apic.h	/^	uint64_t	oem_id:48;$/;"	m	struct:multiple_apic_descriptor_table
+oem_revision	src/apic.h	/^	uint32_t	oem_revision;$/;"	m	struct:multiple_apic_descriptor_table
+oem_table_id	src/apic.h	/^	uint64_t	oem_table_id;$/;"	m	struct:multiple_apic_descriptor_table
 offset	src/multiboot2.h	/^  multiboot_uint32_t offset;$/;"	m	struct:multiboot_tag_apm
 offset_1	src/idt.h	/^	uint16_t offset_1;$/;"	m	struct:idt_desc
 offset_2	src/idt.h	/^	uint16_t offset_2; \/\/ offset bits 16..31$/;"	m	struct:idt_desc
@@ -782,8 +812,10 @@ r9	src/interrupt.h	/^	uint64_t r9;$/;"	m	struct:pt_regs
 red	src/multiboot2.h	/^  multiboot_uint8_t red;$/;"	m	struct:multiboot_color
 request_irq	src/interrupt.c	/^void request_irq(uint8_t irq, interrupt_handler_t irq_handler, char *name)$/;"	f
 requests	src/multiboot2.h	/^  multiboot_uint32_t requests[0];$/;"	m	struct:multiboot_header_tag_information_request
+reserved	src/kernel.c	/^	uint8_t reserved[3];$/;"	m	struct:RSDPDescriptor20	file:
 reserved	src/multiboot2.h	/^  multiboot_uint16_t reserved;$/;"	m	struct:multiboot_tag_framebuffer_common
 reserved	src/multiboot2.h	/^  multiboot_uint8_t reserved[6];$/;"	m	struct:multiboot_tag_smbios
+revision	src/apic.h	/^	uint8_t		revision;$/;"	m	struct:multiple_apic_descriptor_table
 rsdp	src/multiboot2.h	/^  multiboot_uint8_t rsdp[0];$/;"	m	struct:multiboot_tag_new_acpi
 rsdp	src/multiboot2.h	/^  multiboot_uint8_t rsdp[0];$/;"	m	struct:multiboot_tag_old_acpi
 rw	src/pagetable.h	/^	uint8_t rw:1;$/;"	m	struct:pml4t
@@ -795,6 +827,7 @@ section	src/drivers/_keyboard.asm	/^section .text$/;"	l
 section	src/init/boot.asm	/^section .bss$/;"	l
 section	src/init/boot.asm	/^section .text$/;"	l
 section	src/init/multiboot_header.asm	/^section .multiboot_header$/;"	l
+section	src/init/root_system_description_pointer.asm	/^section .text$/;"	l
 section	src/init/vars.asm	/^section .bss$/;"	l
 section	src/init/vars.asm	/^section .ro_data$/;"	l
 section	src/lib/klib_asm.asm	/^section .text$/;"	l
