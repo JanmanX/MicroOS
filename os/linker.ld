@@ -3,7 +3,8 @@ ENTRY(start)
 SECTIONS {
 	. = 1M;
 
-	.boot :
+	/* Boot region. Ensure aligning to 64 bit */
+	.boot ALIGN(0x40):
 	{
 		/* ensure that the multiboot header is at the beginning */
 		KEEP(*(.multiboot_header))

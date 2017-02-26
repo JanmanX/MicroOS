@@ -5,10 +5,13 @@
 #include <kernel/interrupt.h>
 #include <drivers/keyboard.h>
 #include <drivers/pci.h>
-
+#include <init/xsdt.h>
 
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
+	xsdt_init();
+	HALT;
+
 	struct multiboot_tag *tag;
 	uint32_t size;
 
