@@ -207,6 +207,19 @@ void *memcpy(void *dst, void *src, uint64_t count)
 	return dst;
 }
 
+uint64_t memcmp(const void *s1, const void *s2, uint64_t n)
+{
+	uint64_t i;
+	for(i = 0; i < n; i++) {
+		if(*((uint8_t*)s1) != (*(uint8_t*)s2)) {
+			return *((uint8_t*)s1) - (*(uint8_t*)s2);
+		}
+	}
+
+	return 0;
+}
+
+
 
 inline uint8_t inb(uint16_t port)
 {

@@ -45,7 +45,7 @@ void kprint(char *str);
 void kprintf(const char *fmt, ...);
 
 void *memcpy(void *dst, void *src, uint64_t count);
-
+uint64_t memcmp(const void *s1, const void *s2, uint64_t n);
 
 void _pause(void);
 uint8_t inb(uint16_t port);
@@ -74,6 +74,8 @@ void outd(uint16_t, uint32_t val);
 
 
 #define HALT asm volatile("hlt")
+
+#define LOG(m) kprintf("[LOG %s():%d]: %s\n", __func__, __LINE__, m)
 
 #define DEBUG(m) kprintf("[DEBUG %s():%d]: %s\n", __func__, __LINE__, m)
 #define ERROR(m) do {\
