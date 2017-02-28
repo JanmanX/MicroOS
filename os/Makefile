@@ -1,6 +1,6 @@
 # Compiler
 CC		= x86_64-elf-gcc
-CFLAGS		= -std=gnu99 -ffreestanding -O3 -Wall -Wextra -m64
+CFLAGS		= -std=gnu99 -ffreestanding -O0 -Wall -Wextra -m64 -g
 
 # Assembler
 # nasm
