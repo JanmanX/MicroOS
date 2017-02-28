@@ -207,16 +207,21 @@ void *memcpy(void *dst, void *src, uint64_t count)
 	return dst;
 }
 
-uint64_t memcmp(const void *s1, const void *s2, uint64_t n)
+uint8_t memcmp(const void *s1, const void *s2, uint64_t n)
 {
-	uint64_t i;
-	for(i = 0; i < n; i++) {
-		if(*((uint8_t*)s1) != (*(uint8_t*)s2)) {
-			return *((uint8_t*)s1) - (*(uint8_t*)s2);
-		}
+	/* No bytes to compare */
+	if(n == 0) {
+		return 0;
 	}
 
-	return 0;
+	/* Compare until not equal, or until no more bytes to compare */
+	while(--n && *(uint8_t*)s1 != *(uint8_t*)s2) {
+		s1 = (uint8_t*)s1 + 1;
+		s2 = (uint8_t*)s2 + 1;
+	}
+
+	/* Return difference */
+	return *((uint8_t*)s1) - *((uint8_t*)s2);
 }
 
 
