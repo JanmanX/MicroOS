@@ -3,6 +3,8 @@ report/
 bin/*
 isofiles/
 isofiles/boot/kernel.bin
+tools/src/
+
 
 # Files
 *.swp

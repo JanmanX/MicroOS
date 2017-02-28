@@ -1,10 +1,10 @@
 QEMU=qemu-system-x86_64
-QEMU_FLAGS=-m 20 -s -cpu Broadwell
-BOCHS=bochs
+QEMU_FLAGS=-m 8G -s
 GRUB=grub2
+GRUB_KERNEL=#-bios ./debug/qemu/bios.bin
 
-
-
+BOCHS=bochs
+DEBUG_DIR=./debug
 
 all:
 	make -C os
@@ -15,7 +15,12 @@ iso: all
 	$(GRUB)-mkrescue -o os.iso isofiles/
 
 run: iso
-	$(QEMU) $(QEMU_FLAGS) -cdrom $(ISO) os.iso
+	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) -cdrom  os.iso
+
+debug: iso
+	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) -S -cdrom  os.iso
+
+
 
 bochs: all
 	$(BOCHS) -f $(DEBUG_DIR)/bochs/bochs.conf -q
