@@ -16,7 +16,7 @@ LDSCRIPT	= ./linker.ld
 LDFLAGS 	= --script=$(LDSCRIPT) -Map kernel.map -z max-page-size=0x1000
 
 
-MODULES		:= drivers fs init kernel mem proc lib
+MODULES		:= drivers fs init kernel mem proc lib test
 INC 		= -I. -I./include
 AS_INC		= -I ./init
 SRC		:=
