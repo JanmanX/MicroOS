@@ -207,7 +207,7 @@ void *memcpy(void *dst, void *src, uint64_t count)
 	return dst;
 }
 
-uint8_t memcmp(const void *s1, const void *s2, uint64_t n)
+uint8_t memcmp2(const void *s1, const void *s2, uint64_t n)
 {
 	/* No bytes to compare */
 	if(n == 0) {
@@ -225,6 +225,28 @@ uint8_t memcmp(const void *s1, const void *s2, uint64_t n)
 }
 
 
+uint8_t memcmp(const uint8_t *s1, const uint8_t *s2, uint64_t n)
+{
+	/* While bytes to compare */
+	while(n--) {
+		/* Compare and store result in diff */
+		uint8_t diff = *s1++ - *s2++;
+
+		/* If non-zero, return diff */
+		if(diff != 0) {
+			return diff;
+		}
+	}
+
+	return 0;
+}
+
+void memset(uint8_t *s, uint8_t c, uint64_t n)
+{
+	while(n--) {
+		*s++ = c;
+	}
+}
 
 inline uint8_t inb(uint16_t port)
 {

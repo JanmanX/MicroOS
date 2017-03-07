@@ -45,7 +45,8 @@ void kprint(char *str);
 void kprintf(const char *fmt, ...);
 
 void *memcpy(void *dst, void *src, uint64_t count);
-uint8_t memcmp(const void *s1, const void *s2, uint64_t n);
+uint8_t memcmp(const uint8_t *s1, const uint8_t *s2, uint64_t n);
+void memset(uint8_t *s, uint8_t c, uint64_t n);
 
 void _pause(void);
 uint8_t inb(uint16_t port);
