@@ -6,9 +6,17 @@
 #include <drivers/keyboard.h>
 #include <drivers/pci.h>
 #include <init/xsdt.h>
+#include <test/test.h>
 
+uint64_t test = 1337;
+uint64_t _get_rsdp();
 void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 {
+	init_page_tables_identity();
+	kprintf("Page tables inited\n");
+	tests_run();
+
+	HALT;
 	xsdt_init();
 	HALT;
 

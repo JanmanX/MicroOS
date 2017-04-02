@@ -8,12 +8,16 @@ uint8_t buffer[BUFFER_SIZE];
 
 void tests_run()
 {
-	if(test_memcmp()) {
-		ERROR("TEST_MEMCMP() FAILED");
-	} else {
-		ERROR("MEMCMP TEST PASSED!");
-	}
+	uint64_t errors = 0;
 
+	errors += test_memcmp();
+
+
+
+
+	if(errors) {
+		ERROR("Testing failed.");
+	}
 }
 
 

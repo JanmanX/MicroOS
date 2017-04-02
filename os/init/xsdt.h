@@ -3,22 +3,22 @@
 
 #include <stdint.h>
 
-#define RSDP_SIGNATURE "RSD PTR "
-
+#define RSDP_SIGNATURE		"RSD PTR "
+#define RSDP_SIGNATURE_LEN	8
 /* Pointer to the XSDT */
 #define RSDP_REV_10 0
 #define RSDP_REV_20 2
-#define RSDP_DESC_10_LEN (20)
-#define RSDP_DESC_20_LEN (36)
 
 /* RSDP Version 1.0 */
-typedef struct rsdp_desc {
+typedef struct rsdp_desc_10 {
 	uint8_t signature[8];
 	uint8_t checksum;
 	uint8_t oemid[6];
 	uint8_t revision;
 	uint32_t rsdt_address;
 }__attribute__((packed)) rsdp_desc_10_t;
+typedef rsdp_desc_10_t rsdp_desc_t;
+#define RSDP_DESC_10_LEN (sizeof(rsdp_desc_10_t))
 
 typedef struct rsdp_desc_20 {
 	/* First part */
@@ -30,6 +30,8 @@ typedef struct rsdp_desc_20 {
 	uint8_t ext_checksum;
 	uint8_t reserved[3];
 } __attribute__ ((packed)) rsdp_desc_20_t;
+#define RSDP_DESC_20_LEN (sizeof(rsdp_desc_20_t))
+
 
 
 /* The RSDT is the main System Description Table */
@@ -44,7 +46,7 @@ typedef struct xsdt_hdr {
 	uint32_t creatorid;
 	uint32_t creatorrevision;
 } __attribute__((packed)) xsdt_hdr_t;
-
+#define XSDT_HDR_LEN sizeof(xsdt_hdr_t)
 
 
 void xsdt_init();

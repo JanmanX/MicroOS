@@ -2,15 +2,6 @@ section .bss
 align 4096
 %include "init/defines.inc"
 
-; Page tables for 64GiB
-; Each entry is 8 bytes, with 512 slots in each table
-; 512 * 8 bytes = 4096 bytes for each table
-PML4T:		resb 4096	  		; 1 	PML4E
-PDPT:		resb 4096			; 64 	PDPE
-PDT:		resb (PAGE_ENTRY_SIZE*64*512)	; 32768 PDE
-; 1*64*512 * 2MiB = 64 gibibytes
-
-
 section .ro_data
 ; Global Descriptor Table used for long mode
 ;

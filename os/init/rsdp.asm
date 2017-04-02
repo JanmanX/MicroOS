@@ -20,18 +20,22 @@
 
 section .text
 
-global get_rsdp
+global _get_rsdp
 
 ; int64_t* get_rsdp()
 ; 	IN:
 ; 	OUT: pointer to RSD, or 0 as error.
-get_rsdp:
+_get_rsdp:
 ; Search range 0x000E0000 - 0x000FFFFF first
 	pushf
 	cld
 	mov rax, SIGNATURE
-	mov rdi, 0x000E0000
-	mov rcx, 0x000FFFFF
+
+	; QEMU seems to be searching this range instead
+	mov rdi, 0xF0000
+	mov rcx, 0x100000
+;	mov rdi, 0x000E0000
+;	mov rcx, 0x000FFFFF
 
 .loop:
 	cmp rax, [rdi]
@@ -41,6 +45,8 @@ get_rsdp:
 	cmp rdi, rcx
 	jb .loop		; loop if within search memory
 
+	mov dword [0xB8000], 0x12345678
+	hlt
 
 .search_edba:
 	mov rdi, 0x000A0000

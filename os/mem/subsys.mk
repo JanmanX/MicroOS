@@ -1,7 +1,7 @@
 
 # Set the module name
-MODULE :=
+MODULE := mem
 
-FILES :=
+FILES := vm.c
 
 SRC += $(patsubst %, $(MODULE)/%, $(FILES))

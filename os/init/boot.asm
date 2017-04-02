@@ -10,8 +10,9 @@ section .text
 	xchg bx, bx
 %endmacro
 
+; PAGING
 %define NUM_PML4E	1
-%define NUM_PDPE	64
+%define NUM_PDPE	1
 %define NUM_PDE		512 * NUM_PDPE
 
 
@@ -154,7 +155,7 @@ setup_page_tables:
 	mov [PDT + PAGE_ENTRY_SIZE * ecx], eax	; store it
 
 	inc ecx
-	cmp ecx, 512
+	cmp ecx, NUM_PDE
 	jne .setup_pdt
 
 	ret
@@ -233,7 +234,7 @@ long_mode_start:
         cld
 
 	; Expand paging to 64GiB
-	call extend_page_tables
+;	call extend_page_tables
 
 	; mb_info_ptr is already in rdi
 	mov rsi, PML4T
@@ -244,7 +245,6 @@ long_mode_start:
 ;
 ; Extends the mapping to 64GiB
 extend_page_tables:
-
 	; Extend the PDP Table
 	xor rcx, rcx
 	inc rcx		; One page is already loaded, thus inc by 1
@@ -286,5 +286,15 @@ align 4096	; ensures the tables are page-aligned
 stack_bottom:
 	resb 4096
 stack_top:
+
+section .ro_data
+; Page tables for 64GiB
+; Each entry is 8 bytes, with 512 slots in each table
+; 512 * 8 bytes = 4096 bytes for each table
+PML4T:		resb 4096	  				; 1 	PML4E
+PDPT:		resb 4096					; 1 	PDPE
+PDT:		resb (PAGE_ENTRY_SIZE * NUM_PDE)		; 512 PDE
+
+
 
 %include "init/vars.asm"
