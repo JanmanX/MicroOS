@@ -22,8 +22,6 @@ uint64_t *pdpt_ptr = (uint64_t*)pdpt;
 uint64_t pdt[PDT_NUM]__attribute__((aligned(4096)));
 uint64_t *pdt_ptr = (uint64_t*)pdt;
 
-
-
 #define MiB2		0x200000 // 2^21 bytes = 2097152 = 2MiB
 
 
