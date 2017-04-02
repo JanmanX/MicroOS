@@ -1,5 +1,5 @@
 QEMU=qemu-system-x86_64
-QEMU_FLAGS=-m 8G -s
+QEMU_FLAGS=-m 4G -s
 GRUB=grub2
 GRUB_KERNEL=#-bios ./debug/qemu/bios.bin
 
@@ -22,10 +22,10 @@ debug: iso
 
 
 
-bochs: all
+bochs: iso
 	$(BOCHS) -f $(DEBUG_DIR)/bochs/bochs.conf -q
 
 tags:
-	find src/ | xargs ctags
+	find os/ | xargs ctags
 
 
