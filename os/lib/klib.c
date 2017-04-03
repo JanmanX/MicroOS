@@ -175,6 +175,12 @@ void kprintf(const char *fmt, ...)
 			s = buf;
 			goto string;
 
+		case 'c':
+			buf[0] = *arg++;
+			buf[1] = (char)0;
+			s = buf;
+			goto string;
+
 		case 's':
 			s = *arg++;
 
