@@ -17,6 +17,8 @@ void tests_run()
 
 	if(errors) {
 		ERROR("Testing failed.");
+	} else {
+		LOG("All tests passed.");
 	}
 }
 

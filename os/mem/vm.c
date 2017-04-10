@@ -2,20 +2,66 @@
 #include "pagetable.h"
 #include <lib/klib.h>
 #include "vm.h"
+#include <lib/cpuid.h>
 
+void mm_dump_pdpe(pdpe_t *p)
+{
+	uint64_t *t = (uint64_t*)p;
+	kprintf("RAW: 0x%x\n", *t);
+
+	kprintf("p: 0x%x \n", p->p);
+	kprintf("rw: 0x%x\n", p->rw);
+	kprintf("us: 0x%x\n", p->us);
+	kprintf("pwt: 0x%x\n", p->pwt);
+	kprintf("pcd: 0x%x\n", p->pcd);
+	kprintf("a: 0x%x\n", p->a);
+	kprintf("d: 0x%x \n", p->d);
+	kprintf("ps: 0x%x\n", p->ps);
+	kprintf("g: 0x%x\n", p->g);
+	kprintf("avl: 0x%x\n", p->avl);
+	kprintf("pat: 0x%x\n", p->pat);
+	kprintf("base_address: 0x%x\n", p->base_address);
+	kprintf("_available: 0x%x\n", p->_available);
+	kprintf("nx: 0x%x\n", p->nx);
+
+}
 
 static void reload_page_table(uint64_t pml4t_start_phys)
 {
+	BOCHS_DEBUG;
+
 	asm volatile("mov %0, %%rax;\
 		     mov %%rax, %%cr3;"
 		     :
 		     : "r"(pml4t_start_phys)
 		     : "%rax"
 		    );
+
+	BOCHS_DEBUG;
 }
+
+uint8_t mm_map(uint64_t phys, uint64_t virt)
+{
+	if(MM_GET_PML4_INDEX(phys) > PML4T_NUM) {
+		kprintf("Cannot map pages at 0x%x\n", phys);
+		return 1;
+	}
+
+	/* TODO */
+	//	pml4t[MM_GET_PML4_INDEX(phys)] = &();
+}
+
 
 void init_page_tables_identity(void)
 {
+	/* Ensure 1 GiB pages supported */
+	uint32_t rax, rdx;
+	cpuid(CPUID_EXTENDED_FEATURES, &rax, &rdx);
+	if( rdx & EDX_GBYTE_PAGING == 0) {
+		kprintf("RAX: 0x%x\nRDX: 0x%x\n", rax, rdx);
+		ERROR("GByte paging not supported by this CPU.");
+	}
+
 	uint64_t i = 0;
 	uint64_t addr = 0x00;
 	uint64_t entry = 0;
@@ -23,25 +69,24 @@ void init_page_tables_identity(void)
 	/* Zero out tables */
 	memset(pml4t, 0x00, PML4T_NUM * sizeof(pml4e_t));
 	memset(pdpt, 0x00, PDPT_NUM * sizeof(pdpe_t));
-	memset(pdt, 0x00, PDT_NUM * sizeof(pde_t));
+
 
 	/* Setup PML4T */
 	for(i = 0; i < PML4T_NUM; i++) {
-		pml4t[i]= ((uint64_t)pdpt) | PAGE_PRESENT | PAGE_WRITE;
+		pml4t[i] = (uint64_t)pdpt | 3;
 	}
 
 	/* Setup PDPT */
 	for(i = 0; i < PDPT_NUM; i++) {
-		pdpt_ptr[i] = ((uint64_t)(&pdt[i * 512]))  | PAGE_PRESENT | PAGE_WRITE;
+		pdpt[i] = ((uint64_t)pdt) | 3;
 	}
 
 	/* Setup PDT */
-	for(i = 0; i < PDT_NUM; i++) {
-		pdt_ptr[i] = (uint64_t)(MiB2 * i) | PAGE_PRESENT | PAGE_WRITE |
-			PAGE_2MB;
- 	}
-
+	for(i = 0; i < PDE_NUM; i++) {
+		pdt[i] = i * (MiB << 1) | (1<<7) | 3;
+	}
 
 	/* Reload */
 	reload_page_table((uint64_t)pml4t);
+
 }

@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 
-#include <cpuid.h>
 
 #define NULL ((void*)0x00)
 

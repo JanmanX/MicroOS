@@ -12,7 +12,7 @@ section .text
 
 ; PAGING
 %define NUM_PML4E	1
-%define NUM_PDPE	1
+%define NUM_PDPE	64
 %define NUM_PDE		512 * NUM_PDPE
 
 
@@ -237,7 +237,6 @@ long_mode_start:
 ;	call extend_page_tables
 
 	; mb_info_ptr is already in rdi
-	mov rsi, PML4T
 	call main
 	hlt
 
@@ -291,9 +290,9 @@ section .ro_data
 ; Page tables for 64GiB
 ; Each entry is 8 bytes, with 512 slots in each table
 ; 512 * 8 bytes = 4096 bytes for each table
-PML4T:		resb 4096	  				; 1 	PML4E
-PDPT:		resb 4096					; 1 	PDPE
-PDT:		resb (PAGE_ENTRY_SIZE * NUM_PDE)		; 512 PDE
+PML4T:	resb 4096 * NUM_PML4E  				; 1 	PML4E
+PDPT:	resb 4096 * NUM_PDPE				; 1 	PDPE
+PDT:	resb (PAGE_ENTRY_SIZE * NUM_PDE * NUM_PDPE * NUM_PML4E)	; 512 PDE
 
 
 

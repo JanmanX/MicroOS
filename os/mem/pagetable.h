@@ -12,7 +12,8 @@ typedef struct pml4e {
 	uint8_t pcd:1;
 	uint8_t a:1;
 	uint8_t ign:1;
-	uint8_t mbz:2;
+	uint8_t mbz:1;
+	uint8_t ign2:1;
 	uint8_t avl:3;
 	uint64_t base_address:40;
 	uint16_t _available:11;
@@ -27,46 +28,28 @@ typedef struct pdpe {
 	uint8_t pwt:1;
 	uint8_t pcd:1;
 	uint8_t a:1;
-	uint8_t ign:1;
-	uint8_t _zero:1;
-	uint8_t mbz:1;
-	uint8_t avl:3;
-	uint64_t base_address:40;
-	uint16_t _available:11;
-	uint8_t nx:1;
-} __attribute__((packed)) pdpe_t;
-
-/* Page Directory Table */
-typedef struct pde {
-	uint8_t p:1;
-	uint8_t rw:1;
-	uint8_t us:1;
-	uint8_t pwt:1;
-	uint8_t pcd:1;
-	uint8_t a:1;
 	uint8_t d:1;
 	uint8_t ps:1;
 	uint8_t g:1;
 	uint8_t avl:3;
 	uint8_t pat:1;
-	uint8_t _reserved:8;
-	uint64_t base_address:31;
+	uint64_t reserved:17;
+	uint64_t base_address:22;
 	uint16_t _available:11;
 	uint8_t nx:1;
-} __attribute__((packed)) pde_t;
-
+} __attribute__((packed)) pdpe_t;
 
 /* Bits */
-#define PAGE_PRESENT	(1 << 0)
-#define PAGE_RW		(1 << 1)
-#define PAGE_US		(1 << 2)
-#define PAGE_PWT	(1 << 3)
-#define PAGE_PCD	(1 << 4)
-#define PAGE_A		(1 << 5)
-#define PAGE_D		(1 << 6)
-#define PAGE_PS		(1 << 7)
-#define PAGE_G		(1 << 8)
-#define PAGE_NX		(1 << 64)
+#define PAGE_PRESENT	(1UL << 0)
+#define PAGE_RW		(1UL << 1)
+#define PAGE_US		(1UL << 2)
+#define PAGE_PWT	(1UL << 3)
+#define PAGE_PCD	(1UL << 4)
+#define PAGE_A		(1UL << 5)
+#define PAGE_D		(1UL << 6)
+#define PAGE_PS		(1UL << 7)
+#define PAGE_G		(1UL << 8)
+#define PAGE_NX		(1UL << 63)
 
 #define PAGE_MASK       0xFFFFFFFFFFFFF000
 #define PAGE_ATTRIBS    0x0000000000000FFF
@@ -81,6 +64,9 @@ typedef struct pde {
 #define PAGE_CPU_GLOBAL 0x100
 #define PAGE_LV4_GLOBAL 0x200
 
+
+#define MM_GET_PML4_INDEX(x) (((x) >> 39) & 0x1FF)
+#define MM_GET_PDP_INDEX(x)  (((x) >> 30) & 0x1FF)
 
 
 /* Functions */

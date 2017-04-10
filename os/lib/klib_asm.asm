@@ -6,7 +6,6 @@ section .text
 
 kpanic:
 	mov al, 4
-
 	; Prints "ERR: <error_code>" and halts
  	mov dword [0xB8000+0x0], 0x4f524f45
  	mov dword [0xB8000+0x4], 0x4f3a4f52

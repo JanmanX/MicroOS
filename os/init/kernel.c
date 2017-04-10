@@ -8,17 +8,13 @@
 #include <init/xsdt.h>
 #include <test/test.h>
 
-uint64_t test = 1337;
-uint64_t _get_rsdp();
-void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
+void main(unsigned long mb_info_struct_addr)
 {
-	init_page_tables_identity();
+//	init_page_tables_identity();
 	kprintf("Page tables inited\n");
 	tests_run();
-
-	HALT;
-	xsdt_init();
-	HALT;
+	BOCHS_DEBUG;
+//	xsdt_init();
 
 	struct multiboot_tag *tag;
 	uint32_t size;
@@ -211,8 +207,6 @@ void main(unsigned long mb_info_struct_addr, uint32_t *pml4t)
 	kprintf ("Total mbi size 0x%x\n", (uint64_t)(uint32_t)tag - mb_info_struct_addr);
 
 	kprint("Main()\n");
-
-	kprintf("PML4T: 0x%x\n", pml4t);
 
 	DEBUG("INTERRUPT INIT");
 	interrupt_init();
