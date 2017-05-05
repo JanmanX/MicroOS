@@ -10,11 +10,11 @@
 
 void main(unsigned long mb_info_struct_addr)
 {
-//	init_page_tables_identity();
+
+	init_page_tables_identity();
 	kprintf("Page tables inited\n");
 	tests_run();
 	BOCHS_DEBUG;
-//	xsdt_init();
 
 	struct multiboot_tag *tag;
 	uint32_t size;

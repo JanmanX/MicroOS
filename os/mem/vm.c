@@ -28,8 +28,6 @@ void mm_dump_pdpe(pdpe_t *p)
 
 static void reload_page_table(uint64_t pml4t_start_phys)
 {
-	BOCHS_DEBUG;
-
 	asm volatile("mov %0, %%rax;\
 		     mov %%rax, %%cr3;"
 		     :
@@ -42,7 +40,7 @@ static void reload_page_table(uint64_t pml4t_start_phys)
 
 uint8_t mm_map(uint64_t phys, uint64_t virt)
 {
-	if(MM_GET_PML4_INDEX(phys) > PML4T_NUM) {
+	if(MM_GET_PML4_INDEX(phys) > PML4E_NUM) {
 		kprintf("Cannot map pages at 0x%x\n", phys);
 		return 1;
 	}
@@ -67,26 +65,34 @@ void init_page_tables_identity(void)
 	uint64_t entry = 0;
 
 	/* Zero out tables */
-	memset(pml4t, 0x00, PML4T_NUM * sizeof(pml4e_t));
-	memset(pdpt, 0x00, PDPT_NUM * sizeof(pdpe_t));
+	memset(pml4t, 0x00, PML4E_NUM * sizeof(uint64_t));
+	memset(pdpt, 0x00, PDPE_NUM * sizeof(uint64_t));
+	memset(pdt, 0x00, PDE_NUM * sizeof(uint64_t));
 
+	/* Fix magic numbers */
 
 	/* Setup PML4T */
-	for(i = 0; i < PML4T_NUM; i++) {
-		pml4t[i] = (uint64_t)pdpt | 3;
+	for(i = 0; i < PML4E_NUM; i++) {
+		pml4t[i] = (uint64_t)(&pdpt[i * 0x200])
+			| PAGE_PRESENT
+			| PAGE_RW;
 	}
 
 	/* Setup PDPT */
-	for(i = 0; i < PDPT_NUM; i++) {
-		pdpt[i] = ((uint64_t)pdt) | 3;
+	for(i = 0; i < PDPE_NUM; i++) {
+		pdpt[i] = ((uint64_t)(&pdt[i * 0x200]))
+			| PAGE_PRESENT
+			| PAGE_RW;
 	}
 
 	/* Setup PDT */
 	for(i = 0; i < PDE_NUM; i++) {
-		pdt[i] = i * (MiB << 1) | (1<<7) | 3;
+		pdt[i] = i * (MiB << 1)
+			| PAGE_PS
+			| PAGE_PRESENT
+			| PAGE_RW;
 	}
 
 	/* Reload */
 	reload_page_table((uint64_t)pml4t);
-
 }

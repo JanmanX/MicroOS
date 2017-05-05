@@ -3,13 +3,18 @@
 
 #include "pagetable.h"
 
-#define PML4T_NUM	0x0001
-uint64_t pml4t[PML4T_NUM] __attribute__((aligned(4096)));
+/* For 64GiB, we need:
+ * 0x8000 PDE
+ * 0x0040 PDPE
+ * 0x0001 PML4E */
 
-#define PDPT_NUM	0x0000
-uint64_t pdpt[PDPT_NUM] __attribute__((aligned(4096)));
+#define PML4E_NUM	0x0001
+uint64_t pml4t[PML4E_NUM] __attribute__((aligned(4096)));
 
-#define PDE_NUM		0x0200
+#define PDPE_NUM	0x0040
+uint64_t pdpt[PDPE_NUM] __attribute__((aligned(4096)));
+
+#define PDE_NUM		0x8000
 uint64_t pdt[PDE_NUM] __attribute__((aligned(4096)));
 
 

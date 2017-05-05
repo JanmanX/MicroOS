@@ -172,7 +172,7 @@ enable_paging:
 	; Enable PAE-flag (Physical Address Extension (64 bit))
 	; http://wiki.osdev.org/CPU_Registers_x86#CR4
 	mov eax, cr4
-	or eax, 1 << 5
+	or eax, 1 << 5 ; PAE bit
 	mov cr4, eax
 
 	; Setup longmode in the EFER MSR (Model Specific Register)
@@ -187,8 +187,8 @@ enable_paging:
 	mov eax, cr0
 	or eax, 1 << 31 ; paging bit
 	mov cr0, eax
-
 	ret
+
 
 
 ; error()
