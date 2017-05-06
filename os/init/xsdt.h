@@ -32,19 +32,27 @@ typedef struct rsdp_desc_20 {
 } __attribute__ ((packed)) rsdp_desc_20_t;
 #define RSDP_DESC_20_LEN (sizeof(rsdp_desc_20_t))
 
-
+/* RSDT (Root System Description Table) is a data structure used in the ACPI
+ * programming interface. */
+typedef struct acpi_sdt_hdr {
+  uint8_t signature[4];
+  uint32_t length;
+  uint8_t revision;
+  uint8_t checksum;
+  uint8_t oemid[6];
+  uint8_t oemtableid[8];
+  uint32_t oemrevision;
+  uint32_t creatorid;
+  uint32_t creatorrevision;
+} __attribute__((packed)) acpi_sdt_hdr_t;
+#define ACPI_SDT_HDR_LEN (sizeof(acpi_sdt_hdr_t))
 
 /* The RSDT is the main System Description Table */
 typedef struct xsdt_hdr {
-	char signature[4];
-	uint32_t length;
-	uint8_t revision;
-	uint8_t checksum;
-	char oemid[6];
-	char oemtableid[8];
-	uint32_t oemrevision;
-	uint32_t creatorid;
-	uint32_t creatorrevision;
+	acpi_sdt_hdr_t h;
+
+	/* Pointer to the next header */
+	uint64_t* next_sdt;
 } __attribute__((packed)) xsdt_hdr_t;
 #define XSDT_HDR_LEN sizeof(xsdt_hdr_t)
 
@@ -55,5 +63,4 @@ rsdp_desc_t *get_rsdp();
 uint8_t acpi_checksum(const uint8_t *data, uint64_t len);
 uint8_t rsdp_checksum(rsdp_desc_t *rsdp);
 uint8_t xsdt_checksum(xsdt_hdr_t*);
-//void *xsdt_find_sdt(char *signature);
 #endif /* _XSDT_H */

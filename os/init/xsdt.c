@@ -38,29 +38,26 @@ void xsdt_init(void)
 {
 	clear_screen();
 
+	/* Get the pointer to System Descriptors */
 	if((rsdp = get_rsdp()) == NULL) {
 		ERROR("RSDP NOT FOUND!");
 	}
 	kprintf("RSDP @ 0x%x\n", rsdp);
 
+	/* Get the revision and the pointer accordingly */
 	xsdt = rsdp->revision == RSDP_REV_10
 		? rsdp->rsdt_address
 		: ((rsdp_desc_20_t*)rsdp)->xsdt_address;
 
-	/* Print debug info */
-	kprintf("XSDT @ 0x%x\n", (uint64_t)xsdt);
-	char str[9] = {0};
-	memcpy(str, &xsdt->signature, 4);
-	kprintf("XSDT->SIGNATURE: %s\n", str);
-	kprintf("XSDT_CHECKSUM: 0x%x\n", acpi_checksum(xsdt, XSDT_HDR_LEN));
-
-	/* STOP */
-	if(xsdt_checksum(xsdt) == 0) {
-		ERROR("XSDT checksum failed!\n");
+	/* do checksum of XSDT */
+	if(acpi_checksum(xsdt, xsdt->h.length) == 0) {
+		ERROR("XSDT CHECKSUM FAILED\n");
+	} else {
+		LOG("XSDT CHECKSUM PASSED");
 	}
-	LOG("ASD");
+
+
 	HALT;
-	kprintf("XSDP at: 0x%x", (uint64_t)xsdt);
 	return 0;
 }
 
@@ -74,23 +71,6 @@ uint8_t acpi_checksum(const uint8_t *data, uint64_t len)
 	}
 
 	return sum == 0;
-}
-
-
-uint8_t xsdt_checksum(xsdt_hdr_t *hdr)
-{
-	uint64_t sum = 0;
-	uint64_t i;
-	for(i = 0; i < hdr->length; i++) {
-		sum += ((uint8_t*)hdr)[i];
-	}
-
-	return sum == 0;
-}
-
-void *xsdt_find_sdt(char* signature)
-{
-	return NULL;
 }
 
 
