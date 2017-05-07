@@ -56,8 +56,7 @@ void xsdt_init(void)
 		LOG("XSDT CHECKSUM PASSED");
 	}
 
-
-	HALT;
+	/* return */
 	return 0;
 }
 

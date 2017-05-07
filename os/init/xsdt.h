@@ -48,6 +48,16 @@ typedef struct acpi_sdt_hdr {
 #define ACPI_SDT_HDR_LEN (sizeof(acpi_sdt_hdr_t))
 
 /* The RSDT is the main System Description Table */
+typedef struct rsdt_hdr {
+	acpi_sdt_hdr_t h;
+
+	/* Pointer to the next header */
+	uint32_t* next_sdt;
+} __attribute__((packed)) rsdt_hdr_t;
+#define XSDT_HDR_LEN sizeof(rsdt_hdr_t)
+
+
+/* The XSDT is the main System Description Table */
 typedef struct xsdt_hdr {
 	acpi_sdt_hdr_t h;
 
