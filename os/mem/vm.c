@@ -87,7 +87,7 @@ void init_page_tables_identity(void)
 
 	/* Setup PDT */
 	for(i = 0; i < PDE_NUM; i++) {
-		pdt[i] = i * (MiB << 1)
+		pdt[i] = i * (MiB * 2)
 			| PAGE_PS
 			| PAGE_PRESENT
 			| PAGE_RW;

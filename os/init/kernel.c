@@ -14,6 +14,11 @@ void main(unsigned long mb_info_struct_addr)
 	init_page_tables_identity();
 	kprintf("Page tables inited\n");
 
+	uint64_t *ptr = (uint64_t*)0x0000000000FFFF00;
+	kprintf("PTR: 0x%x\n", *ptr);
+	BOCHS_DEBUG;
+	HALT;
+
 	/* */
 	xsdt_init();
 
