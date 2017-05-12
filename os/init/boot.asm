@@ -131,6 +131,21 @@ check_long_mode:
 	jmp error
 
 
+; check_gbyte_paging()
+;
+; Checks if CPU supports 1Gbyte paging
+check_gbyte_paging:
+	mov eax, 0x80000001
+	cpuid
+	test edx, 1 << 26
+	jz .no_gbyte_paging
+	ret
+
+.no_gbyte_paging
+	mov eax, ERROR_NO_GBYTE_PAGING
+	jmp error
+
+
 
 ; set_up_page_tables()
 ;
@@ -234,7 +249,7 @@ long_mode_start:
         cld
 
 	; Expand paging to 64GiB
-;	call extend_page_tables
+	;call extend_page_tables
 
 	; mb_info_ptr is already in rdi
 	call main
@@ -270,7 +285,6 @@ extend_page_tables:
 	inc rcx
 	cmp rcx, NUM_PDE
 	jne .extend_pdt
-
 
 	; Flush TLB
 	mov rax, cr3

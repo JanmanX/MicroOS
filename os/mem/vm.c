@@ -52,14 +52,6 @@ uint8_t mm_map(uint64_t phys, uint64_t virt)
 
 void init_page_tables_identity(void)
 {
-	/* Ensure 1 GiB pages supported */
-	uint32_t rax, rdx;
-	cpuid(CPUID_EXTENDED_FEATURES, &rax, &rdx);
-	if( rdx & EDX_GBYTE_PAGING == 0) {
-		kprintf("RAX: 0x%x\nRDX: 0x%x\n", rax, rdx);
-		ERROR("GByte paging not supported by this CPU.");
-	}
-
 	uint64_t i = 0;
 	uint64_t addr = 0x00;
 	uint64_t entry = 0;
@@ -80,17 +72,11 @@ void init_page_tables_identity(void)
 
 	/* Setup PDPT */
 	for(i = 0; i < PDPE_NUM; i++) {
-		pdpt[i] = ((uint64_t)(&pdt[i * 0x200]))
-			| PAGE_PRESENT
-			| PAGE_RW;
-	}
-
-	/* Setup PDT */
-	for(i = 0; i < PDE_NUM; i++) {
-		pdt[i] = i * (MiB * 2)
+		pdpt[i] = (i * GiB)
 			| PAGE_PS
 			| PAGE_PRESENT
 			| PAGE_RW;
+
 	}
 
 	/* Reload */

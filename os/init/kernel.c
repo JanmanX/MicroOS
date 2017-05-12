@@ -14,13 +14,14 @@ void main(unsigned long mb_info_struct_addr)
 	init_page_tables_identity();
 	kprintf("Page tables inited\n");
 
-	uint64_t *ptr = (uint64_t*)0x0000000000FFFF00;
+
+	uint64_t *ptr = (uint64_t*)0x0000000f000000;
+	*ptr = 0xDEADDEAD1337;
 	kprintf("PTR: 0x%x\n", *ptr);
 	BOCHS_DEBUG;
 	HALT;
-
 	/* */
-	xsdt_init();
+	//xsdt_init();
 
 	//pci_init();
 
@@ -119,7 +120,10 @@ void main(unsigned long mb_info_struct_addr)
 			break;
 		}
 		}
+
 	}
+
+	HALT;
 
 	tag = (struct multiboot_tag *) ((multiboot_uint8_t *) tag
 					+ ((tag->size + 7) & ~7));

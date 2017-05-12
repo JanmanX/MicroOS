@@ -16,7 +16,8 @@ cd ..
 wget https://downloads.sourceforge.net/project/bochs/bochs/2.6.8/bochs-2.6.8.tar.gz
 tar xf bochs-2.6.8.tar.gz
 cd bochs-2.6.8
-./configure --enable-debugger --enable-debugger-gui --enable-x86-debugger --with-sdl --enable-x86-64
+./configure --enable-debugger --enable-debugger-gui --enable-x86-debugger --with-sdl --enable-x86-64 --enable-long-phy-address --enable-avx
+
 make -j${NJOBS}
 sudo make install
 cd ..

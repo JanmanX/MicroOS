@@ -27,6 +27,7 @@
 %define ERROR_NO_CPUID	   '1'
 %define ERROR_NO_LONG_MODE '2'
 %define ERROR_KERNEL_PANIC '3'
+%define ERROR_NO_GBYTE_PAGING '4'
 %define ERROR_DEBUG	   '255'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; MULTIBOOT 2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
