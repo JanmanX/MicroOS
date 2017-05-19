@@ -1,8 +1,8 @@
 QEMU=qemu-system-x86_64
 QEMU_FLAGS=-m 4G -s -cpu host -enable-kvm
+QEMU_DRIVE=-drive id=disk,file=hdd.bin,if=none -device ahci,id=ahci -device ide-drive,drive=disk,bus=ahci.0
 GRUB=grub2
 GRUB_KERNEL=#-bios ./debug/qemu/bios.bin
-
 BOCHS=bochs
 DEBUG_DIR=./debug
 
@@ -15,10 +15,10 @@ iso: all
 	$(GRUB)-mkrescue -o os.iso isofiles/
 
 run: iso
-	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) -cdrom  os.iso
+	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) $(QEMU_DRIVE) -cdrom  os.iso
 
 debug: iso
-	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) -S -cdrom  os.iso
+	$(QEMU) $(GRUB_KERNEL) $(QEMU_FLAGS) $(QEMU_DRIVE)  -S -cdrom  os.iso
 
 
 
