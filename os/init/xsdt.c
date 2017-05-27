@@ -4,6 +4,7 @@
 
 static rsdp_desc_t *rsdp;
 static xsdt_hdr_t *xsdt;
+static acpi_sdt_hdr_t *madt;
 
 rsdp_desc_t *get_rsdp(void)
 {
@@ -33,11 +34,8 @@ rsdp_desc_t *get_rsdp(void)
 }
 
 
-
 void xsdt_init(void)
 {
-	clear_screen();
-
 	/* Get the pointer to System Descriptors */
 	if((rsdp = get_rsdp()) == NULL) {
 		ERROR("RSDP NOT FOUND!");
@@ -54,6 +52,20 @@ void xsdt_init(void)
 		ERROR("XSDT CHECKSUM FAILED\n");
 	} else {
 		LOG("XSDT CHECKSUM PASSED");
+	}
+
+	/* Parse */
+	int i = 0;
+	int entries = (xsdt->h.length - sizeof(xsdt->h)) / 8;
+	kprintf("XSDT ENTRIES: 0x%x\n", entries);
+	for(i = 0; i < entries; i++) {
+		HALT;
+		acpi_sdt_hdr_t *hdr = xsdt->next_sdt[i];
+
+		uint8_t buf[5] = {0};
+		memcpy(buf, hdr, 4);
+		kprintf("ACPI_SDT_HDR SIGNATURE: %s\n", buf);
+		HALT;
 	}
 
 	/* return */

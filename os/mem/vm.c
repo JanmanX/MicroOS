@@ -34,8 +34,6 @@ static void reload_page_table(uint64_t pml4t_start_phys)
 		     : "r"(pml4t_start_phys)
 		     : "%rax"
 		    );
-
-	BOCHS_DEBUG;
 }
 
 uint8_t mm_map(uint64_t phys, uint64_t virt)
@@ -44,9 +42,6 @@ uint8_t mm_map(uint64_t phys, uint64_t virt)
 		kprintf("Cannot map pages at 0x%x\n", phys);
 		return 1;
 	}
-
-	/* TODO */
-	//	pml4t[MM_GET_PML4_INDEX(phys)] = &();
 }
 
 
@@ -61,7 +56,6 @@ void init_page_tables_identity(void)
 	memset(pdpt, 0x00, PDPE_NUM * sizeof(uint64_t));
 	memset(pdt, 0x00, PDE_NUM * sizeof(uint64_t));
 
-	/* Fix magic numbers */
 
 	/* Setup PML4T */
 	for(i = 0; i < PML4E_NUM; i++) {
@@ -81,4 +75,6 @@ void init_page_tables_identity(void)
 
 	/* Reload */
 	reload_page_table((uint64_t)pml4t);
+
+	LOG("Page tables inited\n");
 }

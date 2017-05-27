@@ -158,7 +158,6 @@ void pci_init()
 			 * devices here */
 			switch((uint8_t)classes >> 8) {
 			case PCI_CLASS_MASS_STORAGE_CONTROLLER: {
-				/* TODO: INIT IDE DRIVER HERE */
 				kprintf("PCI Mass Storage Controller found on\
 					bus: 0x%x, slot: 0x%x\n", bus, slot);
 				break;

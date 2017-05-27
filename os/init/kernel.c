@@ -7,23 +7,20 @@
 #include <drivers/pci.h>
 #include <init/xsdt.h>
 #include <test/test.h>
+#include <kernel/apic.h>
+
 
 void main(unsigned long mb_info_struct_addr)
 {
 	/* Init page tables */
 	init_page_tables_identity();
-	kprintf("Page tables inited\n");
 
+	/* Init ACPI */
+	xsdt_init();
 
-	uint64_t *ptr = (uint64_t*)0x0000000f000000;
-	*ptr = 0xDEADDEAD1337;
-	kprintf("PTR: 0x%x\n", *ptr);
-	BOCHS_DEBUG;
-	HALT;
-	/* */
-	//xsdt_init();
+	/* Init APIC */
+	apic_init();
 
-	//pci_init();
 
 	/* Retrieve information from bootloader */
 	struct multiboot_tag *tag;
@@ -48,6 +45,18 @@ void main(unsigned long mb_info_struct_addr)
 		kprintf ("Tag 0x%x, Size 0x%x\n", tag->type, tag->size);
 		switch (tag->type)
 		{
+		case MULTIBOOT_TAG_TYPE_ACPI_NEW:
+				kprintf("ACPI_NEW = %s\n",
+					((struct
+					  multiboot_tag_string*)tag)->string);
+				break;
+		case MULTIBOOT_TAG_TYPE_ACPI_OLD:
+				kprintf("ACPI_OLD = %s\n",
+					((struct
+					  multiboot_tag_string*)tag)->string);
+				break;
+
+
 		case MULTIBOOT_TAG_TYPE_CMDLINE:
 			kprintf ("Command line = %s\n",
 				 ((struct multiboot_tag_string *) tag)->string);
@@ -61,6 +70,7 @@ void main(unsigned long mb_info_struct_addr)
 				 ((struct multiboot_tag_module *) tag)->mod_start,
 				 ((struct multiboot_tag_module *) tag)->mod_end,
 				 ((struct multiboot_tag_module *) tag)->cmdline);
+			HALT;
 			break;
 		case MULTIBOOT_TAG_TYPE_BASIC_MEMINFO:
 			kprintf ("mem_lower = %uKB, mem_upper = %uKB\n",
@@ -73,6 +83,7 @@ void main(unsigned long mb_info_struct_addr)
 				 ((struct multiboot_tag_bootdev *) tag)->slice,
 				 ((struct multiboot_tag_bootdev *) tag)->part);
 			break;
+#if 0
 		case MULTIBOOT_TAG_TYPE_MMAP: {
 			multiboot_memory_map_t *mmap;
 
@@ -105,7 +116,7 @@ void main(unsigned long mb_info_struct_addr)
 
 		}
 			break;
-
+#endif
 		case MULTIBOOT_TAG_TYPE_VBE: {
 			struct multiboot_tag_vbe *tag_vbe
 				= (struct multiboot_tag_vbe *) tag;
@@ -123,7 +134,6 @@ void main(unsigned long mb_info_struct_addr)
 
 	}
 
-	HALT;
 
 	tag = (struct multiboot_tag *) ((multiboot_uint8_t *) tag
 					+ ((tag->size + 7) & ~7));
@@ -131,17 +141,12 @@ void main(unsigned long mb_info_struct_addr)
 
 	kprint("Main()\n");
 
-	DEBUG("INTERRUPT INIT");
 	interrupt_init();
-	DEBUG("KEYBOARD INIT");
 	keyboard_init();
-
 	pci_init();
 
-	DEBUG("LOOP");
-	kprintf("PIC MASK: 0x%x\n", pic_get_mask());
 
-	asm volatile("int $02");
+	kprintf("PIC MASK: 0x%x\n", pic_get_mask());
 
 	char c[2] = {0};
 	for(;;) {

@@ -4,10 +4,14 @@
 #include <stdint.h>
 
 #define RSDP_SIGNATURE		"RSD PTR "
+#define ACPI_SIGNATURE		"APIC"
+
 #define RSDP_SIGNATURE_LEN	8
 /* Pointer to the XSDT */
 #define RSDP_REV_10 0
 #define RSDP_REV_20 2
+
+
 
 /* RSDP Version 1.0 */
 typedef struct rsdp_desc_10 {
